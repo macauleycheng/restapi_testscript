@@ -1,0 +1,2161 @@
+{
+  "modules": ["mac", "dhcp", "vlan", "storm_control", "acl", "lldp", "link_aggregation", "ntp", "poe", "snmp", "ssh", "static_route", "telnet", "loopback_detection", "mac"],
+  "switch": {
+    "protocol": "http",
+    "host": "192.168.40.200",
+    "port": 80
+  },
+  "authentication": {
+    "type": "basic",
+    "username": "admin",
+    "password": "admin"
+  },
+  "default_headers": {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  "timeout": 30,
+  "log_level": "INFO",
+  "request_delay": 0.1,
+  "test_parameters": {
+    "vlan_id": 100,
+    "interface_id": "eth1%2f1",
+    "session_id": 1,
+    "frame_type": "ethernet",
+    "protocol_type": "ip",
+    "group_id": 1,
+    "mac_address": "00-11-22-33-44-55",
+    "mac_mask": "FF-FF-FF-FF-FF-FF",
+    "oui_mac": "00-12-34-56-78-9A",
+    "oui_mask": "FF-FF-FF-00-00-00",
+    "pool_name": "test_pool",
+    "ip_address": "192.168.1.10",
+    "server_ip": "192.168.1.1",
+    "ipv6_server": "2001:db8::1",
+    "excluded_low_ip": "192.168.1.50",
+    "excluded_high_ip": "192.168.1.60",
+    "ip_acl_name": "std_acl_1",
+    "ip_acl_name_delete": "test_acl",
+    "mac_acl_name": "macAcl",
+    "mac_acl_name_delete": "macAcl",
+    "arp_acl_name": "arpAcl",
+    "arp_acl_name_delete": "arpAcl",
+    "ipv6_acl_name": "ext_ipv6_1",
+    "ipv6_acl_name_delete": "test",
+    "channel_id": 1,
+    "static_channel_id": 5,
+    "ntp_server_primary": "192.168.1.175",
+    "ntp_server_secondary": "time.google.com",
+    "community_name": "public",
+    "trap_host_ip": "192.168.1.101",
+    "ssh_username": "admin",
+    "ssh_key_type": "rsa",
+    "interface_port_id": "1",
+    "lbd_interval": 100,
+    "lbd_recovery_time": 300
+  },
+  "test_data": {
+    "mac_aging_basic": {
+      "agingStatus": true,
+      "agingTime": 300,
+      "hashLookupDepth": 4
+    },
+    "mac_aging_enable_only": {
+      "agingStatus": true
+    },
+    "mac_aging_min_time": {
+      "agingStatus": true,
+      "agingTime": 6
+    },
+    "mac_aging_max_time": {
+      "agingStatus": true,
+      "agingTime": 7200
+    },
+    "mac_aging_default_time": {
+      "agingStatus": true,
+      "agingTime": 300
+    },
+    "mac_aging_custom_time": {
+      "agingStatus": true,
+      "agingTime": 600
+    },
+    "mac_aging_disable": {
+      "agingStatus": false
+    },
+    "mac_aging_re_enable": {
+      "agingStatus": true,
+      "agingTime": 450
+    },
+    "mac_aging_invalid_low": {
+      "agingStatus": true,
+      "agingTime": 3
+    },
+    "mac_aging_invalid_high": {
+      "agingStatus": true,
+      "agingTime": 8000
+    },
+    "mac_hash_min_depth": {
+      "agingStatus": true,
+      "hashLookupDepth": 4
+    },
+    "mac_hash_max_depth": {
+      "agingStatus": true,
+      "hashLookupDepth": 32
+    },
+    "mac_hash_medium_depth": {
+      "agingStatus": true,
+      "hashLookupDepth": 16
+    },
+    "mac_hash_custom_depth": {
+      "agingStatus": true,
+      "hashLookupDepth": 8
+    },
+    "mac_complete_aging_hash": {
+      "agingStatus": true,
+      "agingTime": 100,
+      "hashLookupDepth": 8
+    },
+    "mac_hash_invalid_multiple": {
+      "agingStatus": true,
+      "hashLookupDepth": 7
+    },
+    "mac_hash_invalid_range": {
+      "agingStatus": true,
+      "hashLookupDepth": 40
+    },
+    "mac_static_entry_basic": {
+      "macAddress": "00-e0-29-94-34-de",
+      "ifId": "eth1/1",
+      "vlanId": 1,
+      "lifetime": "delete-on-reset"
+    },
+    "mac_static_entry_permanent": {
+      "macAddress": "00-11-22-33-44-55",
+      "ifId": "eth1/2",
+      "vlanId": 100,
+      "lifetime": "permanent"
+    },
+    "mac_static_entry_trunk": {
+      "macAddress": "aa-bb-cc-dd-ee-ff",
+      "ifId": "trunk1",
+      "vlanId": 200,
+      "lifetime": "delete-on-reset"
+    },
+    "mac_static_entry_no_lifetime": {
+      "macAddress": "12-34-56-78-9a-bc",
+      "ifId": "eth1/3",
+      "vlanId": 300
+    },
+    "mac_invalid_format": {
+      "macAddress": "invalid-mac-address",
+      "ifId": "eth1/1",
+      "vlanId": 1
+    },
+    "mac_invalid_vlan": {
+      "macAddress": "00-11-22-33-44-55",
+      "ifId": "eth1/1",
+      "vlanId": 5000
+    },
+    "mac_invalid_interface": {
+      "macAddress": "00-11-22-33-44-55",
+      "ifId": "invalid-interface",
+      "vlanId": 1
+    },
+    "mac_duplicate_entry": {
+      "macAddress": "00-e0-29-94-34-de",
+      "ifId": "eth1/1",
+      "vlanId": 1,
+      "lifetime": "permanent"
+    },
+    "mac_thrashing_stop_learning": {
+      "status": true,
+      "action": "stop-learning"
+    },
+    "mac_thrashing_port_disable": {
+      "status": true,
+      "action": "port-disable"
+    },
+    "mac_thrashing_link_down": {
+      "status": true,
+      "action": "link-down"
+    },
+    "mac_thrashing_trunk": {
+      "status": true,
+      "action": "stop-learning"
+    },
+    "mac_thrashing_disable": {
+      "status": false
+    },
+    "mac_thrashing_re_enable": {
+      "status": true,
+      "action": "port-disable"
+    },
+    "mac_thrashing_min_duration": {
+      "actionDuration": 10
+    },
+    "mac_thrashing_max_duration": {
+      "actionDuration": 10000
+    },
+    "mac_thrashing_never_stop": {
+      "actionDuration": 0
+    },
+    "mac_thrashing_custom_duration": {
+      "actionDuration": 30
+    },
+    "mac_thrashing_invalid_action": {
+      "status": true,
+      "action": "invalid-action"
+    },
+    "mac_thrashing_invalid_duration": {
+      "actionDuration": 15000
+    },
+    "mac_aging_conservative": {
+      "agingStatus": true,
+      "agingTime": 1800,
+      "hashLookupDepth": 8
+    },
+    "mac_aging_aggressive": {
+      "agingStatus": true,
+      "agingTime": 60,
+      "hashLookupDepth": 16
+    },
+    "mac_high_performance": {
+      "agingStatus": true,
+      "agingTime": 120,
+      "hashLookupDepth": 32
+    },
+    "mac_static_entry_vlan_100": {
+      "macAddress": "02-00-00-00-01-00",
+      "ifId": "eth1/5",
+      "vlanId": 100,
+      "lifetime": "permanent"
+    },
+    "mac_static_entry_vlan_200": {
+      "macAddress": "02-00-00-00-02-00",
+      "ifId": "eth1/6",
+      "vlanId": 200,
+      "lifetime": "delete-on-reset"
+    },
+    "mac_static_entry_multiple_vlans": {
+      "macAddress": "02-00-00-00-03-00",
+      "ifId": "eth1/7",
+      "vlanId": 300,
+      "lifetime": "permanent"
+    },
+    "mac_thrashing_comprehensive": {
+      "status": true,
+      "action": "port-disable"
+    },
+    "mac_thrashing_monitoring_only": {
+      "status": true,
+      "action": "stop-learning"
+    },
+    "mac_thrashing_strict_policy": {
+      "status": true,
+      "action": "link-down"
+    },
+    "mac_production_config": {
+      "agingStatus": true,
+      "agingTime": 300,
+      "hashLookupDepth": 8
+    },
+    "mac_lab_config": {
+      "agingStatus": true,
+      "agingTime": 60,
+      "hashLookupDepth": 4
+    },
+    "mac_datacenter_config": {
+      "agingStatus": true,
+      "agingTime": 600,
+      "hashLookupDepth": 16
+    },
+    "lbd_basic_config": {
+      "status": true,
+      "interval": 100,
+      "recover": 0,
+      "action": "block",
+      "trap": "both"
+    },
+    "lbd_enable_only": {
+      "status": true
+    },
+    "lbd_min_interval": {
+      "status": true,
+      "interval": 1
+    },
+    "lbd_max_interval": {
+      "status": true,
+      "interval": 32767
+    },
+    "lbd_medium_interval": {
+      "status": true,
+      "interval": 60
+    },
+    "lbd_no_recovery": {
+      "status": true,
+      "interval": 100,
+      "recover": 0
+    },
+    "lbd_min_recovery": {
+      "status": true,
+      "interval": 100,
+      "recover": 60
+    },
+    "lbd_max_recovery": {
+      "status": true,
+      "interval": 100,
+      "recover": 1000000
+    },
+    "lbd_medium_recovery": {
+      "status": true,
+      "interval": 100,
+      "recover": 300
+    },
+    "lbd_action_none": {
+      "status": true,
+      "interval": 100,
+      "action": "none"
+    },
+    "lbd_action_block": {
+      "status": true,
+      "interval": 100,
+      "action": "block"
+    },
+    "lbd_action_shutdown": {
+      "status": true,
+      "interval": 100,
+      "action": "shutdown"
+    },
+    "lbd_trap_none": {
+      "status": true,
+      "interval": 100,
+      "trap": "none"
+    },
+    "lbd_trap_recover": {
+      "status": true,
+      "interval": 100,
+      "trap": "recover"
+    },
+    "lbd_trap_detect": {
+      "status": true,
+      "interval": 100,
+      "trap": "detect"
+    },
+    "lbd_trap_both": {
+      "status": true,
+      "interval": 100,
+      "trap": "both"
+    },
+    "lbd_complete_config": {
+      "status": true,
+      "interval": 30,
+      "recover": 180,
+      "action": "block",
+      "trap": "both"
+    },
+    "lbd_disable": {
+      "status": false
+    },
+    "lbd_re_enable": {
+      "status": true,
+      "interval": 50,
+      "recover": 120,
+      "action": "shutdown",
+      "trap": "detect"
+    },
+    "lbd_invalid_interval_high": {
+      "status": true,
+      "interval": 40000
+    },
+    "lbd_invalid_interval_low": {
+      "status": true,
+      "interval": 0
+    },
+    "lbd_invalid_recovery_high": {
+      "status": true,
+      "interval": 100,
+      "recover": 2000000
+    },
+    "lbd_invalid_recovery_range": {
+      "status": true,
+      "interval": 100,
+      "recover": 30
+    },
+    "lbd_invalid_action": {
+      "status": true,
+      "interval": 100,
+      "action": "invalid"
+    },
+    "lbd_invalid_trap": {
+      "status": true,
+      "interval": 100,
+      "trap": "invalid"
+    },
+    "lbd_enable_single_port": {
+      "status": true,
+      "ports": [1]
+    },
+    "lbd_enable_multiple_ports": {
+      "status": true,
+      "ports": [1, 2, 3]
+    },
+    "lbd_enable_port_range": {
+      "status": true,
+      "ports": [5, 6, 7, 8, 9, 10]
+    },
+    "lbd_cumulative_enable": {
+      "status": true,
+      "ports": [72]
+    },
+    "lbd_disable_single_port": {
+      "status": false,
+      "ports": [1]
+    },
+    "lbd_disable_multiple_ports": {
+      "status": false,
+      "ports": [2, 3]
+    },
+    "lbd_disable_all_ports": {
+      "status": false,
+      "ports": [5, 6, 7, 8, 9, 10, 72]
+    },
+    "lbd_empty_port_list": {
+      "status": true,
+      "ports": []
+    },
+    "lbd_invalid_port_number": {
+      "status": true,
+      "ports": [0, -1, 999]
+    },
+    "lbd_auto_recovery_enable": {
+      "status": true,
+      "interval": 30,
+      "recover": 120,
+      "action": "block",
+      "trap": "both"
+    },
+    "lbd_short_recovery": {
+      "status": true,
+      "interval": 30,
+      "recover": 60,
+      "action": "block",
+      "trap": "recover"
+    },
+    "lbd_long_recovery": {
+      "status": true,
+      "interval": 30,
+      "recover": 600,
+      "action": "shutdown",
+      "trap": "both"
+    },
+    "lbd_disable_auto_recovery": {
+      "status": true,
+      "interval": 30,
+      "recover": 0,
+      "action": "block",
+      "trap": "detect"
+    },
+    "lbd_recovery_trap_config": {
+      "status": true,
+      "interval": 30,
+      "recover": 180,
+      "action": "block",
+      "trap": "recover"
+    },
+    "lbd_recovery_different_actions": {
+      "status": true,
+      "interval": 30,
+      "recover": 90,
+      "action": "shutdown",
+      "trap": "both"
+    },
+    "lbd_conservative_config": {
+      "status": true,
+      "interval": 10,
+      "recover": 60,
+      "action": "block",
+      "trap": "both"
+    },
+    "lbd_aggressive_config": {
+      "status": true,
+      "interval": 5,
+      "recover": 30,
+      "action": "shutdown",
+      "trap": "both"
+    },
+    "lbd_monitoring_config": {
+      "status": true,
+      "interval": 15,
+      "recover": 0,
+      "action": "none",
+      "trap": "detect"
+    },
+    "lbd_production_config": {
+      "status": true,
+      "interval": 30,
+      "recover": 300,
+      "action": "block",
+      "trap": "both"
+    },    
+    "static_route_basic": {
+      "destIp": "192.168.2.0",
+      "netMask": "255.255.255.0",
+      "nextHop": "192.168.1.2",
+      "distance": 2
+    },
+    "static_route_default": {
+      "destIp": "0.0.0.0",
+      "netMask": "0.0.0.0",
+      "nextHop": "192.168.1.1",
+      "distance": 1
+    },
+    "static_route_blackhole": {
+      "destIp": "10.10.10.0",
+      "netMask": "255.255.255.0",
+      "nextHop": "0.0.0.0",
+      "distance": 1
+    },
+    "static_route_high_distance": {
+      "destIp": "172.16.0.0",
+      "netMask": "255.240.0.0",
+      "nextHop": "192.168.1.3",
+      "distance": 200
+    },
+    "static_route_host": {
+      "destIp": "8.8.8.8",
+      "netMask": "255.255.255.255",
+      "nextHop": "192.168.1.1",
+      "distance": 1
+    },
+    "static_route_invalid_ip": {
+      "destIp": "999.999.999.999",
+      "netMask": "255.255.255.0",
+      "nextHop": "192.168.1.1"
+    },
+    "static_route_invalid_netmask": {
+      "destIp": "192.168.3.0",
+      "netMask": "255.255.255.256",
+      "nextHop": "192.168.1.1"
+    },
+    "static_route_invalid_distance": {
+      "destIp": "192.168.4.0",
+      "netMask": "255.255.255.0",
+      "nextHop": "192.168.1.1",
+      "distance": 300
+    },
+    "maximum_path_min": {
+      "number": 1
+    },
+    "maximum_path_medium": {
+      "number": 4
+    },
+    "maximum_path_max": {
+      "number": 8
+    },
+    "maximum_path_invalid_high": {
+      "number": 10
+    },
+    "maximum_path_invalid_low": {
+      "number": 0
+    },
+    "maximum_path_default": {
+      "number": 8
+    },    
+    "snmp_basic_config": {
+      "agentStatus": true,
+      "contact": "admin@company.com",
+      "location": "Data Center Room 1",
+      "authentication": true,
+      "linkUpDown": true
+    },
+    "snmp_enable_all_traps": {
+      "agentStatus": true,
+      "contact": "network-admin@company.com",
+      "location": "Main Office",
+      "authentication": true,
+      "linkUpDown": true,
+      "ethernetCfm": true,
+      "macNotify": true,
+      "macNotifyInterval": 30
+    },
+    "snmp_mac_notify_config": {
+      "agentStatus": true,
+      "macNotify": true,
+      "macNotifyInterval": 60
+    },
+    "snmp_disable_agent": {
+      "agentStatus": false
+    },
+    "snmp_re_enable_agent": {
+      "agentStatus": true,
+      "contact": "test@example.com",
+      "location": "Test Lab"
+    },
+    "snmp_readonly_community": {
+      "communityName": "readonly",
+      "accessLevel": "read-only"
+    },
+    "snmp_readwrite_community": {
+      "communityName": "readwrite",
+      "accessLevel": "read/write"
+    },
+    "snmp_test_community": {
+      "communityName": "testcommunity",
+      "accessLevel": "read-only"
+    },
+    "snmp_v1_trap_host": {
+      "ip": "192.168.1.100",
+      "inform": false,
+      "retryCount": 3,
+      "timeout": 1500,
+      "communityName": "public",
+      "securityModel": "v1",
+      "udpPort": 162
+    },
+    "snmp_v2_trap_host": {
+      "ip": "192.168.1.101",
+      "inform": true,
+      "retryCount": 5,
+      "timeout": 2000,
+      "communityName": "readonly",
+      "securityModel": "v2",
+      "udpPort": 162
+    },
+    "snmp_v3_trap_host": {
+      "ip": "192.168.1.102",
+      "inform": true,
+      "retryCount": 3,
+      "timeout": 1600,
+      "communityName": "testuser",
+      "securityModel": "v3",
+      "securityLevel": "auth",
+      "udpPort": 162
+    },
+    "snmp_invalid_ip_host": {
+      "ip": "999.999.999.999",
+      "communityName": "public",
+      "securityModel": "v1"
+    },
+    "snmp_enable_mac_trap": {
+      "macNotify": true
+    },
+    "snmp_disable_mac_trap": {
+      "macNotify": false
+    },
+    "snmp_param_interface_trap": {
+      "macNotify": true
+    },
+    "snmpv3_local_engine_id": {
+      "engineId": "8000010303A82BB5893A600012"
+    },
+    "snmpv3_remote_engine_id": {
+      "engineIp": "192.168.1.19",
+      "engineId": "8000010303A82BB5893A600000"
+    },
+    "snmpv3_v2_group": {
+      "groupName": "v2group",
+      "securityModel": "v2",
+      "readView": "defaultview",
+      "writeView": "writeview"
+    },
+    "snmpv3_v3_auth_group": {
+      "groupName": "v3authgroup",
+      "securityModel": "v3",
+      "securityLevel": "auth",
+      "readView": "defaultview",
+      "writeView": "writeview",
+      "notifyView": "notifyview"
+    },
+    "snmpv3_v3_priv_group": {
+      "groupName": "v3privgroup",
+      "securityModel": "v3",
+      "securityLevel": "priv",
+      "readView": "defaultview",
+      "writeView": "writeview",
+      "notifyView": "notifyview"
+    },
+    "snmpv3_noauth_user": {
+      "userName": "noauthuser",
+      "groupName": "v2group",
+      "securityModel": "v3"
+    },
+    "snmpv3_md5_auth_user": {
+      "userName": "md5user",
+      "groupName": "v3authgroup",
+      "securityModel": "v3",
+      "authType": "md5",
+      "authPassword": "authpass123"
+    },
+    "snmpv3_sha_auth_user": {
+      "userName": "shauser",
+      "groupName": "v3authgroup",
+      "securityModel": "v3",
+      "authType": "sha",
+      "authPassword": "shapass123"
+    },
+    "snmpv3_priv_user": {
+      "userName": "privuser",
+      "groupName": "v3privgroup",
+      "securityModel": "v3",
+      "authType": "md5",
+      "authPassword": "authpass123",
+      "privType": "des56",
+      "privPassword": "privpass123"
+    },
+    "snmpv3_remote_user": {
+      "userName": "remoteuser",
+      "groupName": "v3authgroup",
+      "remoteIp": "192.168.1.55",
+      "securityModel": "v3",
+      "authType": "md5",
+      "authPassword": "remotepass123"
+    },
+    "snmpv3_local_encrypted_key": {
+      "userType": "local",
+      "securityLevel": "authPriv",
+      "authType": "md5",
+      "authPassword": "01234567",
+      "privType": "3des",
+      "privPassword": "01234567"
+    },
+    "snmpv3_included_view": {
+      "viewName": "systemview",
+      "viewSubtree": "1.3.6.1.2.1.1",
+      "viewType": "included"
+    },
+    "snmpv3_excluded_view": {
+      "viewName": "restrictview",
+      "viewSubtree": "1.3.6.1.2.1.11",
+      "viewType": "excluded"
+    },
+    "snmpv3_interface_view": {
+      "viewName": "ifEntry.2",
+      "viewSubtree": "1.3.6.1.2.1.2.2.1.2",
+      "viewType": "included"
+    },
+    "snmp_notify_log_config": {
+      "filterName": "A1"
+    },
+    "snmp_notify_filter": {
+      "profileName": "testprofile",
+      "profileIp": "10.1.19.23"
+    },    
+    "poe_enable_basic": {
+      "admin": true
+    },
+    "poe_max_power": {
+      "admin": true,
+      "maxPower": 30000
+    },
+    "poe_medium_power": {
+      "admin": true,
+      "maxPower": 15000
+    },
+    "poe_min_power": {
+      "admin": true,
+      "maxPower": 3000
+    },
+    "poe_critical_priority": {
+      "admin": true,
+      "maxPower": 30000,
+      "priority": "critical"
+    },
+    "poe_high_priority": {
+      "admin": true,
+      "maxPower": 25000,
+      "priority": "high"
+    },
+    "poe_low_priority": {
+      "admin": true,
+      "maxPower": 15000,
+      "priority": "low"
+    },
+    "poe_with_time_range": {
+      "admin": true,
+      "maxPower": 30000,
+      "priority": "high",
+      "timeRange": "business_hours"
+    },
+    "poe_different_time_range": {
+      "admin": true,
+      "maxPower": 25000,
+      "priority": "high",
+      "timeRange": "night_shift"
+    },
+    "poe_remove_time_range": {
+      "admin": true,
+      "maxPower": 30000,
+      "priority": "high",
+      "timeRange": ""
+    },
+    "poe_complete_config": {
+      "admin": true,
+      "maxPower": 25000,
+      "priority": "high",
+      "timeRange": "aaa"
+    },
+    "poe_disable": {
+      "admin": false
+    },
+    "poe_re_enable": {
+      "admin": true,
+      "maxPower": 20000,
+      "priority": "low"
+    },
+    "poe_max_power_boundary": {
+      "admin": true,
+      "maxPower": 30000
+    },
+    "poe_min_power_boundary": {
+      "admin": true,
+      "maxPower": 3000
+    },
+    "poe_power_over_limit": {
+      "admin": true,
+      "maxPower": 35000
+    },
+    "poe_power_under_limit": {
+      "admin": true,
+      "maxPower": 2000
+    },
+    "poe_invalid_priority": {
+      "admin": true,
+      "maxPower": 15000,
+      "priority": "invalid"
+    },
+    "poe_time_range_too_long": {
+      "admin": true,
+      "maxPower": 15000,
+      "priority": "low",
+      "timeRange": "this_time_range_name_is_way_too_long_and_exceeds_16_characters"
+    },
+    "poe_missing_param": {
+      "maxPower": 15000
+    },    
+    "ntp_enable_basic": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": false,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 3
+        }
+      ]
+    },
+    "ntp_single_server": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": false,
+      "ntpServers": [
+        {
+          "ipAddress": "pool.ntp.org",
+          "version": 4
+        }
+      ]
+    },
+    "ntp_multiple_servers": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": false,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 3
+        },
+        {
+          "ipAddress": "time.google.com",
+          "version": 4
+        },
+        {
+          "ipAddress": "pool.ntp.org",
+          "version": 4
+        }
+      ]
+    },
+    "ntp_with_auth": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": true,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 3,
+          "keyId": 1
+        }
+      ],
+      "ntpAuthKeys": [
+        {
+          "keyId": 1,
+          "md5Key": "1234567890"
+        }
+      ]
+    },
+    "ntp_multiple_auth_keys": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": true,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 3,
+          "keyId": 1
+        },
+        {
+          "ipAddress": "192.168.1.176",
+          "version": 4,
+          "keyId": 2
+        }
+      ],
+      "ntpAuthKeys": [
+        {
+          "keyId": 1,
+          "md5Key": "837J34Q69G0477L18708P86779"
+        },
+        {
+          "keyId": 2,
+          "md5Key": "SecureKey123456789"
+        }
+      ]
+    },
+    "ntp_different_versions": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": false,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 2
+        },
+        {
+          "ipAddress": "192.168.1.176",
+          "version": 3
+        },
+        {
+          "ipAddress": "192.168.1.177",
+          "version": 4
+        }
+      ]
+    },
+    "ntp_max_key_id": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": true,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 4,
+          "keyId": 65535
+        }
+      ],
+      "ntpAuthKeys": [
+        {
+          "keyId": 65535,
+          "md5Key": "MaxKeyIdTest123456789012345"
+        }
+      ]
+    },
+    "ntp_min_key_id": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": true,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 4,
+          "keyId": 1
+        }
+      ],
+      "ntpAuthKeys": [
+        {
+          "keyId": 1,
+          "md5Key": "MinKeyIdTest"
+        }
+      ]
+    },
+    "ntp_long_md5_key": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": true,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 4,
+          "keyId": 10
+        }
+      ],
+      "ntpAuthKeys": [
+        {
+          "keyId": 10,
+          "md5Key": "ThisIsA32CharacterLongMD5Key123"
+        }
+      ]
+    },
+    "ntp_short_md5_key": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": true,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 4,
+          "keyId": 5
+        }
+      ],
+      "ntpAuthKeys": [
+        {
+          "keyId": 5,
+          "md5Key": "short"
+        }
+      ]
+    },
+    "ntp_disable": {
+      "ntpStatus": false,
+      "ntpAuthenticateStatus": false
+    },
+    "ntp_disable_auth_only": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": false,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 4
+        }
+      ]
+    },
+    "ntp_re_enable": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": true,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 3,
+          "keyId": 1
+        }
+      ],
+      "ntpAuthKeys": [
+        {
+          "keyId": 1,
+          "md5Key": "837J34Q69G0477L18708P86779"
+        }
+      ]
+    },
+    "ntp_invalid_ip": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": false,
+      "ntpServers": [
+        {
+          "ipAddress": "999.999.999.999",
+          "version": 4
+        }
+      ]
+    },
+    "ntp_invalid_key_id": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": true,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 4,
+          "keyId": 70000
+        }
+      ],
+      "ntpAuthKeys": [
+        {
+          "keyId": 70000,
+          "md5Key": "InvalidKeyId"
+        }
+      ]
+    },
+    "ntp_md5_key_too_long": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": true,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 4,
+          "keyId": 1
+        }
+      ],
+      "ntpAuthKeys": [
+        {
+          "keyId": 1,
+          "md5Key": "ThisMD5KeyIsWayTooLongAndExceeds32Characters"
+        }
+      ]
+    },
+    "ntp_md5_key_with_spaces": {
+      "ntpStatus": true,
+      "ntpAuthenticateStatus": true,
+      "ntpServers": [
+        {
+          "ipAddress": "192.168.1.175",
+          "version": 4,
+          "keyId": 1
+        }
+      ],
+      "ntpAuthKeys": [
+        {
+          "keyId": 1,
+          "md5Key": "Key With Spaces"
+        }
+      ]
+    },    
+    "link_aggregation_src_mac": {
+      "loadBalance": "src-mac"
+    },
+    "link_aggregation_dst_mac": {
+      "loadBalance": "dst-mac"
+    },
+    "link_aggregation_src_dst_mac": {
+      "loadBalance": "src-dst-mac"
+    },
+    "link_aggregation_src_ip": {
+      "loadBalance": "src-ip"
+    },
+    "link_aggregation_dst_ip": {
+      "loadBalance": "dst-ip"
+    },
+    "link_aggregation_src_dst_ip": {
+      "loadBalance": "src-dst-ip"
+    },
+    "link_aggregation_src_port": {
+      "loadBalance": "src-port"
+    },
+    "link_aggregation_dst_port": {
+      "loadBalance": "dst-port"
+    },
+    "link_aggregation_src_dst_port": {
+      "loadBalance": "src-dst-port"
+    },
+    "lacp_channel_system_priority": {
+      "systemPriority": 32768
+    },
+    "lacp_channel_high_priority": {
+      "systemPriority": 1
+    },
+    "lacp_channel_low_priority": {
+      "systemPriority": 65535
+    },
+    "lacp_channel_invalid_priority": {
+      "systemPriority": 70000
+    },
+    "lacp_interface_active": {
+      "channelId": 1,
+      "mode": "active",
+      "portPriority": 32768,
+      "timeout": "long"
+    },
+    "lacp_interface_passive": {
+      "channelId": 1,
+      "mode": "passive",
+      "portPriority": 32768,
+      "timeout": "short"
+    },
+    "lacp_interface_high_priority": {
+      "channelId": 1,
+      "mode": "active",
+      "portPriority": 1,
+      "timeout": "long"
+    },
+    "lacp_interface_low_priority": {
+      "channelId": 1,
+      "mode": "passive",
+      "portPriority": 65535,
+      "timeout": "short"
+    },
+    "lacp_interface_short_timeout": {
+      "channelId": 2,
+      "mode": "active",
+      "portPriority": 32768,
+      "timeout": "short"
+    },
+    "lacp_interface_long_timeout": {
+      "channelId": 2,
+      "mode": "passive",
+      "portPriority": 32768,
+      "timeout": "long"
+    },
+    "lacp_interface_invalid_channel": {
+      "channelId": 99,
+      "mode": "active",
+      "portPriority": 32768,
+      "timeout": "long"
+    },
+    "lacp_interface_invalid_priority": {
+      "channelId": 1,
+      "mode": "active",
+      "portPriority": 70000,
+      "timeout": "long"
+    },
+    "static_channel_create_3": {
+      "channelId": 3,
+      "members": [
+        {"ifId": "eth1/3"},
+        {"ifId": "eth1/4"}
+      ]
+    },
+    "static_channel_create_4": {
+      "channelId": 4,
+      "members": [
+        {"ifId": "eth1/5"},
+        {"ifId": "eth1/6"},
+        {"ifId": "eth1/7"}
+      ]
+    },
+    "static_channel_create_param": {
+      "channelId": 5,
+      "members": [
+        {"ifId": "eth1/8"},
+        {"ifId": "eth1/9"}
+      ]
+    },
+    "static_channel_add_member": {
+      "members": [
+        {"ifId": "eth1/3"},
+        {"ifId": "eth1/4"},
+        {"ifId": "eth1/10"}
+      ]
+    },
+    "static_channel_remove_member": {
+      "members": [
+        {"ifId": "eth1/5"},
+        {"ifId": "eth1/6"}
+      ]
+    },
+    "static_channel_update_param": {
+      "members": [
+        {"ifId": "eth1/8"},
+        {"ifId": "eth1/9"},
+        {"ifId": "eth1/11"}
+      ]
+    },
+    "static_channel_duplicate": {
+      "channelId": 1,
+      "members": [
+        {"ifId": "eth1/12"}
+      ]
+    },
+    "static_channel_invalid_id": {
+      "channelId": 99,
+      "members": [
+        {"ifId": "eth1/13"}
+      ]
+    },    
+    "lldp_enable_default": {
+      "status": true,
+      "transmitInterval": 30,
+      "delayInterval": 2
+    },
+    "lldp_custom_config": {
+      "status": true,
+      "transmitInterval": 60,
+      "delayInterval": 4
+    },
+    "lldp_minimum_config": {
+      "status": true,
+      "transmitInterval": 5,
+      "delayInterval": 1
+    },
+    "lldp_maximum_config": {
+      "status": true,
+      "transmitInterval": 32768,
+      "delayInterval": 8192
+    },
+    "lldp_disable": {
+      "status": false,
+      "transmitInterval": 20,
+      "delayInterval": 1
+    },
+    "lldp_invalid_delay": {
+      "status": true,
+      "transmitInterval": 10,
+      "delayInterval": 5
+    },
+    "lldp_re_enable": {
+      "status": true,
+      "transmitInterval": 30,
+      "delayInterval": 2
+    },
+    "acl_extended_ipv4": {
+      "name": "ext_acl_1",
+      "type": "extended",
+      "aces": [
+        {
+          "access": "permit",
+          "protocol": "tcp",
+          "sourceIpAddr": "192.168.1.0",
+          "sourceIpAddrBitmask": "255.255.255.0",
+          "destIpAddr": "10.0.0.0",
+          "destIpAddrBitmask": "255.0.0.0",
+          "sourcePort": 80,
+          "destPort": 443
+        }
+      ]
+    },
+    "acl_complex_ipv4": {
+      "name": "complex_acl_1",
+      "type": "extended",
+      "aces": [
+        {
+          "access": "permit",
+          "protocol": "tcp",
+          "sourceIpAddr": "192.168.1.0",
+          "sourceIpAddrBitmask": "255.255.255.0",
+          "destIpAddr": "10.0.0.0",
+          "destIpAddrBitmask": "255.0.0.0",
+          "sourcePort": 80,
+          "destPort": 443
+        },
+        {
+          "access": "deny",
+          "protocol": "udp",
+          "sourceIpAddr": "172.16.0.0",
+          "sourceIpAddrBitmask": "255.240.0.0",
+          "destIpAddr": "0.0.0.0",
+          "destIpAddrBitmask": "0.0.0.0",
+          "sourcePort": 53,
+          "destPort": 0
+        }
+      ]
+    },
+    "acl_update_ipv4": {
+      "name": "std_acl_1",
+      "type": "standard",
+      "aces": [
+        {
+          "access": "permit",
+          "sourceIpAddr": "192.168.1.0",
+          "sourceIpAddrBitmask": "255.255.255.0"
+        },
+        {
+          "access": "deny",
+          "sourceIpAddr": "192.168.2.0",
+          "sourceIpAddrBitmask": "255.255.255.0"
+        }
+      ]
+    },
+    "acl_invalid_name": {
+      "name": "",
+      "type": "standard",
+      "aces": []
+    },
+    "acl_duplicate_name": {
+      "name": "std_acl_1",
+      "type": "standard",
+      "aces": [
+        {
+          "access": "permit",
+          "sourceIpAddr": "10.0.0.0",
+          "sourceIpAddrBitmask": "255.0.0.0"
+        }
+      ]
+    },
+    "acl_ipv6": {
+      "name": "ext_ipv6_1",
+      "aces": [
+        {
+          "access": "permit",
+          "protocol": "tcp",
+          "sourceIpv6Addr": "2001:db8::/32",
+          "destIpv6Addr": "fe80::/10",
+          "sourcePort": 80,
+          "destPort": 443
+        }
+      ]
+    },
+    "acl_complex_ipv6": {
+      "name": "complex_ipv6_1",
+      "aces": [
+        {
+          "access": "permit",
+          "protocol": "tcp",
+          "sourceIpv6Addr": "2001:db8::/32",
+          "destIpv6Addr": "fe80::/10",
+          "sourcePort": 80,
+          "destPort": 443
+        },
+        {
+          "access": "deny",
+          "protocol": "udp",
+          "sourceIpv6Addr": "fc00::/7",
+          "destIpv6Addr": "::/0",
+          "sourcePort": 53,
+          "destPort": 0
+        }
+      ]
+    },
+    "acl_update_ipv6": {
+      "name": "ext_ipv6_1",
+      "aces": [
+        {
+          "access": "permit",
+          "protocol": "tcp",
+          "sourceIpv6Addr": "2001:db8::/32",
+          "destIpv6Addr": "fe80::/10",
+          "sourcePort": 80,
+          "destPort": 443
+        },
+        {
+          "access": "permit",
+          "protocol": "icmpv6",
+          "sourceIpv6Addr": "::/0",
+          "destIpv6Addr": "::/0"
+        }
+      ]
+    },
+    "acl_invalid_ipv6": {
+      "name": "invalid_ipv6",
+      "aces": [
+        {
+          "access": "permit",
+          "protocol": "tcp",
+          "sourceIpv6Addr": "invalid::address",
+          "destIpv6Addr": "fe80::/10"
+        }
+      ]
+    },
+    "acl_mac": {
+      "name": "macAcl",
+      "aces": [
+        {
+          "access": "permit",
+          "pktFormat": "all",
+          "sourceMacAddr": "00-e0-29-94-34-de",
+          "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "destMacAddr": "11-e0-29-94-34-de",
+          "destMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "sourceIpAddr": "0.0.0.0",
+          "sourceIpAddrBitmask": "0.0.0.0",
+          "destIpAddr": "0.0.0.0",
+          "destIpAddrBitmask": "0.0.0.0",
+          "vlanId": 100,
+          "vlanIdBitmask": 4095,
+          "etherType": 0,
+          "etherTypeBitmask": 0,
+          "protocol": 0,
+          "sourcePort": 0,
+          "sourcePortBitmask": 0,
+          "destPort": 0,
+          "destPortBitmask": 0,
+          "timeRange": ""
+        }
+      ]
+    },
+    "acl_complex_mac": {
+      "name": "complex_mac_acl",
+      "aces": [
+        {
+          "access": "permit",
+          "pktFormat": "ethernet_ii",
+          "sourceMacAddr": "00-11-22-33-44-55",
+          "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "destMacAddr": "aa-bb-cc-dd-ee-ff",
+          "destMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "vlanId": 200,
+          "vlanIdBitmask": 4095,
+          "etherType": 2048,
+          "etherTypeBitmask": 65535
+        },
+        {
+          "access": "deny",
+          "pktFormat": "all",
+          "sourceMacAddr": "00-00-00-00-00-00",
+          "sourceMacAddrBitmask": "00-00-00-00-00-00",
+          "destMacAddr": "ff-ff-ff-ff-ff-ff",
+          "destMacAddrBitmask": "ff-ff-ff-ff-ff-ff"
+        }
+      ]
+    },
+    "acl_update_mac": {
+      "name": "macAcl",
+      "aces": [
+        {
+          "access": "permit",
+          "pktFormat": "all",
+          "sourceMacAddr": "00-e0-29-94-34-de",
+          "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "destMacAddr": "11-e0-29-94-34-de",
+          "destMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "vlanId": 100,
+          "vlanIdBitmask": 4095
+        },
+        {
+          "access": "deny",
+          "pktFormat": "ethernet_ii",
+          "sourceMacAddr": "00-11-22-33-44-55",
+          "sourceMacAddrBitmask": "ff-ff-ff-00-00-00",
+          "destMacAddr": "00-00-00-00-00-00",
+          "destMacAddrBitmask": "00-00-00-00-00-00"
+        }
+      ]
+    },
+    "acl_invalid_mac": {
+      "name": "invalid_mac",
+      "aces": [
+        {
+          "access": "permit",
+          "pktFormat": "all",
+          "sourceMacAddr": "invalid-mac-address",
+          "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff"
+        }
+      ]
+    },
+    "acl_arp": {
+      "name": "arpAcl",
+      "aces": [
+        {
+          "access": "permit",
+          "senderIpAddr": "192.168.1.0",
+          "senderIpAddrBitmask": "255.255.255.0",
+          "senderMacAddr": "00-11-22-33-44-55",
+          "senderMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "targetIpAddr": "10.0.0.0",
+          "targetIpAddrBitmask": "255.0.0.0",
+          "targetMacAddr": "aa-bb-cc-dd-ee-ff",
+          "targetMacAddrBitmask": "ff-ff-ff-ff-ff-ff"
+        }
+      ]
+    },
+    "acl_complex_arp": {
+      "name": "complex_arp_acl",
+      "aces": [
+        {
+          "access": "permit",
+          "senderIpAddr": "192.168.1.0",
+          "senderIpAddrBitmask": "255.255.255.0",
+          "senderMacAddr": "00-11-22-33-44-55",
+          "senderMacAddrBitmask": "ff-ff-ff-ff-ff-ff"
+        },
+        {
+          "access": "deny",
+          "senderIpAddr": "172.16.0.0",
+          "senderIpAddrBitmask": "255.240.0.0",
+          "senderMacAddr": "00-00-00-00-00-00",
+          "senderMacAddrBitmask": "00-00-00-00-00-00"
+        }
+      ]
+    },
+    "acl_update_arp": {
+      "name": "arpAcl",
+      "aces": [
+        {
+          "access": "permit",
+          "senderIpAddr": "192.168.1.0",
+          "senderIpAddrBitmask": "255.255.255.0",
+          "senderMacAddr": "00-11-22-33-44-55",
+          "senderMacAddrBitmask": "ff-ff-ff-ff-ff-ff"
+        },
+        {
+          "access": "permit",
+          "senderIpAddr": "192.168.2.0",
+          "senderIpAddrBitmask": "255.255.255.0",
+          "senderMacAddr": "00-aa-bb-cc-dd-ee",
+          "senderMacAddrBitmask": "ff-ff-ff-ff-ff-ff"
+        }
+      ]
+    },    
+    "ip_acl_standard": {
+      "name": "std_acl_1",
+      "type": "standard",
+      "aces": [
+        {
+          "access": "permit",
+          "sourceIpAddr": "192.168.1.10",
+          "sourceIpAddrBitmask": "255.255.255.255"
+        }
+      ]
+    },
+    "ip_acl_extended": {
+      "name": "ext_acl_1",
+      "type": "extended",
+      "aces": [
+        {
+          "access": "permit",
+          "sourceIpAddr": "192.168.1.10",
+          "sourceIpAddrBitmask": "255.255.255.255",
+          "destIpAddr": "192.168.2.10",
+          "destIpAddrBitmask": "255.255.255.255",
+          "protocol": 6,
+          "dscp": 63,
+          "sourcePort": 100,
+          "sourcePortBitmask": 65535,
+          "destPort": 200,
+          "destPortBitmask": 65535,
+          "controlCode": 12,
+          "controlCodeBitmask": 12
+        }
+      ]
+    },
+    "ip_acl_update": {
+      "aces": [
+        {
+          "access": "permit",
+          "sourceIpAddr": "192.168.11.10",
+          "sourceIpAddrBitmask": "255.255.255.255"
+        }
+      ]
+    },
+    "ip_acl_complex": {
+      "name": "complex_acl",
+      "type": "extended",
+      "aces": [
+        {
+          "access": "permit",
+          "sourceIpAddr": "192.168.1.0",
+          "sourceIpAddrBitmask": "255.255.255.0",
+          "destIpAddr": "10.0.0.0",
+          "destIpAddrBitmask": "255.0.0.0",
+          "protocol": 6,
+          "sourcePort": 80,
+          "sourcePortBitmask": 65535
+        },
+        {
+          "access": "deny",
+          "sourceIpAddr": "192.168.2.0",
+          "sourceIpAddrBitmask": "255.255.255.0",
+          "protocol": 17,
+          "destPort": 53,
+          "destPortBitmask": 65535
+        }
+      ]
+    },
+    "mac_acl_create": {
+      "name": "macAcl",
+      "aces": [
+        {
+          "access": "permit",
+          "sourceMacAddr": "00-e0-29-94-34-de",
+          "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "destMacAddr": "11-e0-29-94-34-de",
+          "destMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "sourceIpAddr": "192.168.2.10",
+          "sourceIpAddrBitmask": "255.255.255.255",
+          "destIpAddr": "192.168.2.11",
+          "destIpAddrBitmask": "255.255.255.255",
+          "vlanId": 100,
+          "vlanIdBitmask": 4095,
+          "protocol": 6,
+          "sourcePort": 100,
+          "sourcePortBitmask": 65535,
+          "destPort": 200,
+          "destPortBitmask": 65535
+        }
+      ]
+    },
+    "mac_acl_update": {
+      "aces": [
+        {
+          "access": "permit",
+          "sourceMacAddr": "00-e0-29-94-34-de",
+          "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "destMacAddr": "11-e0-29-94-34-de",
+          "destMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "sourceIpAddr": "192.168.2.10",
+          "sourceIpAddrBitmask": "255.255.255.255",
+          "destIpAddr": "192.168.2.11",
+          "destIpAddrBitmask": "255.255.255.255",
+          "vlanId": 100,
+          "vlanIdBitmask": 4095,
+          "protocol": 6,
+          "sourcePort": 100,
+          "sourcePortBitmask": 65535,
+          "destPort": 200,
+          "destPortBitmask": 65535
+        }
+      ]
+    },
+    "mac_acl_packet_format": {
+      "name": "macAcl_tagged",
+      "aces": [
+        {
+          "access": "permit",
+          "pktFormat": "tagged-eth2",
+          "sourceMacAddr": "00-e0-29-94-34-de",
+          "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "destMacAddr": "11-e0-29-94-34-de",
+          "destMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "vlanId": 100,
+          "vlanIdBitmask": 4095,
+          "etherType": 2048,
+          "etherTypeBitmask": 65535
+        }
+      ]
+    },
+    "mac_acl_complex": {
+      "name": "macAcl_complex",
+      "aces": [
+        {
+          "access": "permit",
+          "pktFormat": "all",
+          "sourceMacAddr": "00-e0-29-94-34-de",
+          "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "destMacAddr": "11-e0-29-94-34-de",
+          "destMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "vlanId": 100,
+          "vlanIdBitmask": 4095
+        },
+        {
+          "access": "deny",
+          "pktFormat": "all",
+          "sourceMacAddr": "66-e0-29-94-34-de",
+          "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "destMacAddr": "55-e0-29-94-34-de",
+          "destMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "vlanId": 100,
+          "vlanIdBitmask": 4095
+        }
+      ]
+    },
+    "arp_acl_create": {
+      "name": "arpAcl",
+      "aces": [
+        {
+          "access": "permit",
+          "sourceIpAddr": "192.168.1.10",
+          "sourceIpAddrBitmask": "255.255.255.255",
+          "sourceMacAddr": "11-11-11-11-11-11",
+          "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff"
+        }
+      ]
+    },
+    "arp_acl_update": {
+      "aces": [
+        {
+          "access": "permit",
+          "sourceIpAddr": "192.168.1.10",
+          "sourceIpAddrBitmask": "255.255.255.255",
+          "sourceMacAddr": "11-11-11-11-11-11",
+          "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff"
+        }
+      ]
+    },
+    "arp_acl_complex": {
+      "name": "arpAcl_complex",
+      "aces": [
+        {
+          "access": "permit",
+          "pktType": "request",
+          "sourceMacAddr": "00-e0-29-94-34-de",
+          "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "destMacAddr": "11-e0-29-94-34-de",
+          "destMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "sourceIpAddr": "192.168.5.1",
+          "sourceIpAddrBitmask": "255.255.255.0",
+          "destIpAddr": "192.168.5.2",
+          "destIpAddrBitmask": "255.255.255.255",
+          "logStatus": true
+        },
+        {
+          "access": "deny",
+          "pktType": "response",
+          "sourceMacAddr": "00-e0-29-94-34-de",
+          "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
+          "sourceIpAddr": "192.168.5.11",
+          "sourceIpAddrBitmask": "255.255.255.0",
+          "logStatus": false
+        }
+      ]
+    },
+    "ipv6_acl_standard": {
+      "name": "std_ipv6_1",
+      "type": "standard",
+      "aces": [
+        {
+          "access": "permit",
+          "sourceIpAddr": "2100:DB9:2229::79",
+          "sourceIpAddrPrefixLen": 128
+        }
+      ]
+    },
+    "ipv6_acl_extended": {
+      "name": "ext_ipv6_1",
+      "type": "extended",
+      "aces": [
+        {
+          "access": "permit",
+          "sourceIpAddr": "2009:DB9:2229::79",
+          "sourceIpAddrPrefixLen": 128,
+          "destIpAddr": "2009:DB9:2229::77",
+          "destIpAddrPrefixLen": 4,
+          "dscp": 0,
+          "nextHeader": 0,
+          "timeRange": "aaa"
+        }
+      ]
+    },
+    "ipv6_acl_update": {
+      "aces": [
+        {
+          "access": "permit",
+          "sourceIpAddr": "2009:DB9:2229::99",
+          "sourceIpAddrPrefixLen": 128,
+          "destIpAddr": "2009:DB9:2229::77",
+          "destIpAddrPrefixLen": 4,
+          "dscp": 0,
+          "nextHeader": 0,
+          "timeRange": "aaa"
+        }
+      ]
+    },
+    "ipv6_acl_complex": {
+      "name": "complex_ipv6",
+      "type": "extended",
+      "aces": [
+        {
+          "access": "permit",
+          "sourceIpAddr": "2009:DB9:2229::79",
+          "sourceIpAddrPrefixLen": 128,
+          "destIpAddr": "2009:DB9:2229::88",
+          "destIpAddrPrefixLen": 128,
+          "dscp": 0,
+          "nextHeader": 6,
+          "timeRange": ""
+        },
+        {
+          "access": "deny",
+          "sourceIpAddr": "2009:DB9:2229::80",
+          "sourceIpAddrPrefixLen": 64,
+          "dscp": 32,
+          "nextHeader": 17
+        }
+      ]
+    },
+    "acl_interface_bind_ip": {
+      "ifId": "eth1/12",
+      "aclName": "standardAcl",
+      "aclType": "ip",
+      "isIngress": true
+    },
+    "acl_interface_bind_mac": {
+      "ifId": "eth1/13",
+      "aclName": "macAcl",
+      "aclType": "mac",
+      "isIngress": true,
+      "counter": true
+    },
+    "acl_interface_bind_ipv6": {
+      "ifId": "eth1/14",
+      "aclName": "ext_ipv6_1",
+      "aclType": "ipv6",
+      "isIngress": false,
+      "counter": false,
+      "timeRange": "business_hours"
+    },
+    "acl_interface_bind_trunk": {
+      "ifId": "trunk1",
+      "aclName": "ext_acl_1",
+      "aclType": "ip",
+      "isIngress": true,
+      "counter": true
+    },
+    "acl_interface_bind_all": {
+      "ifId": "all",
+      "aclName": "global_acl",
+      "aclType": "ip",
+      "isIngress": true
+    },    
+    "dhcp_client_vlan": {
+      "status": true,
+      "addrMode": "dhcp",
+      "gateway": "192.168.1.1",
+      "dns": ["8.8.8.8", "8.8.4.4"]
+    },
+    "dhcp_pool": {
+      "poolName": "test_pool",
+      "network": "192.168.100.0",
+      "netmask": "255.255.255.0",
+      "gateway": "192.168.100.1",
+      "dns": ["8.8.8.8", "8.8.4.4"],
+      "leaseTime": 86400
+    },
+    "dhcp_relay_vlan": {
+      "vlanId": 100,
+      "servers": ["192.168.1.1", "192.168.1.2"]
+    },
+    "dhcp_snooping_global": {
+      "status": true,
+      "databaseAgent": "flash",
+      "informationOption": true,
+      "informationPolicy": "keep"
+    },
+    "dhcpv6_relay_vlan": {
+      "vlanId": 100,
+      "servers": ["2001:db8::1", "2001:db8::2"]
+    },
+    "dhcpv6_snooping_global": {
+      "status": true,
+      "databaseAgent": "flash"
+    },
+    "traffic_segmentation_global": {
+      "status": true
+    },
+    "traffic_segmentation_session": {
+      "sessionId": 1,
+      "clientMac": "00-11-22-33-44-55",
+      "serverMac": "00-AA-BB-CC-DD-EE"
+    },
+    "vlan_create": {
+      "vlanId": 100,
+      "name": "TestVlan100"
+    },
+    "vlan_members": {
+      "members": [
+        {"ifId": "eth1/1", "isTagged": false},
+        {"ifId": "eth1/2", "isTagged": true}
+      ]
+    },
+    "protocol_group": {
+      "frameType": "ethernet",
+      "protocolType": "ip",
+      "groupId": 1
+    },
+    "protocol_vlan_interface": {
+      "ifId": "eth1/1",
+      "groupId": 1,
+      "vlanId": 100
+    },
+    "mac_vlan_entry": {
+      "macAddr": "00-11-22-33-44-55",
+      "mask": "FF-FF-FF-FF-FF-FF",
+      "vlanId": 100
+    },
+    "mac_vlan_update": {
+      "vlanId": 200
+    },
+    "voice_vlan_global": {
+      "status": true,
+      "vlanId": 10
+    },
+    "voice_vlan_oui": {
+      "macAddr": "00-12-34-56-78-9A",
+      "mask": "FF-FF-FF-00-00-00"
+    },
+    "voice_vlan_interface": {
+      "status": true,
+      "mode": "auto"
+    },
+    "dot1q_base_config": {
+      "status": true,
+      "managementVlanId": 1
+    },
+    "dot1q_vlan_interface": {
+      "pvid": 1,
+      "acceptableFrameTypes": "all",
+      "ingressFiltering": true
+    },
+    "dot1d_garp_interface": {
+      "joinTime": 200,
+      "leaveTime": 600,
+      "leaveAllTime": 10000
+    },
+    "vlan_l3_interface_create": {
+      "vlanId": 100,
+      "ipAddress": "192.168.100.1",
+      "subnetMask": "255.255.255.0"
+    },
+    "vlan_l3_interface_update": {
+      "ipAddress": "192.168.100.2",
+      "subnetMask": "255.255.255.0",
+      "status": true
+    },
+    "storm_control_all_enabled": {
+      "bcastStatus": true,
+      "bcastRate": 1000,
+      "mcastStatus": true,
+      "mcastRate": 1000,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 1000
+    },
+    "storm_control_min_rate": {
+      "bcastStatus": true,
+      "bcastRate": 500,
+      "mcastStatus": true,
+      "mcastRate": 500,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 500
+    },
+    "storm_control_max_rate": {
+      "bcastStatus": true,
+      "bcastRate": 14881000,
+      "mcastStatus": true,
+      "mcastRate": 14881000,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 14881000
+    },
+    "storm_control_all_disabled": {
+      "bcastStatus": false,
+      "mcastStatus": false,
+      "unknownUcastStatus": false
+    },
+    "storm_control_invalid_rate_low": {
+      "bcastStatus": true,
+      "bcastRate": 100
+    },
+    "storm_control_invalid_rate_high": {
+      "bcastStatus": true,
+      "bcastRate": 20000000
+    },
+    "storm_control_port_channel": {
+      "bcastStatus": true,
+      "bcastRate": 2000,
+      "mcastStatus": true,
+      "mcastRate": 2000,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 2000
+    },
+    "storm_control_port_channel_disabled": {
+      "bcastStatus": false,
+      "mcastStatus": false,
+      "unknownUcastStatus": false
+    },
+    "storm_control_broadcast_low": {
+      "bcastStatus": true,
+      "bcastRate": 800
+    },
+    "storm_control_broadcast_medium": {
+      "bcastStatus": true,
+      "bcastRate": 5000
+    },
+    "storm_control_broadcast_high": {
+      "bcastStatus": true,
+      "bcastRate": 10000000
+    },
+    "storm_control_broadcast_disabled": {
+      "bcastStatus": false
+    },
+    "storm_control_multicast_low": {
+      "mcastStatus": true,
+      "mcastRate": 600
+    },
+    "storm_control_multicast_medium": {
+      "mcastStatus": true,
+      "mcastRate": 3000
+    },
+    "storm_control_multicast_high": {
+      "mcastStatus": true,
+      "mcastRate": 8000000
+    },
+    "storm_control_multicast_disabled": {
+      "mcastStatus": false
+    },
+    "storm_control_unknown_unicast_low": {
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 700
+    },
+    "storm_control_unknown_unicast_medium": {
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 4000
+    },
+    "storm_control_unknown_unicast_high": {
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 12000000
+    },
+    "storm_control_unknown_unicast_disabled": {
+      "unknownUcastStatus": false
+    },
+    "storm_control_combined": {
+      "bcastStatus": true,
+      "bcastRate": 1500,
+      "mcastStatus": true,
+      "mcastRate": 1200,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 1800
+    },
+    "storm_control_ethernet_selective": {
+      "bcastStatus": true,
+      "bcastRate": 2500,
+      "mcastStatus": false,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 3000
+    },
+    "storm_control_port_channel_high_performance": {
+      "bcastStatus": true,
+      "bcastRate": 5000000,
+      "mcastStatus": true,
+      "mcastRate": 4000000,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 6000000
+    },
+    "storm_control_gradual_increase": {
+      "bcastStatus": true,
+      "bcastRate": 1000,
+      "mcastStatus": true,
+      "mcastRate": 2000,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 3000
+    },
+    "storm_control_edge_case_min": {
+      "bcastStatus": true,
+      "bcastRate": 500,
+      "mcastStatus": true,
+      "mcastRate": 500,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 500
+    },
+    "storm_control_edge_case_max": {
+      "bcastStatus": true,
+      "bcastRate": 14881000,
+      "mcastStatus": true,
+      "mcastRate": 14881000,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 14881000
+    },
+    "storm_control_partial_enable": {
+      "bcastStatus": true,
+      "bcastRate": 1500,
+      "mcastStatus": false,
+      "unknownUcastStatus": false
+    },
+    "storm_control_multicast_only": {
+      "bcastStatus": false,
+      "mcastStatus": true,
+      "mcastRate": 2500,
+      "unknownUcastStatus": false
+    },
+    "storm_control_unknown_unicast_only": {
+      "bcastStatus": false,
+      "mcastStatus": false,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 3500
+    },
+    "storm_control_medium_load": {
+      "bcastStatus": true,
+      "bcastRate": 50000,
+      "mcastStatus": true,
+      "mcastRate": 40000,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 60000
+    },
+    "storm_control_high_load": {
+      "bcastStatus": true,
+      "bcastRate": 500000,
+      "mcastStatus": true,
+      "mcastRate": 400000,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 600000
+    },
+    "storm_control_very_high_load": {
+      "bcastStatus": true,
+      "bcastRate": 5000000,
+      "mcastStatus": true,
+      "mcastRate": 4000000,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 6000000
+    },
+    "storm_control_asymmetric_rates": {
+      "bcastStatus": true,
+      "bcastRate": 1000,
+      "mcastStatus": true,
+      "mcastRate": 5000,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 10000
+    },
+    "storm_control_conservative": {
+      "bcastStatus": true,
+      "bcastRate": 800,
+      "mcastStatus": true,
+      "mcastRate": 600,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 700
+    },
+    "storm_control_aggressive": {
+      "bcastStatus": true,
+      "bcastRate": 10000000,
+      "mcastStatus": true,
+      "mcastRate": 8000000,
+      "unknownUcastStatus": true,
+      "unknownUcastRate": 12000000
+    }
+  }
+}
