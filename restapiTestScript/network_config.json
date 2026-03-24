@@ -1,5 +1,7 @@
 {
-  "modules": ["mac", "dhcp", "vlan", "storm_control", "acl", "lldp", "link_aggregation", "ntp", "poe", "snmp", "ssh", "static_route", "telnet", "loopback_detection", "mac"],
+  "modules": ["mac", "dhcp", "vlan", "storm_control", "acl", 
+              "lldp", "link_aggregation", "ntp", "poe", "snmp", "ssh", "static_route", "telnet", "loopback_detection", 
+              "mac"],
   "switch": {
     "protocol": "http",
     "host": "192.168.40.200",
@@ -52,9 +54,4597 @@
     "ssh_key_type": "rsa",
     "interface_port_id": "1",
     "lbd_interval": 100,
-    "lbd_recovery_time": 300
+    "lbd_recovery_time": 300,
+    "dot1x_reauth_period": 3600,
+    "dot1x_quiet_period": 60,
+    "dot1x_max_mac_count": 5,
+    "aaa_update_interval": 5,
+    "privilege_level": 0,
+    "line_type": "vty",
+    "ddm_current_high_alarm": 2500,
+    "ddm_temperature_high_alarm": 8500,
+    "ddm_voltage_high_alarm": 3500,
+    "session_id": 1,
+    "excluded_vlan_id": 100,
+    "max_excluded_vlans": 8,
+    "arp_ip_address": "192.168.1.100",
+    "vlan_id": 1,
+    "local_proxy_vlan_id": 50,
+    "arp_cache_timeout": 1200,
+    "bfd_vlan_id": 1,
+    "bfd_interval": 500,
+    "bfd_minrx": 500,
+    "bfd_multiplier": 6,
+    "cluster_member_id": 1,
+    "cluster_ip_pool": "10.254.254.1",
+    "cluster_mac_address": "00-e0-0c-00-00-01",
+    "cos_interface_id": "eth1%2f5",
+    "cos_priority": 3,
+    "cos_queue_mode": "wrr",
+    "device_type_expected": "L3 48 1G PoE + 4 SFP+ managed switch",
+    "device_manufacturer_expected": "Alibaba Group",
+    "device_hw_version_expected": "R01",
+    "device_sw_version_pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$",
+    "dns_domain_name": "example.com",
+    "dns_primary_nameserver": "8.8.8.8",
+    "dns_secondary_nameserver": "8.8.4.4",
+    "dos_protection_default_rate": 1000,
+    "dos_protection_min_rate": 64,
+    "dos_protection_max_rate": 2000,
+    "file_tftp_server": "192.168.1.175",
+    "file_ftp_server": "192.168.1.175",
+    "file_ftp_username": "ftpuser",
+    "file_ftp_password": "ftppass",
+    "igmpsnoop_test_vlan_1": 1,
+    "igmpsnoop_test_vlan_100": 100,
+    "igmpsnoop_test_vlan_1024": 1024,
+    "igmpsnoop_test_interface": "eth1/1",
+        "interface_test_ethernet": "eth1/1",
+    "interface_test_trunk": "trunk1",
+    "interface_test_vlan": 100,
+    "interface_test_sfp_port": "eth1/49",
+        "ip_arp_inspection_test_vlan": 100,
+    "ip_arp_inspection_test_interface": "eth1/1",
+    "ip_arp_inspection_log_buffer_size": 256,
+    "ip_arp_inspection_default_rate_limit": 15,
+        "ip_interface_default_gateway": "192.168.1.1",
+    "ip_interface_test_vlan": 100,
+    "ip_interface_loopback_ip": "127.0.0.1",
+    "ip_interface_enterprise_subnet": "10.0.0.0/8",
+    "ip_source_guard_test_interface": "eth1/1",
+    "ip_source_guard_test_vlan": 100,
+    "ip_source_guard_mac_table_max": 228,
+    "ip_source_guard_acl_table_max": 16,
+    "ipv6_source_guard_max_binding": 5,
+    "ipv6_interface_default_gateway": "fe80::269:3ef9:fe19:6780%1",
+    "ipv6_interface_test_vlan": 100,
+    "ipv6_interface_min_mtu": 1280,
+    "ipv6_interface_max_mtu": 65535,
+    "ipv6_interface_default_mtu": 1500,
+    "mgmt_ip_filter_http_start": "192.168.2.30",
+    "mgmt_ip_filter_http_end": "192.168.2.50",
+    "mgmt_ip_filter_snmp_address": "192.168.1.9",
+    "mgmt_ip_filter_telnet_start": "192.168.66.1",
+    "mgmt_ip_filter_telnet_end": "192.168.66.10",
+        "nd_snoop_prefix_timeout_min": 3,
+    "nd_snoop_prefix_timeout_max": 1800,
+    "nd_snoop_retransmit_count_min": 1,
+    "nd_snoop_retransmit_count_max": 5,
+    "nd_snoop_retransmit_interval_min": 1,
+    "nd_snoop_retransmit_interval_max": 10,
+    "nd_snoop_max_binding_min": 1,
+    "nd_snoop_max_binding_max": 5,
+    "nd_snoop_default_prefix_timeout": 200,
+    "nd_snoop_default_retransmit_count": 5,
+    "nd_snoop_default_retransmit_interval": 5,
+    "ipv6_nd_hop_limit_min": 1,
+    "ipv6_nd_hop_limit_max": 255,
+    "ipv6_nd_hop_limit_default": 64,
+    "ipv6_nd_dad_attempts_min": 0,
+    "ipv6_nd_dad_attempts_max": 600,
+    "ipv6_nd_ns_interval_min": 1000,
+    "ipv6_nd_ns_interval_max": 3600000,
+    "ipv6_nd_reachable_time_min": 0,
+    "ipv6_nd_reachable_time_max": 3600000,
+    "ipv6_nd_ra_min_interval_min": 3,
+    "ipv6_nd_ra_min_interval_max": 1350,
+    "ipv6_nd_ra_max_interval_min": 4,
+    "ipv6_nd_ra_max_interval_max": 1800,
+    "ipv6_nd_ra_lifetime_min": 0,
+    "ipv6_nd_ra_lifetime_max": 9000,
+    "ipv6_nd_prefix_length_min": 0,
+    "ipv6_nd_prefix_length_max": 128,
+    "ipv6_nd_lifetime_min": 0,
+    "ipv6_nd_lifetime_max": 4294967295,
+    "network_access_max_mac_count_min": 1,
+    "network_access_max_mac_count_max": 256,
+    "network_access_reauth_period_min": 300,
+    "network_access_reauth_period_max": 86400,
+    "network_access_radius_port_min": 1,
+    "network_access_radius_port_max": 65535,
+    "network_access_max_users_min": 1,
+    "network_access_max_users_max": 32      
   },
   "test_data": {
+    // Network Access MAC認證配置
+    "network_access_mac_auth_basic": {
+      "status": true,
+      "action": "pass",
+      "maxMacCount": 10
+    },
+    "network_access_mac_auth_enterprise": {
+      "status": true,
+      "action": "pass",
+      "maxMacCount": 25
+    },
+    "network_access_mac_auth_high_capacity": {
+      "status": true,
+      "action": "pass",
+      "maxMacCount": 50
+    },
+    "network_access_mac_auth_trunk": {
+      "status": true,
+      "action": "pass",
+      "maxMacCount": 100
+    },
+    "network_access_mac_auth_disabled": {
+      "status": false,
+      "action": "deny",
+      "maxMacCount": 1
+    },
+    
+    // Network Access 802.1X配置
+    "network_access_dot1x_single_user": {
+      "status": true,
+      "portControl": "auto",
+      "maxUsers": 1,
+      "reauthentication": true,
+      "reauthPeriod": 3600
+    },
+    "network_access_dot1x_multi_user": {
+      "status": true,
+      "portControl": "auto",
+      "maxUsers": 5,
+      "reauthentication": true,
+      "reauthPeriod": 7200
+    },
+    "network_access_dot1x_disabled": {
+      "status": false,
+      "portControl": "forceUnauthorized",
+      "maxUsers": 1,
+      "reauthentication": false,
+      "reauthPeriod": 3600
+    },
+    
+    // Network Access策略配置
+    "network_access_policy_strict": {
+      "defaultAction": "deny",
+      "macAuthPriority": 1,
+      "dot1xPriority": 2,
+      "guestVlan": 100,
+      "authFailVlan": 200,
+      "quarantineVlan": 300
+    },
+    "network_access_policy_permissive": {
+      "defaultAction": "pass",
+      "macAuthPriority": 2,
+      "dot1xPriority": 1,
+      "guestVlan": 999,
+      "authFailVlan": 998,
+      "quarantineVlan": 997
+    },
+    
+    // VLAN分配策略
+    "network_access_vlan_assignment": {
+      "dynamicVlanAssignment": true,
+      "radiusVlanAttribute": 64,
+      "fallbackVlan": 1,
+      "voiceVlan": 500,
+      "dataVlan": 100
+    },
+    
+    // 訪問控制列表策略
+    "network_access_acl_policy": {
+      "preAuthAcl": "pre-auth-acl",
+      "postAuthAcl": "post-auth-acl",
+      "guestAcl": "guest-acl",
+      "quarantineAcl": "quarantine-acl"
+    },
+    
+    // RADIUS服務器配置
+    "network_access_radius_servers": {
+      "primaryServer": {
+        "ipAddress": "192.168.1.100",
+        "port": 1812,
+        "sharedSecret": "radius_secret",
+        "timeout": 5,
+        "retries": 3
+      },
+      "secondaryServer": {
+        "ipAddress": "192.168.1.101",
+        "port": 1812,
+        "sharedSecret": "radius_secret_backup",
+        "timeout": 5,
+        "retries": 3
+      },
+      "accountingServer": {
+        "ipAddress": "192.168.1.102",
+        "port": 1813,
+        "sharedSecret": "accounting_secret",
+        "timeout": 3,
+        "retries": 2
+      }
+    },
+    
+    // RADIUS連接測試
+    "network_access_radius_test": {
+      "serverIp": "192.168.1.100",
+      "username": "test_user",
+      "password": "test_password",
+      "nasIdentifier": "switch01"
+    },
+    
+    // 重新認證請求
+    "network_access_reauthenticate": {
+      "macAddress": "30-65-14-01-11-8A",
+      "reason": "manual_trigger"
+    },
+    
+    // 批量MAC認證配置
+    "network_access_batch_mac_auth": {
+      "interfaces": [
+        {
+          "ifId": "eth1/1",
+          "status": true,
+          "action": "pass",
+          "maxMacCount": 10
+        },
+        {
+          "ifId": "eth1/2",
+          "status": true,
+          "action": "pass",
+          "maxMacCount": 15
+        },
+        {
+          "ifId": "eth1/3",
+          "status": true,
+          "action": "pass",
+          "maxMacCount": 20
+        }
+      ]
+    },
+    
+    // 批量802.1X配置
+    "network_access_batch_dot1x": {
+      "interfaces": [
+        {
+          "ifId": "eth1/10",
+          "status": true,
+          "portControl": "auto",
+          "maxUsers": 1,
+          "reauthentication": true,
+          "reauthPeriod": 3600
+        },
+        {
+          "ifId": "eth1/11",
+          "status": true,
+          "portControl": "auto",
+          "maxUsers": 3,
+          "reauthentication": true,
+          "reauthPeriod": 7200
+        }
+      ]
+    },
+    
+    // 配置導入數據
+    "network_access_import_config": {
+      "macAuthConfig": {
+        "globalSettings": {
+          "enabled": true,
+          "defaultAction": "pass"
+        },
+        "interfaceSettings": [
+          {
+            "ifId": "eth1/1",
+            "status": true,
+            "action": "pass",
+            "maxMacCount": 10
+          }
+        ]
+      },
+      "dot1xConfig": {
+        "globalSettings": {
+          "enabled": true,
+          "systemAuthControl": true
+        },
+        "interfaceSettings": [
+          {
+            "ifId": "eth1/2",
+            "status": true,
+            "portControl": "auto",
+            "maxUsers": 1
+          }
+        ]
+      }
+    },
+    
+    // 錯誤處理測試數據
+    "network_access_invalid_max_mac_below": {
+      "status": true,
+      "action": "pass",
+      "maxMacCount": 0
+    },
+    "network_access_invalid_max_mac_above": {
+      "status": true,
+      "action": "pass",
+      "maxMacCount": 1000
+    },
+    "network_access_invalid_action": {
+      "status": true,
+      "action": "invalid_action",
+      "maxMacCount": 10
+    },
+    "network_access_missing_params": {
+      "status": true
+    },
+    "network_access_invalid_radius_ip": {
+      "primaryServer": {
+        "ipAddress": "invalid.ip.address",
+        "port": 1812,
+        "sharedSecret": "secret"
+      }
+    },
+    "network_access_invalid_radius_port": {
+      "primaryServer": {
+        "ipAddress": "192.168.1.100",
+        "port": 70000,
+        "sharedSecret": "secret"
+      }
+    },
+    "network_access_invalid_reauth_period": {
+      "status": true,
+      "portControl": "auto",
+      "maxUsers": 1,
+      "reauthentication": true,
+      "reauthPeriod": 100
+    },    
+    // IPv6 ND Global Configuration
+    "ipv6_nd_hop_limit_default": {
+      "hopLimit": 64
+    },
+    "ipv6_nd_hop_limit_minimum": {
+      "hopLimit": 1
+    },
+    "ipv6_nd_hop_limit_maximum": {
+      "hopLimit": 255
+    },
+    "ipv6_nd_hop_limit_enterprise": {
+      "hopLimit": 128
+    },
+    "ipv6_nd_hop_limit_restore_default": {
+      "hopLimit": 64
+    },
+    
+    // IPv6 ND VLAN Management
+    "ipv6_nd_vlan_1_basic_config": {
+      "dadAttemptsCount": 5,
+      "managedConfigFlagStatus": true,
+      "otherConfigFlagStatus": true,
+      "nsInterval": 30000,
+      "reachableTime": 1000,
+      "raMinInterval": 200,
+      "raMaxInterval": 1800,
+      "raLifetime": 8000,
+      "raPreferenceLevel": "high",
+      "raSuppressStatus": true
+    },
+    "ipv6_nd_vlan_100_enterprise_config": {
+      "dadAttemptsCount": 3,
+      "managedConfigFlagStatus": false,
+      "otherConfigFlagStatus": false,
+      "nsInterval": 1000,
+      "reachableTime": 30000,
+      "raMinInterval": 198,
+      "raMaxInterval": 600,
+      "raLifetime": 1800,
+      "raPreferenceLevel": "medium",
+      "raSuppressStatus": false
+    },
+    "ipv6_nd_vlan_200_datacenter_config": {
+      "dadAttemptsCount": 1,
+      "managedConfigFlagStatus": true,
+      "otherConfigFlagStatus": true,
+      "nsInterval": 3600000,
+      "reachableTime": 3600000,
+      "raMinInterval": 3,
+      "raMaxInterval": 4,
+      "raLifetime": 9000,
+      "raPreferenceLevel": "low",
+      "raSuppressStatus": false
+    },
+    "ipv6_nd_vlan_300_minimum_config": {
+      "dadAttemptsCount": 0,
+      "managedConfigFlagStatus": false,
+      "otherConfigFlagStatus": false,
+      "nsInterval": 1000,
+      "reachableTime": 0,
+      "raMinInterval": 3,
+      "raMaxInterval": 4,
+      "raLifetime": 0,
+      "raPreferenceLevel": "low",
+      "raSuppressStatus": true
+    },
+    "ipv6_nd_vlan_400_maximum_config": {
+      "dadAttemptsCount": 600,
+      "managedConfigFlagStatus": true,
+      "otherConfigFlagStatus": true,
+      "nsInterval": 3600000,
+      "reachableTime": 3600000,
+      "raMinInterval": 1350,
+      "raMaxInterval": 1800,
+      "raLifetime": 9000,
+      "raPreferenceLevel": "high",
+      "raSuppressStatus": false
+    },
+    
+    // IPv6 ND Interface Management
+    "ipv6_nd_interface_eth1_1_raguard_enable": {
+      "raguardStatus": true
+    },
+    "ipv6_nd_interface_eth1_2_raguard_disable": {
+      "raguardStatus": false
+    },
+    "ipv6_nd_interface_trunk1_raguard_enable": {
+      "raguardStatus": true
+    },
+    "ipv6_nd_interface_eth1_10_batch": {
+      "raguardStatus": true
+    },
+    "ipv6_nd_interface_eth1_20_batch": {
+      "raguardStatus": false
+    },
+    
+    // IPv6 ND Neighbor Management
+    "ipv6_nd_static_neighbor_basic": {
+      "type": "static",
+      "vlanId": 1,
+      "ipv6Address": "fe80::2e0:cff:fe9c:c000",
+      "linkLayerAddress": "30-65-14-01-11-8a"
+    },
+    "ipv6_nd_static_neighbor_enterprise": {
+      "type": "static",
+      "vlanId": 100,
+      "ipv6Address": "2001:db8::1",
+      "linkLayerAddress": "aa-bb-cc-dd-ee-ff"
+    },
+    "ipv6_nd_static_neighbor_datacenter": {
+      "type": "static",
+      "vlanId": 200,
+      "ipv6Address": "2001:db8:1::100",
+      "linkLayerAddress": "11-22-33-44-55-66"
+    },
+    
+    // IPv6 ND Prefix Management
+    "ipv6_nd_prefix_basic": {
+      "vlanId": 1,
+      "ipv6Prefix": "2011:1dbf::",
+      "ipv6PrefixLength": 35,
+      "validLifetime": 1000,
+      "preferredLifetime": 900,
+      "configureType": "no-autoconfig"
+    },
+    "ipv6_nd_prefix_enterprise": {
+      "vlanId": 100,
+      "ipv6Prefix": "2001:db8::",
+      "ipv6PrefixLength": 64,
+      "validLifetime": 7200,
+      "preferredLifetime": 3600,
+      "configureType": "off-link"
+    },
+    "ipv6_nd_prefix_datacenter": {
+      "vlanId": 200,
+      "ipv6Prefix": "2001:db8:1::",
+      "ipv6PrefixLength": 48,
+      "validLifetime": 4294967295,
+      "preferredLifetime": 4294967295
+    },
+    "ipv6_nd_prefix_minimum_lifetime": {
+      "vlanId": 300,
+      "ipv6Prefix": "2001:db8:2::",
+      "ipv6PrefixLength": 56,
+      "validLifetime": 0,
+      "preferredLifetime": 0,
+      "configureType": "no-autoconfig"
+    },
+    
+    // IPv6 ND Advanced Operations
+    "ipv6_nd_enterprise_environment": {
+      "hopLimit": 128
+    },
+    "ipv6_nd_batch_vlan_50": {
+      "dadAttemptsCount": 3,
+      "managedConfigFlagStatus": true,
+      "otherConfigFlagStatus": false,
+      "nsInterval": 2000,
+      "reachableTime": 15000,
+      "raMinInterval": 100,
+      "raMaxInterval": 300,
+      "raLifetime": 1000,
+      "raPreferenceLevel": "medium",
+      "raSuppressStatus": false
+    },
+    "ipv6_nd_batch_vlan_60": {
+      "dadAttemptsCount": 2,
+      "managedConfigFlagStatus": false,
+      "otherConfigFlagStatus": true,
+      "nsInterval": 5000,
+      "reachableTime": 20000,
+      "raMinInterval": 150,
+      "raMaxInterval": 450,
+      "raLifetime": 1500,
+      "raPreferenceLevel": "high",
+      "raSuppressStatus": true
+    },
+    "ipv6_nd_high_security_interface": {
+      "raguardStatus": true
+    },
+    "ipv6_nd_batch_static_neighbor_1": {
+      "type": "static",
+      "vlanId": 50,
+      "ipv6Address": "2001:db8:50::1",
+      "linkLayerAddress": "50-50-50-50-50-50"
+    },
+    "ipv6_nd_batch_static_neighbor_2": {
+      "type": "static",
+      "vlanId": 60,
+      "ipv6Address": "2001:db8:60::1",
+      "linkLayerAddress": "60-60-60-60-60-60"
+    },
+    "ipv6_nd_batch_prefix_1": {
+      "vlanId": 50,
+      "ipv6Prefix": "2001:db8:50::",
+      "ipv6PrefixLength": 64,
+      "validLifetime": 3600,
+      "preferredLifetime": 1800,
+      "configureType": "no-autoconfig"
+    },
+    "ipv6_nd_batch_prefix_2": {
+      "vlanId": 60,
+      "ipv6Prefix": "2001:db8:60::",
+      "ipv6PrefixLength": 64,
+      "validLifetime": 7200,
+      "preferredLifetime": 3600,
+      "configureType": "off-link"
+    },
+    
+    // IPv6 ND Error Handling
+    "ipv6_nd_invalid_hop_limit_below_min": {
+      "hopLimit": 0
+    },
+    "ipv6_nd_invalid_hop_limit_above_max": {
+      "hopLimit": 256
+    },
+    "ipv6_nd_invalid_vlan_id": {
+      "dadAttemptsCount": 1
+    },
+    "ipv6_nd_invalid_dad_attempts_above_max": {
+      "dadAttemptsCount": 700
+    },
+    "ipv6_nd_invalid_ns_interval_below_min": {
+      "nsInterval": 500
+    },
+    "ipv6_nd_invalid_ns_interval_above_max": {
+      "nsInterval": 4000000
+    },
+    "ipv6_nd_invalid_ra_interval_min_greater_max": {
+      "raMinInterval": 1000,
+      "raMaxInterval": 500
+    },
+    "ipv6_nd_invalid_ra_max_interval_below_min": {
+      "raMaxInterval": 3
+    },
+    "ipv6_nd_invalid_ra_max_interval_above_max": {
+      "raMaxInterval": 2000
+    },
+    "ipv6_nd_invalid_ra_lifetime_above_max": {
+      "raLifetime": 10000
+    },
+    "ipv6_nd_invalid_ra_preference_level": {
+      "raPreferenceLevel": "invalid"
+    },
+    "ipv6_nd_invalid_ipv6_address_neighbor": {
+      "type": "static",
+      "vlanId": 1,
+      "ipv6Address": "invalid::ipv6::address",
+      "linkLayerAddress": "aa-bb-cc-dd-ee-ff"
+    },
+    "ipv6_nd_invalid_mac_address_format": {
+      "type": "static",
+      "vlanId": 1,
+      "ipv6Address": "fe80::1",
+      "linkLayerAddress": "invalid-mac-address"
+    },
+    "ipv6_nd_invalid_prefix_length_out_of_range": {
+      "vlanId": 1,
+      "ipv6Prefix": "2001:db8::",
+      "ipv6PrefixLength": 129,
+      "validLifetime": 1000,
+      "preferredLifetime": 900
+    },
+    "ipv6_nd_invalid_lifetime_preferred_greater_valid": {
+      "vlanId": 1,
+      "ipv6Prefix": "2001:db8::",
+      "ipv6PrefixLength": 64,
+      "validLifetime": 1000,
+      "preferredLifetime": 2000
+    },
+    "ipv6_nd_nonexistent_vlan": {
+      "dadAttemptsCount": 1
+    },
+    "ipv6_nd_restore_normal_config": {
+      "hopLimit": 64
+    },    
+    "nd_snoop_global_enable_basic": {
+      "ndSnoopEnable": true,
+      "ndSnoopAutodetect": true,
+      "ndSnoopPrefixTimeout": 200,
+      "ndSnoopRetransmitCount": 5,
+      "ndSnoopRetransmitInterval": 5
+    },
+    "nd_snoop_global_enterprise": {
+      "ndSnoopEnable": true,
+      "ndSnoopAutodetect": true,
+      "ndSnoopPrefixTimeout": 600,
+      "ndSnoopRetransmitCount": 3,
+      "ndSnoopRetransmitInterval": 3
+    },
+    "nd_snoop_global_datacenter": {
+      "ndSnoopEnable": true,
+      "ndSnoopAutodetect": false,
+      "ndSnoopPrefixTimeout": 1800,
+      "ndSnoopRetransmitCount": 5,
+      "ndSnoopRetransmitInterval": 10
+    },
+    "nd_snoop_global_min_timeout": {
+      "ndSnoopEnable": true,
+      "ndSnoopAutodetect": true,
+      "ndSnoopPrefixTimeout": 3,
+      "ndSnoopRetransmitCount": 1,
+      "ndSnoopRetransmitInterval": 1
+    },
+    "nd_snoop_global_max_timeout": {
+      "ndSnoopEnable": true,
+      "ndSnoopAutodetect": true,
+      "ndSnoopPrefixTimeout": 1800,
+      "ndSnoopRetransmitCount": 5,
+      "ndSnoopRetransmitInterval": 10
+    },
+    "nd_snoop_global_disable": {
+      "ndSnoopEnable": false,
+      "ndSnoopAutodetect": false
+    },
+    "nd_snoop_global_re_enable": {
+      "ndSnoopEnable": true,
+      "ndSnoopAutodetect": true,
+      "ndSnoopPrefixTimeout": 200,
+      "ndSnoopRetransmitCount": 5,
+      "ndSnoopRetransmitInterval": 5
+    },
+    "nd_snoop_vlan_1_enable": {
+      "ndSnoopVlanEnable": true
+    },
+    "nd_snoop_vlan_100_enable": {
+      "ndSnoopVlanEnable": true
+    },
+    "nd_snoop_vlan_200_enterprise_enable": {
+      "ndSnoopVlanEnable": true
+    },
+    "nd_snoop_vlan_500_datacenter_enable": {
+      "ndSnoopVlanEnable": true
+    },
+    "nd_snoop_vlan_300_disable": {
+      "ndSnoopVlanEnable": false
+    },
+    "nd_snoop_vlan_10_batch_enable": {
+      "ndSnoopVlanEnable": true
+    },
+    "nd_snoop_vlan_20_batch_enable": {
+      "ndSnoopVlanEnable": true
+    },
+    "nd_snoop_interface_eth1_1_trust_enable": {
+      "ndSnoopPortTrustEnable": true,
+      "ndSnoopPortMaxBinding": 3
+    },
+    "nd_snoop_interface_eth1_2_trust_disable": {
+      "ndSnoopPortTrustEnable": false,
+      "ndSnoopPortMaxBinding": 5
+    },
+    "nd_snoop_interface_trunk1_config": {
+      "ndSnoopPortTrustEnable": true,
+      "ndSnoopPortMaxBinding": 5
+    },
+    "nd_snoop_interface_eth1_5_min_binding": {
+      "ndSnoopPortTrustEnable": false,
+      "ndSnoopPortMaxBinding": 1
+    },
+    "nd_snoop_interface_eth1_10_max_binding": {
+      "ndSnoopPortTrustEnable": true,
+      "ndSnoopPortMaxBinding": 5
+    },
+    "nd_snoop_interface_eth1_20_batch": {
+      "ndSnoopPortTrustEnable": false,
+      "ndSnoopPortMaxBinding": 3
+    },
+    "nd_snoop_interface_eth1_21_batch": {
+      "ndSnoopPortTrustEnable": true,
+      "ndSnoopPortMaxBinding": 4
+    },
+    "nd_snoop_enterprise_environment": {
+      "ndSnoopEnable": true,
+      "ndSnoopAutodetect": true,
+      "ndSnoopPrefixTimeout": 1200,
+      "ndSnoopRetransmitCount": 3,
+      "ndSnoopRetransmitInterval": 5
+    },
+    "nd_snoop_batch_vlan_50": {
+      "ndSnoopVlanEnable": true
+    },
+    "nd_snoop_batch_vlan_60": {
+      "ndSnoopVlanEnable": true
+    },
+    "nd_snoop_batch_vlan_70": {
+      "ndSnoopVlanEnable": true
+    },
+    "nd_snoop_high_security_interface_eth1_30": {
+      "ndSnoopPortTrustEnable": false,
+      "ndSnoopPortMaxBinding": 1
+    },
+    "nd_snoop_high_performance_interface_eth1_40": {
+      "ndSnoopPortTrustEnable": true,
+      "ndSnoopPortMaxBinding": 5
+    },
+    "nd_snoop_datacenter_policy": {
+      "ndSnoopEnable": true,
+      "ndSnoopAutodetect": false,
+      "ndSnoopPrefixTimeout": 1800,
+      "ndSnoopRetransmitCount": 5,
+      "ndSnoopRetransmitInterval": 10
+    },
+    "nd_snoop_dynamic_parameters": {
+      "ndSnoopEnable": true,
+      "ndSnoopAutodetect": true,
+      "ndSnoopPrefixTimeout": 300,
+      "ndSnoopRetransmitCount": 4,
+      "ndSnoopRetransmitInterval": 6
+    },
+    "nd_snoop_complex_multilevel_policy": {
+      "ndSnoopPortTrustEnable": true,
+      "ndSnoopPortMaxBinding": 5
+    },
+    "nd_snoop_invalid_prefix_timeout_below_min": {
+      "ndSnoopEnable": true,
+      "ndSnoopPrefixTimeout": 2
+    },
+    "nd_snoop_invalid_prefix_timeout_above_max": {
+      "ndSnoopEnable": true,
+      "ndSnoopPrefixTimeout": 2000
+    },
+    "nd_snoop_invalid_retransmit_count_below_min": {
+      "ndSnoopEnable": true,
+      "ndSnoopRetransmitCount": 0
+    },
+    "nd_snoop_invalid_retransmit_count_above_max": {
+      "ndSnoopEnable": true,
+      "ndSnoopRetransmitCount": 10
+    },
+    "nd_snoop_invalid_retransmit_interval_below_min": {
+      "ndSnoopEnable": true,
+      "ndSnoopRetransmitInterval": 0
+    },
+    "nd_snoop_invalid_retransmit_interval_above_max": {
+      "ndSnoopEnable": true,
+      "ndSnoopRetransmitInterval": 15
+    },
+    "nd_snoop_invalid_vlan_id": {
+      "ndSnoopVlanEnable": true
+    },
+    "nd_snoop_invalid_vlan_id_zero": {
+      "ndSnoopVlanEnable": true
+    },
+    "nd_snoop_invalid_max_binding_below_min": {
+      "ndSnoopPortMaxBinding": 0
+    },
+    "nd_snoop_invalid_max_binding_above_max": {
+      "ndSnoopPortMaxBinding": 10
+    },
+    "nd_snoop_invalid_boolean_enable": {
+      "ndSnoopEnable": "yes"
+    },
+    "nd_snoop_invalid_boolean_autodetect": {
+      "ndSnoopAutodetect": "on"
+    },
+    "nd_snoop_nonexistent_vlan": {
+      "ndSnoopVlanEnable": true
+    },
+    "nd_snoop_restore_normal_config": {
+      "ndSnoopEnable": true,
+      "ndSnoopAutodetect": true,
+      "ndSnoopPrefixTimeout": 200,
+      "ndSnoopRetransmitCount": 5,
+      "ndSnoopRetransmitInterval": 5
+    },    
+    "mgmt_ip_filter_http_client": {
+      "type": "http",
+      "startAddress": "192.168.2.30",
+      "endAddress": "192.168.2.50"
+    },
+    "mgmt_ip_filter_snmp_client": {
+      "type": "snmp",
+      "startAddress": "192.168.1.9",
+      "endAddress": "192.168.1.9"
+    },
+    "mgmt_ip_filter_telnet_client": {
+      "type": "telnet",
+      "startAddress": "192.168.66.1",
+      "endAddress": "192.168.66.10"
+    },
+    "mgmt_ip_filter_enterprise_http": {
+      "type": "http",
+      "startAddress": "10.0.0.1",
+      "endAddress": "10.0.0.100"
+    },
+    "mgmt_ip_filter_datacenter_snmp": {
+      "type": "snmp",
+      "startAddress": "172.16.1.1",
+      "endAddress": "172.16.1.50"
+    },
+    "mgmt_ip_filter_update_http_range": {
+      "endAddress": "192.168.2.100"
+    },
+    "mgmt_ip_filter_update_telnet_range": {
+      "endAddress": "192.168.66.50"
+    },
+    "mgmt_ip_filter_update_enterprise_http_range": {
+      "endAddress": "10.0.0.200"
+    },
+    "mgmt_ip_filter_batch_http_1": {
+      "type": "http",
+      "startAddress": "192.168.10.1",
+      "endAddress": "192.168.10.50"
+    },
+    "mgmt_ip_filter_batch_http_2": {
+      "type": "http",
+      "startAddress": "192.168.20.1",
+      "endAddress": "192.168.20.100"
+    },
+    "mgmt_ip_filter_batch_snmp_1": {
+      "type": "snmp",
+      "startAddress": "192.168.30.10",
+      "endAddress": "192.168.30.20"
+    },
+    "mgmt_ip_filter_batch_telnet_1": {
+      "type": "telnet",
+      "startAddress": "192.168.40.1",
+      "endAddress": "192.168.40.25"
+    },
+    "mgmt_ip_filter_complex_enterprise_policy": {
+      "type": "http",
+      "startAddress": "10.1.0.1",
+      "endAddress": "10.1.255.255"
+    },
+    "mgmt_ip_filter_datacenter_policy": {
+      "type": "snmp",
+      "startAddress": "172.16.0.1",
+      "endAddress": "172.16.255.255"
+    },
+    "mgmt_ip_filter_single_ip_http": {
+      "type": "http",
+      "startAddress": "192.168.100.100"
+    },
+    "mgmt_ip_filter_single_ip_snmp": {
+      "type": "snmp",
+      "startAddress": "192.168.200.200"
+    },
+    "mgmt_ip_filter_dynamic_adjust_policy": {
+      "endAddress": "192.168.10.200"
+    },
+    "mgmt_ip_filter_invalid_client_type": {
+      "type": "invalid_type",
+      "startAddress": "192.168.1.1",
+      "endAddress": "192.168.1.10"
+    },
+    "mgmt_ip_filter_invalid_start_address": {
+      "type": "http",
+      "startAddress": "invalid.ip.address",
+      "endAddress": "192.168.1.10"
+    },
+    "mgmt_ip_filter_invalid_end_address": {
+      "type": "http",
+      "startAddress": "192.168.1.1",
+      "endAddress": "invalid.end.address"
+    },
+    "mgmt_ip_filter_invalid_ip_range": {
+      "type": "http",
+      "startAddress": "192.168.1.100",
+      "endAddress": "192.168.1.10"
+    },
+    "mgmt_ip_filter_out_of_ipv4_range": {
+      "type": "http",
+      "startAddress": "300.300.300.300",
+      "endAddress": "192.168.1.10"
+    },
+    "mgmt_ip_filter_missing_type": {
+      "startAddress": "192.168.1.1",
+      "endAddress": "192.168.1.10"
+    },
+    "mgmt_ip_filter_missing_start_address": {
+      "type": "http",
+      "endAddress": "192.168.1.10"
+    },
+    "mgmt_ip_filter_nonexistent_filter_update": {
+      "endAddress": "192.168.1.10"
+    },
+    "mgmt_ip_filter_duplicate_filter": {
+      "type": "http",
+      "startAddress": "192.168.2.30",
+      "endAddress": "192.168.2.50"
+    },    
+    "ipv6_interface_link_local_gateway": {
+      "defaultGateway": "fe80::269:3ef9:fe19:6780%1"
+    },
+    "ipv6_interface_global_unicast_gateway": {
+      "defaultGateway": "2001:db8::1"
+    },
+    "ipv6_interface_enterprise_gateway": {
+      "defaultGateway": "2001:db8:1000::1"
+    },
+    "ipv6_interface_datacenter_gateway": {
+      "defaultGateway": "fd00::1"
+    },
+    "ipv6_interface_update_gateway": {
+      "defaultGateway": "fe80::1%1"
+    },
+    "ipv6_interface_remove_gateway": {
+      "defaultGateway": ""
+    },
+    "ipv6_interface_restore_gateway": {
+      "defaultGateway": "fe80::269:3ef9:fe19:6780%1"
+    },
+    "ipv6_interface_vlan_1_link_local": {
+      "vlanId": 1,
+      "ipv6Address": "fe80::269:3ef9:fe19:6779",
+      "ipv6PrefixLength": 64,
+      "type": "link-local"
+    },
+    "ipv6_interface_vlan_1_eui64": {
+      "vlanId": 1,
+      "ipv6Address": "2001:0db8:0:1::",
+      "ipv6PrefixLength": 64,
+      "type": "eui-64"
+    },
+    "ipv6_interface_vlan_100_global_unicast": {
+      "vlanId": 100,
+      "ipv6Address": "2001:db8:2222:7272::72",
+      "ipv6PrefixLength": 96,
+      "type": "global-unicast"
+    },
+    "ipv6_interface_vlan_200_enterprise": {
+      "vlanId": 200,
+      "ipv6Address": "2001:db8:1000::1",
+      "ipv6PrefixLength": 64,
+      "type": "global-unicast"
+    },
+    "ipv6_interface_vlan_500_datacenter": {
+      "vlanId": 500,
+      "ipv6Address": "fd00::500:1",
+      "ipv6PrefixLength": 64,
+      "type": "global-unicast"
+    },
+    "ipv6_interface_vlan_1_enable_default_mtu": {
+      "ipv6Status": true,
+      "mtu": 1500
+    },
+    "ipv6_interface_vlan_100_enable_min_mtu": {
+      "ipv6Status": true,
+      "mtu": 1280
+    },
+    "ipv6_interface_vlan_200_enable_large_mtu": {
+      "ipv6Status": true,
+      "mtu": 9000
+    },
+    "ipv6_interface_vlan_500_enterprise_config": {
+      "ipv6Status": true,
+      "mtu": 1500
+    },
+    "ipv6_interface_vlan_300_disable": {
+      "ipv6Status": false
+    },
+    "ipv6_interface_vlan_100_update_mtu": {
+      "mtu": 1500
+    },
+    "ipv6_interface_enterprise_network_gateway": {
+      "defaultGateway": "2001:db8:1000::254"
+    },
+    "ipv6_interface_batch_vlan_10": {
+      "vlanId": 10,
+      "ipv6Address": "2001:db8:10::1",
+      "ipv6PrefixLength": 64,
+      "type": "global-unicast"
+    },
+    "ipv6_interface_batch_vlan_20": {
+      "vlanId": 20,
+      "ipv6Address": "2001:db8:20::1",
+      "ipv6PrefixLength": 64,
+      "type": "global-unicast"
+    },
+    "ipv6_interface_batch_vlan_30": {
+      "vlanId": 30,
+      "ipv6Address": "2001:db8:30::1",
+      "ipv6PrefixLength": 64,
+      "type": "global-unicast"
+    },
+    "ipv6_interface_batch_vlan_10_status": {
+      "ipv6Status": true,
+      "mtu": 1500
+    },
+    "ipv6_interface_batch_vlan_20_status": {
+      "ipv6Status": true,
+      "mtu": 1500
+    },
+    "ipv6_interface_multi_subnet_vlan_50_eui64": {
+      "vlanId": 50,
+      "ipv6Address": "2001:db8:50::",
+      "ipv6PrefixLength": 64,
+      "type": "eui-64"
+    },
+    "ipv6_interface_multi_subnet_vlan_50_global_unicast": {
+      "vlanId": 50,
+      "ipv6Address": "2001:db8:5000::1",
+      "ipv6PrefixLength": 64,
+      "type": "global-unicast"
+    },
+    "ipv6_interface_advanced_mtu_settings": {
+      "ipv6Status": true,
+      "mtu": 9000
+    },
+    "ipv6_interface_dynamic_gateway": {
+      "defaultGateway": "2001:db8::254"
+    },
+    "ipv6_interface_invalid_gateway_ipv6": {
+      "defaultGateway": "invalid::ipv6::address"
+    },
+    "ipv6_interface_invalid_vlan_id": {
+      "vlanId": 5000,
+      "ipv6Address": "2001:db8::1",
+      "ipv6PrefixLength": 64,
+      "type": "global-unicast"
+    },
+    "ipv6_interface_invalid_vlan_id_zero": {
+      "vlanId": 0,
+      "ipv6Address": "2001:db8::1",
+      "ipv6PrefixLength": 64,
+      "type": "global-unicast"
+    },
+    "ipv6_interface_invalid_vlan_ipv6": {
+      "vlanId": 100,
+      "ipv6Address": "invalid::ipv6::format",
+      "ipv6PrefixLength": 64,
+      "type": "global-unicast"
+    },
+    "ipv6_interface_invalid_prefix_length": {
+      "vlanId": 100,
+      "ipv6Address": "2001:db8::1",
+      "ipv6PrefixLength": 200,
+      "type": "global-unicast"
+    },
+    "ipv6_interface_invalid_address_type": {
+      "vlanId": 100,
+      "ipv6Address": "2001:db8::1",
+      "ipv6PrefixLength": 64,
+      "type": "invalid-type"
+    },
+    "ipv6_interface_invalid_link_local_format": {
+      "vlanId": 100,
+      "ipv6Address": "2001:db8::1",
+      "ipv6PrefixLength": 64,
+      "type": "link-local"
+    },
+    "ipv6_interface_invalid_mtu_below_minimum": {
+      "ipv6Status": true,
+      "mtu": 1000
+    },
+    "ipv6_interface_invalid_mtu_above_maximum": {
+      "ipv6Status": true,
+      "mtu": 70000
+    },
+    "ipv6_interface_invalid_boolean_status": {
+      "ipv6Status": "yes",
+      "mtu": 1500
+    },
+    "ipv6_interface_missing_params_vlan_ipv6": {
+      "vlanId": 100
+    },
+    "ipv6_interface_nonexistent_vlan": {
+      "vlanId": 999,
+      "ipv6Address": "2001:db8::1",
+      "ipv6PrefixLength": 64,
+      "type": "global-unicast"
+    },
+    "ipv6_interface_restore_normal_config": {
+      "defaultGateway": "fe80::269:3ef9:fe19:6780%1"
+    },    
+    "ip_source_guard_eth1_1_mac_sip": {
+      "mode": "mac",
+      "filterType": "sip",
+      "macTableMaxBinding": 32,
+      "aclTableMaxBinding": 5
+    },
+    "ip_source_guard_eth1_2_acl_sip_mac": {
+      "mode": "acl",
+      "filterType": "sip-mac",
+      "macTableMaxBinding": 16,
+      "aclTableMaxBinding": 10
+    },
+    "ip_source_guard_eth1_5_mac_max_binding": {
+      "mode": "mac",
+      "filterType": "sip",
+      "macTableMaxBinding": 228,
+      "aclTableMaxBinding": 5
+    },
+    "ip_source_guard_eth1_10_acl_max_binding": {
+      "mode": "acl",
+      "filterType": "sip-mac",
+      "macTableMaxBinding": 16,
+      "aclTableMaxBinding": 16
+    },
+    "ip_source_guard_eth1_15_disable": {
+      "filterType": "none"
+    },
+    "ip_source_guard_trunk1_mac": {
+      "mode": "mac",
+      "filterType": "sip",
+      "macTableMaxBinding": 64,
+      "aclTableMaxBinding": 5
+    },
+    "ip_source_guard_static_mac_binding": {
+      "type": "static-mac",
+      "macAddress": "12-34-00-11-11-11",
+      "vlanId": 1,
+      "ipAddress": "192.168.1.12",
+      "ifId": "eth1/5"
+    },
+    "ip_source_guard_static_acl_binding": {
+      "type": "static-acl",
+      "macAddress": "00-00-00-22-22-22",
+      "vlanId": 3,
+      "ipAddress": "192.168.3.15",
+      "ifId": "eth1/7"
+    },
+    "ip_source_guard_enterprise_static_binding": {
+      "type": "static-mac",
+      "macAddress": "aa-bb-cc-dd-ee-ff",
+      "vlanId": 100,
+      "ipAddress": "10.1.1.50",
+      "ifId": "eth1/1"
+    },
+    "ip_source_guard_datacenter_static_binding": {
+      "type": "static-acl",
+      "macAddress": "11-22-33-44-55-66",
+      "vlanId": 200,
+      "ipAddress": "172.16.1.100",
+      "ifId": "eth1/2"
+    },
+    "ipv6_source_guard_eth1_1_sip": {
+      "filterType": "sip",
+      "maxBinding": 3
+    },
+    "ipv6_source_guard_eth1_5_max_binding": {
+      "filterType": "sip",
+      "maxBinding": 5
+    },
+    "ipv6_source_guard_eth1_10_medium_binding": {
+      "filterType": "sip",
+      "maxBinding": 3
+    },
+    "ipv6_source_guard_eth1_15_disable": {
+      "filterType": "none"
+    },
+    "ipv6_source_guard_static_binding": {
+      "macAddress": "66-66-00-11-11-11",
+      "vlanId": 1,
+      "ipv6Address": "2001::1",
+      "ifId": "eth1/1"
+    },
+    "ipv6_source_guard_enterprise_static_binding": {
+      "macAddress": "aa-bb-cc-11-22-33",
+      "vlanId": 100,
+      "ipv6Address": "2001:db8::100",
+      "ifId": "eth1/5"
+    },
+    "ipv6_source_guard_datacenter_static_binding": {
+      "macAddress": "dd-ee-ff-44-55-66",
+      "vlanId": 200,
+      "ipv6Address": "fd00::200:1",
+      "ifId": "eth1/10"
+    },
+    "ip_source_guard_enterprise_config": {
+      "mode": "mac",
+      "filterType": "sip-mac",
+      "macTableMaxBinding": 128,
+      "aclTableMaxBinding": 10
+    },
+    "ip_source_guard_batch_eth1_21": {
+      "mode": "acl",
+      "filterType": "sip",
+      "macTableMaxBinding": 16,
+      "aclTableMaxBinding": 8
+    },
+    "ip_source_guard_batch_eth1_22": {
+      "mode": "mac",
+      "filterType": "sip",
+      "macTableMaxBinding": 64,
+      "aclTableMaxBinding": 5
+    },
+    "ip_source_guard_batch_binding_1": {
+      "type": "static-mac",
+      "macAddress": "aa-aa-aa-11-11-11",
+      "vlanId": 10,
+      "ipAddress": "10.0.10.100",
+      "ifId": "eth1/20"
+    },
+    "ip_source_guard_batch_binding_2": {
+      "type": "static-acl",
+      "macAddress": "bb-bb-bb-22-22-22",
+      "vlanId": 20,
+      "ipAddress": "10.0.20.100",
+      "ifId": "eth1/21"
+    },
+    "ip_source_guard_batch_binding_3": {
+      "type": "static-mac",
+      "macAddress": "cc-cc-cc-33-33-33",
+      "vlanId": 30,
+      "ipAddress": "10.0.30.100",
+      "ifId": "eth1/22"
+    },
+    "ip_source_guard_high_security_policy": {
+      "mode": "acl",
+      "filterType": "sip-mac",
+      "macTableMaxBinding": 16,
+      "aclTableMaxBinding": 16
+    },
+    "ipv6_source_guard_advanced_protection": {
+      "filterType": "sip",
+      "maxBinding": 5
+    },
+    "ip_source_guard_dynamic_parameters": {
+      "mode": "mac",
+      "filterType": "sip",
+      "macTableMaxBinding": 100,
+      "aclTableMaxBinding": 5
+    },
+    "ip_source_guard_invalid_mode": {
+      "mode": "invalid_mode"
+    },
+    "ip_source_guard_invalid_filter_type": {
+      "filterType": "invalid_filter"
+    },
+    "ip_source_guard_invalid_mac_table_max_binding": {
+      "mode": "mac",
+      "macTableMaxBinding": 300
+    },
+    "ip_source_guard_invalid_acl_table_max_binding": {
+      "mode": "acl",
+      "aclTableMaxBinding": 20
+    },
+    "ip_source_guard_invalid_vlan_id": {
+      "type": "static-mac",
+      "macAddress": "00-00-00-11-11-11",
+      "vlanId": 5000,
+      "ipAddress": "192.168.1.1",
+      "ifId": "eth1/1"
+    },
+    "ip_source_guard_invalid_mac_address": {
+      "type": "static-mac",
+      "macAddress": "invalid-mac-address",
+      "vlanId": 1,
+      "ipAddress": "192.168.1.1",
+      "ifId": "eth1/1"
+    },
+    "ip_source_guard_invalid_ip_address": {
+      "type": "static-mac",
+      "macAddress": "00-00-00-11-11-11",
+      "vlanId": 1,
+      "ipAddress": "invalid.ip.address",
+      "ifId": "eth1/1"
+    },
+    "ip_source_guard_invalid_binding_type": {
+      "type": "invalid-type",
+      "macAddress": "00-00-00-11-11-11",
+      "vlanId": 1,
+      "ipAddress": "192.168.1.1",
+      "ifId": "eth1/1"
+    },
+    "ipv6_source_guard_invalid_filter_type": {
+      "filterType": "invalid_filter"
+    },
+    "ipv6_source_guard_invalid_max_binding": {
+      "filterType": "sip",
+      "maxBinding": 10
+    },
+    "ipv6_source_guard_invalid_ipv6_address": {
+      "macAddress": "00-00-00-11-11-11",
+      "vlanId": 1,
+      "ipv6Address": "invalid::ipv6::address",
+      "ifId": "eth1/1"
+    },
+    "ip_source_guard_restore_normal_config": {
+      "mode": "acl",
+      "filterType": "none",
+      "macTableMaxBinding": 16,
+      "aclTableMaxBinding": 5
+    },    
+    "ip_interface_single_gateway": {
+      "netDefaultGateway": "192.168.1.1"
+    },
+    "ip_interface_enterprise_gateway": {
+      "netDefaultGateway": "10.0.0.1"
+    },
+    "ip_interface_datacenter_gateway": {
+      "netDefaultGateway": "172.16.0.1"
+    },
+    "ip_interface_update_gateway": {
+      "netDefaultGateway": "192.168.30.200"
+    },
+    "ip_interface_remove_gateway": {
+      "netDefaultGateway": ""
+    },
+    "ip_interface_restore_gateway": {
+      "netDefaultGateway": "192.168.30.100"
+    },
+    "ip_interface_vlan_1_primary": {
+      "vlanId": 1,
+      "ipAddress": "192.168.1.10",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": true
+    },
+    "ip_interface_vlan_1_secondary": {
+      "vlanId": 1,
+      "ipAddress": "192.168.1.20",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": false
+    },
+    "ip_interface_vlan_100_ip": {
+      "vlanId": 100,
+      "ipAddress": "10.1.1.1",
+      "subnetMask": "255.255.0.0",
+      "isPrimary": true
+    },
+    "ip_interface_vlan_200_ip": {
+      "vlanId": 200,
+      "ipAddress": "172.16.1.1",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": true
+    },
+    "ip_interface_vlan_500_enterprise": {
+      "vlanId": 500,
+      "ipAddress": "10.10.10.1",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": true
+    },
+    "ip_interface_loopback_basic": {
+      "ipAddress": "127.0.0.1",
+      "subnetMask": "255.0.0.0"
+    },
+    "ip_interface_loopback_enterprise": {
+      "ipAddress": "10.10.10.20",
+      "subnetMask": "255.255.255.0"
+    },
+    "ip_interface_loopback_datacenter": {
+      "ipAddress": "172.16.255.1",
+      "subnetMask": "255.255.255.255"
+    },
+    "ip_interface_loopback_unset": {
+      "ipAddress": "0.0.0.0"
+    },
+    "ip_interface_loopback_reset": {
+      "ipAddress": "192.168.255.1",
+      "subnetMask": "255.255.255.0"
+    },
+    "ip_interface_enterprise_network_gateway": {
+      "netDefaultGateway": "10.0.0.254"
+    },
+    "ip_interface_batch_vlan_10": {
+      "vlanId": 10,
+      "ipAddress": "10.0.10.1",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": true
+    },
+    "ip_interface_batch_vlan_20": {
+      "vlanId": 20,
+      "ipAddress": "10.0.20.1",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": true
+    },
+    "ip_interface_batch_vlan_30": {
+      "vlanId": 30,
+      "ipAddress": "10.0.30.1",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": true
+    },
+    "ip_interface_multi_subnet_vlan_50_primary": {
+      "vlanId": 50,
+      "ipAddress": "192.168.50.1",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": true
+    },
+    "ip_interface_multi_subnet_vlan_50_secondary": {
+      "vlanId": 50,
+      "ipAddress": "192.168.51.1",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": false
+    },
+    "ip_interface_advanced_loopback": {
+      "ipAddress": "10.255.255.1",
+      "subnetMask": "255.255.255.255"
+    },
+    "ip_interface_dynamic_gateway": {
+      "netDefaultGateway": "10.0.0.1"
+    },
+    "ip_interface_invalid_gateway_ip": {
+      "netDefaultGateway": "invalid.ip.address"
+    },
+    "ip_interface_invalid_vlan_id": {
+      "vlanId": 5000,
+      "ipAddress": "192.168.1.1",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": true
+    },
+    "ip_interface_invalid_vlan_id_zero": {
+      "vlanId": 0,
+      "ipAddress": "192.168.1.1",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": true
+    },
+    "ip_interface_invalid_vlan_ip": {
+      "vlanId": 100,
+      "ipAddress": "300.300.300.300",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": true
+    },
+    "ip_interface_invalid_subnet_mask": {
+      "vlanId": 100,
+      "ipAddress": "192.168.1.1",
+      "subnetMask": "invalid.mask",
+      "isPrimary": true
+    },
+    "ip_interface_network_id_as_ip": {
+      "vlanId": 100,
+      "ipAddress": "192.168.1.0",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": true
+    },
+    "ip_interface_broadcast_ip_as_ip": {
+      "vlanId": 100,
+      "ipAddress": "192.168.1.255",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": true
+    },
+    "ip_interface_invalid_boolean_primary": {
+      "vlanId": 100,
+      "ipAddress": "192.168.1.1",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": "yes"
+    },
+    "ip_interface_invalid_loopback_ip": {
+      "ipAddress": "invalid.loopback.ip",
+      "subnetMask": "255.255.255.0"
+    },
+    "ip_interface_invalid_loopback_mask": {
+      "ipAddress": "127.0.0.1",
+      "subnetMask": "invalid.mask"
+    },
+    "ip_interface_missing_params_vlan_ip": {
+      "vlanId": 100
+    },
+    "ip_interface_nonexistent_vlan": {
+      "vlanId": 999,
+      "ipAddress": "192.168.1.1",
+      "subnetMask": "255.255.255.0",
+      "isPrimary": true
+    },
+    "ip_interface_restore_normal_config": {
+      "netDefaultGateway": "192.168.1.1"
+    },    
+    "ip_arp_inspection_enable_global_basic": {
+      "status": true,
+      "logNumber": 255,
+      "logInterval": 2000,
+      "globalSrcMacValidation": true,
+      "globalDestMacValidation": true,
+      "globalIpAddrValidation": true,
+      "globalSrcInterfaceValidation": false,
+      "globalIpAllowZerosValidation": true
+    },
+    "ip_arp_inspection_advanced_validation": {
+      "status": true,
+      "logNumber": 128,
+      "logInterval": 1000,
+      "globalSrcMacValidation": true,
+      "globalDestMacValidation": false,
+      "globalIpAddrValidation": true,
+      "globalSrcInterfaceValidation": true,
+      "globalIpAllowZerosValidation": false
+    },
+    "ip_arp_inspection_logging_settings": {
+      "status": true,
+      "logNumber": 64,
+      "logInterval": 500,
+      "globalSrcMacValidation": true,
+      "globalDestMacValidation": true,
+      "globalIpAddrValidation": false,
+      "globalSrcInterfaceValidation": false,
+      "globalIpAllowZerosValidation": false
+    },
+    "ip_arp_inspection_disable_global": {
+      "status": false
+    },
+    "ip_arp_inspection_re_enable_global": {
+      "status": true,
+      "logNumber": 100,
+      "logInterval": 1500,
+      "globalSrcMacValidation": true,
+      "globalDestMacValidation": true,
+      "globalIpAddrValidation": true,
+      "globalSrcInterfaceValidation": true,
+      "globalIpAllowZerosValidation": true
+    },
+    "ip_arp_inspection_vlan_1_static": {
+      "status": true,
+      "arpAclName": "arp_acl_vlan1",
+      "arpAclStatus": "static"
+    },
+    "ip_arp_inspection_vlan_100_dynamic": {
+      "status": true,
+      "arpAclName": "arp_acl_vlan100",
+      "arpAclStatus": "dynamic"
+    },
+    "ip_arp_inspection_vlan_200_enable": {
+      "status": true
+    },
+    "ip_arp_inspection_vlan_500_full": {
+      "status": true,
+      "arpAclName": "enterprise_arp_acl",
+      "arpAclStatus": "static"
+    },
+    "ip_arp_inspection_vlan_200_disable": {
+      "status": false
+    },
+    "ip_arp_inspection_vlan_100_update_acl": {
+      "status": true,
+      "arpAclName": "updated_arp_acl",
+      "arpAclStatus": "static"
+    },
+    "ip_arp_inspection_eth1_1_trusted": {
+      "trustStatus": true,
+      "rateLimit": 15
+    },
+    "ip_arp_inspection_eth1_2_untrusted_rate_limit": {
+      "trustStatus": false,
+      "rateLimit": 10
+    },
+    "ip_arp_inspection_eth1_5_high_rate_limit": {
+      "trustStatus": true,
+      "rateLimit": 100
+    },
+    "ip_arp_inspection_trunk1_trusted": {
+      "trustStatus": true,
+      "rateLimit": 50
+    },
+    "ip_arp_inspection_trunk2_untrusted": {
+      "trustStatus": false,
+      "rateLimit": 25
+    },
+    "ip_arp_inspection_eth1_10_no_rate_limit": {
+      "trustStatus": true,
+      "rateLimit": 4294967295
+    },
+    "ip_arp_inspection_ignore_source_port_single": {
+      "ignore": true,
+      "vlans": [100]
+    },
+    "ip_arp_inspection_ignore_source_port_multiple": {
+      "ignore": true,
+      "vlans": [
+        8,
+        {
+          "start": 35,
+          "end": 36
+        },
+        88
+      ]
+    },
+    "ip_arp_inspection_ignore_source_port_complex": {
+      "ignore": true,
+      "vlans": [
+        1,
+        {
+          "start": 10,
+          "end": 20
+        },
+        50,
+        {
+          "start": 100,
+          "end": 200
+        },
+        500
+      ]
+    },
+    "ip_arp_inspection_disable_ignore_source_port": {
+      "ignore": false,
+      "vlans": []
+    },
+    "ip_arp_inspection_re_enable_ignore_source_port": {
+      "ignore": true,
+      "vlans": [
+        1,
+        {
+          "start": 3,
+          "end": 6
+        },
+        8,
+        12
+      ]
+    },
+    "ip_arp_inspection_enterprise_config": {
+      "status": true,
+      "logNumber": 256,
+      "logInterval": 3600,
+      "globalSrcMacValidation": true,
+      "globalDestMacValidation": true,
+      "globalIpAddrValidation": true,
+      "globalSrcInterfaceValidation": true,
+      "globalIpAllowZerosValidation": false
+    },
+    "ip_arp_inspection_batch_vlan_10": {
+      "status": true,
+      "arpAclName": "batch_acl_10",
+      "arpAclStatus": "dynamic"
+    },
+    "ip_arp_inspection_batch_vlan_20": {
+      "status": true,
+      "arpAclName": "batch_acl_20",
+      "arpAclStatus": "static"
+    },
+    "ip_arp_inspection_batch_interface_eth1_20": {
+      "trustStatus": true,
+      "rateLimit": 30
+    },
+    "ip_arp_inspection_batch_interface_eth1_21": {
+      "trustStatus": false,
+      "rateLimit": 5
+    },
+    "ip_arp_inspection_high_security_policy": {
+      "status": true,
+      "logNumber": 256,
+      "logInterval": 60,
+      "globalSrcMacValidation": true,
+      "globalDestMacValidation": true,
+      "globalIpAddrValidation": true,
+      "globalSrcInterfaceValidation": true,
+      "globalIpAllowZerosValidation": false
+    },
+    "ip_arp_inspection_dynamic_parameters": {
+      "status": true,
+      "logNumber": 128,
+      "logInterval": 1800,
+      "globalSrcMacValidation": true,
+      "globalDestMacValidation": false,
+      "globalIpAddrValidation": true,
+      "globalSrcInterfaceValidation": false,
+      "globalIpAllowZerosValidation": true
+    },
+    "ip_arp_inspection_invalid_log_number": {
+      "status": true,
+      "logNumber": 300
+    },
+    "ip_arp_inspection_invalid_log_interval": {
+      "status": true,
+      "logInterval": 90000
+    },
+    "ip_arp_inspection_invalid_rate_limit": {
+      "trustStatus": true,
+      "rateLimit": 800
+    },
+    "ip_arp_inspection_invalid_boolean_status": {
+      "status": "invalid_boolean"
+    },
+    "ip_arp_inspection_invalid_boolean_validation": {
+      "status": true,
+      "globalSrcMacValidation": "yes"
+    },
+    "ip_arp_inspection_invalid_acl_status": {
+      "status": true,
+      "arpAclName": "test_acl",
+      "arpAclStatus": "invalid_status"
+    },
+    "ip_arp_inspection_invalid_vlan_range": {
+      "ignore": true,
+      "vlans": [
+        {
+          "start": 50,
+          "end": 30
+        }
+      ]
+    },
+    "ip_arp_inspection_missing_params_ignore_source_port": {},
+    "ip_arp_inspection_restore_normal_config": {
+      "status": true,
+      "logNumber": 100,
+      "logInterval": 1000,
+      "globalSrcMacValidation": true,
+      "globalDestMacValidation": true,
+      "globalIpAddrValidation": true,
+      "globalSrcInterfaceValidation": true,
+      "globalIpAllowZerosValidation": true
+    },    
+    "interface_basic_config_eth1_1": {
+      "isEnabled": true,
+      "ifName": "test_port_1",
+      "flowControl": false,
+      "autoNegotiation": true,
+      "speedDuplexConfig": "1000full",
+      "powerSave": false
+    },
+    "interface_vlan_config_eth1_2": {
+      "isEnabled": true,
+      "vlanMode": "hybrid",
+      "pvid": 100,
+      "allowedVlanUntagged": [100, 200],
+      "allowedVlanTagged": [10, 20, {"start": 300, "end": 310}],
+      "ingressFilter": true,
+      "acceptableFrametype": "tagged"
+    },
+    "interface_rate_limiting_eth1_3": {
+      "isEnabled": true,
+      "ingressRateLimitStatus": true,
+      "ingressRateLimit": 500000,
+      "egressRateLimitStatus": true,
+      "egressRateLimit": 800000
+    },
+    "interface_storm_control_eth1_4": {
+      "isEnabled": true,
+      "broadcastStorm": true,
+      "broadcastStormLimit": 1000,
+      "multicastStorm": true,
+      "multicastStormLimit": 800,
+      "unknownUnicastStorm": true,
+      "unknownUnicastStormLimit": 600
+    },
+    "interface_capabilities_eth1_5": {
+      "isEnabled": true,
+      "autoNegotiation": true,
+      "capabilities": ["10half", "10full", "100half", "100full", "1000full"],
+      "mediaType": "sfp1000-forced"
+    },
+    "interface_trunk_config": {
+      "isEnabled": true,
+      "ifName": "trunk_interface_1",
+      "vlanTrunking": true,
+      "lacp": true,
+      "allowedVlanTagged": [1, 10, 20, {"start": 100, "end": 200}]
+    },
+    "interface_disable_eth1_10": {
+      "isEnabled": false
+    },
+    "interface_transceiver_monitoring_eth1_49": {
+      "transceiverMonitor": true,
+      "transceiverThresholdAuto": false,
+      "txBiasCurrentHighAlarm": 10000,
+      "txBiasCurrentHighWarning": 9000,
+      "txBiasCurrentLowAlarm": 600,
+      "txBiasCurrentLowWarning": 700,
+      "txPowerHighAlarm": -900,
+      "txPowerHighWarning": -950,
+      "txPowerLowAlarm": -1200,
+      "txPowerLowWarning": -1150
+    },
+    "interface_transceiver_temperature_eth1_50": {
+      "transceiverMonitor": true,
+      "transceiverThresholdAuto": false,
+      "temperatureHighAlarm": 7500,
+      "temperatureHighWarning": 7000,
+      "temperatureLowAlarm": -12300,
+      "temperatureLowWarning": 0,
+      "voltageHighAlarm": 350,
+      "voltageHighWarning": 345,
+      "voltageLowAlarm": 310,
+      "voltageLowWarning": 315
+    },
+    "interface_auto_threshold_eth1_51": {
+      "transceiverMonitor": true,
+      "transceiverThresholdAuto": true
+    },
+    "interface_disable_transceiver_eth1_52": {
+      "transceiverMonitor": false,
+      "transceiverThresholdAuto": true
+    },
+    "interface_create_l3_vlan100": {
+      "ip": "192.168.100.1/24",
+      "role": "primary"
+    },
+    "interface_create_l3_vlan200": {
+      "ip": "192.168.200.1/24",
+      "role": "primary"
+    },
+    "interface_add_secondary_ip_vlan100": {
+      "ip": "192.168.101.1/24",
+      "role": "secondary"
+    },
+    "interface_add_virtual_ip_vlan200": {
+      "ip": "192.168.201.1/24",
+      "role": "virtual"
+    },
+    "interface_add_multiple_ips_vlan100": {
+      "ip": "10.1.1.1/16",
+      "role": "secondary"
+    },
+    "interface_enterprise_config": {
+      "isEnabled": true,
+      "ifName": "enterprise_port",
+      "vlanMode": "trunk",
+      "allowedVlanTagged": [1, 10, 20, 30, {"start": 100, "end": 200}],
+      "flowControl": true,
+      "autoNegotiation": true,
+      "capabilities": ["1000full"],
+      "ingressRateLimitStatus": true,
+      "ingressRateLimit": 1000000,
+      "egressRateLimitStatus": true,
+      "egressRateLimit": 1000000
+    },
+    "interface_batch_config_eth1_21": {
+      "isEnabled": true,
+      "ifName": "batch_port_21",
+      "vlanMode": "access",
+      "pvid": 21,
+      "allowedVlanUntagged": [21]
+    },
+    "interface_batch_config_eth1_22": {
+      "isEnabled": true,
+      "ifName": "batch_port_22",
+      "vlanMode": "access",
+      "pvid": 22,
+      "allowedVlanUntagged": [22]
+    },
+    "interface_link_aggregation_config": {
+      "isEnabled": true,
+      "channelGroup": 1,
+      "lacp": true
+    },
+    "interface_advanced_vlan_config": {
+      "isEnabled": true,
+      "vlanMode": "hybrid",
+      "pvid": 1,
+      "allowedVlanUntagged": [1, 100, 200],
+      "allowedVlanTagged": [10, 20, {"start": 300, "end": 400}, 500],
+      "ingressFilter": true,
+      "acceptableFrametype": "all",
+      "gvrp": true,
+      "forbiddenVlans": [999]
+    },
+    "interface_qos_priority_config": {
+      "isEnabled": true,
+      "priority": 7,
+      "ingressRateLimitStatus": true,
+      "ingressRateLimit": 500000,
+      "egressRateLimitStatus": true,
+      "egressRateLimit": 800000
+    },
+    "interface_dynamic_parameters": {
+      "isEnabled": true,
+      "speedDuplexConfig": "100full",
+      "autoNegotiation": false,
+      "flowControl": true,
+      "powerSave": true
+    },
+    "interface_invalid_speed_duplex": {
+      "speedDuplexConfig": "invalid_speed"
+    },
+    "interface_invalid_vlan_id": {
+      "pvid": 5000
+    },
+    "interface_invalid_rate_limit": {
+      "ingressRateLimitStatus": true,
+      "ingressRateLimit": -1000
+    },
+    "interface_invalid_storm_control": {
+      "broadcastStorm": true,
+      "broadcastStormLimit": 100
+    },
+    "interface_invalid_priority": {
+      "priority": 10
+    },
+    "interface_invalid_channel_group": {
+      "channelGroup": 30
+    },
+    "interface_transceiver_current_out_of_range": {
+      "transceiverMonitor": true,
+      "txBiasCurrentHighAlarm": 15000
+    },
+    "interface_transceiver_power_out_of_range": {
+      "transceiverMonitor": true,
+      "txPowerHighAlarm": 1000
+    },
+    "interface_invalid_ip_format": {
+      "ip": "invalid.ip.address",
+      "role": "primary"
+    },
+    "interface_invalid_ip_role": {
+      "ip": "192.168.1.1/24",
+      "role": "invalid_role"
+    },
+    "interface_restore_normal_config": {
+      "isEnabled": true,
+      "ifName": "eth1/1",
+      "autoNegotiation": true,
+      "speedDuplexConfig": "none",
+      "flowControl": false,
+      "powerSave": false
+    },    
+    "igmpsnoop_enable_global": {
+      "igmpSnpEnable": true
+    },
+    "igmpsnoop_disable_global": {
+      "igmpSnpEnable": false
+    },
+    "igmpsnoop_re_enable_global": {
+      "igmpSnpEnable": true
+    },
+    "igmpsnoop_enable_vlan_1": {
+      "igmpSnpEnable": true
+    },
+    "igmpsnoop_enable_vlan_100": {
+      "igmpSnpEnable": true
+    },
+    "igmpsnoop_enable_vlan_1024": {
+      "igmpSnpEnable": true
+    },
+    "igmpsnoop_disable_vlan_2": {
+      "igmpSnpEnable": false
+    },
+    "igmpsnoop_enable_vlan_500": {
+      "igmpSnpEnable": true
+    },
+    "igmpsnoop_disable_vlan_500": {
+      "igmpSnpEnable": false
+    },
+    "igmpsnoop_enable_querier": {
+      "querierEnable": true
+    },
+    "igmpsnoop_disable_querier": {
+      "querierEnable": false
+    },
+    "igmpsnoop_re_enable_querier": {
+      "querierEnable": true
+    },
+    "igmpsnoop_enable_static_router_port_vlan1_eth1_1": {
+      "mrouterEnable": true
+    },
+    "igmpsnoop_enable_static_router_port_vlan1_eth1_2": {
+      "mrouterEnable": true
+    },
+    "igmpsnoop_enable_static_router_port_vlan100_eth1_5": {
+      "mrouterEnable": true
+    },
+    "igmpsnoop_enable_static_router_port_vlan200_trunk1": {
+      "mrouterEnable": true
+    },
+    "igmpsnoop_disable_static_router_port_vlan1_eth1_2": {
+      "mrouterEnable": false
+    },
+    "igmpsnoop_enterprise_config": {
+      "igmpSnpEnable": true
+    },
+    "igmpsnoop_batch_vlan_10": {
+      "igmpSnpEnable": true
+    },
+    "igmpsnoop_batch_vlan_20": {
+      "igmpSnpEnable": true
+    },
+    "igmpsnoop_batch_vlan_30": {
+      "igmpSnpEnable": true
+    },
+    "igmpsnoop_static_port_vlan10_eth1_10": {
+      "mrouterEnable": true
+    },
+    "igmpsnoop_static_port_vlan20_eth1_11": {
+      "mrouterEnable": true
+    },
+    "igmpsnoop_static_port_vlan30_trunk2": {
+      "mrouterEnable": true
+    },
+    "igmpsnoop_dynamic_querier_config": {
+      "querierEnable": true
+    },
+    "igmpsnoop_invalid_boolean_global": {
+      "igmpSnpEnable": "invalid_boolean"
+    },
+    "igmpsnoop_invalid_boolean_vlan": {
+      "igmpSnpEnable": "yes"
+    },
+    "igmpsnoop_invalid_boolean_querier": {
+      "querierEnable": 1
+    },
+    "igmpsnoop_missing_params_global": {},
+    "igmpsnoop_missing_params_static_port": {},
+    "igmpsnoop_invalid_parameter_names": {
+      "invalidParameter": true,
+      "anotherInvalidParam": false
+    },
+    "igmpsnoop_restore_normal_config": {
+      "igmpSnpEnable": true
+    },    
+    "file_delete_config": {
+      "unitId": 1
+    },
+    "file_delete_opcode": {
+      "unitId": 1
+    },
+    "file_copy_config_to_file": {
+      "srcOperType": "file",
+      "destOperType": "file",
+      "fileType": "config",
+      "srcFileName": "startup1.cfg",
+      "destFileName": "backup.cfg"
+    },
+    "file_copy_opcode_to_file": {
+      "srcOperType": "file",
+      "destOperType": "file",
+      "fileType": "opcode",
+      "filePath": "/tmp/AS3000_52P_V07.12.18.bix",
+      "destFileName": "AS3000_52P_V07.12.18.bix"
+    },
+    "file_copy_to_running_config": {
+      "srcOperType": "file",
+      "destOperType": "running-config",
+      "srcFileName": "startup1.cfg"
+    },
+    "file_copy_to_startup_config": {
+      "srcOperType": "file",
+      "destOperType": "startup-config",
+      "srcFileName": "running.cfg",
+      "destFileName": "startup1.cfg"
+    },
+    "file_copy_to_tftp": {
+      "srcOperType": "file",
+      "destOperType": "tftp",
+      "fileType": "config",
+      "serverIp": "192.168.1.175",
+      "srcFileName": "startup.cfg",
+      "destFileName": "backup.cfg"
+    },
+    "file_copy_to_ftp": {
+      "srcOperType": "file",
+      "destOperType": "ftp",
+      "fileType": "opcode",
+      "serverIp": "192.168.1.175",
+      "srcFileName": "AS3000_52P_V08.27.10.06.bix",
+      "destFileName": "backup.bix",
+      "username": "ftpuser",
+      "password": "ftppass"
+    },
+    "file_copy_to_unit": {
+      "srcOperType": "file",
+      "destOperType": "unit",
+      "fileType": "config",
+      "srcFileName": "startup.cfg",
+      "unitId": 2,
+      "destFileName": "sync.cfg"
+    },
+    "file_copy_tftp_to_file": {
+      "srcOperType": "tftp",
+      "destOperType": "file",
+      "fileType": "opcode",
+      "serverIp": "192.168.1.175",
+      "srcFileName": "AS3000_52P_V07.23.18.13.bix",
+      "destFileName": "new_firmware.bix"
+    },
+    "file_copy_sftp_to_startup": {
+      "srcOperType": "sftp",
+      "destOperType": "startup-config",
+      "serverIp": "192.168.1.175",
+      "srcFileName": "remote.cfg",
+      "destFileName": "startup_remote.cfg",
+      "username": "sftpuser",
+      "password": "sftppass"
+    },
+    "file_save_config": {
+      "startupFileName": "startup_backup.cfg"
+    },
+    "file_save_config_default": {
+      "startupFileName": "startup.cfg"
+    },
+    "file_save_config_custom": {
+      "startupFileName": "config_custom.cfg"
+    },
+    "file_set_startup_config": {
+      "fileType": "config",
+      "fileName": "startup1.cfg"
+    },
+    "file_set_startup_opcode": {
+      "fileType": "opcode",
+      "fileName": "AS3000_52P_V08.27.10.06.bix"
+    },
+    "file_set_unit_startup": {
+      "unitId": 1,
+      "fileType": "config",
+      "fileName": "unit1_startup.cfg"
+    },
+    "file_enable_auto_upgrade": {
+      "opcodeStatus": true,
+      "opcodeDirUrl": "tftp://192.168.1.175/firmware/",
+      "reloadStatus": true
+    },
+    "file_ftp_auto_upgrade": {
+      "opcodeStatus": true,
+      "opcodeDirUrl": "ftp://admin:password@192.168.1.100/firmware/",
+      "reloadStatus": false
+    },
+    "file_disable_auto_upgrade": {
+      "opcodeStatus": false,
+      "reloadStatus": false
+    },
+    "file_auto_reload_config": {
+      "opcodeStatus": true,
+      "opcodeDirUrl": "tftp://192.168.1.175/updates/",
+      "reloadStatus": true
+    },
+    "file_batch_copy_1": {
+      "srcOperType": "file",
+      "destOperType": "file",
+      "fileType": "config",
+      "srcFileName": "startup1.cfg",
+      "destFileName": "batch_backup_1.cfg"
+    },
+    "file_batch_copy_2": {
+      "srcOperType": "file",
+      "destOperType": "file",
+      "fileType": "config",
+      "srcFileName": "Factory_Default_Config.cfg",
+      "destFileName": "batch_backup_2.cfg"
+    },
+    "file_cross_protocol_transfer": {
+      "srcOperType": "tftp",
+      "destOperType": "ftp",
+      "fileType": "opcode",
+      "serverIp": "192.168.1.175",
+      "srcFileName": "source.bix",
+      "destFileName": "destination.bix",
+      "username": "ftpuser",
+      "password": "ftppass"
+    },
+    "file_multi_unit_sync": {
+      "srcOperType": "file",
+      "destOperType": "unit",
+      "fileType": "config",
+      "srcFileName": "master_config.cfg",
+      "unitId": 2,
+      "destFileName": "synced_config.cfg"
+    },
+    "file_backup_workflow": {
+      "srcOperType": "running-config",
+      "destOperType": "tftp",
+      "serverIp": "192.168.1.175",
+      "destFileName": "backup_config.cfg"
+    },
+    "file_firmware_upgrade": {
+      "srcOperType": "tftp",
+      "destOperType": "file",
+      "fileType": "opcode",
+      "serverIp": "192.168.1.175",
+      "srcFileName": "latest_firmware.bix",
+      "destFileName": "upgrade_firmware.bix"
+    },
+    "file_invalid_source_type": {
+      "srcOperType": "invalid_source",
+      "destOperType": "file",
+      "fileType": "config",
+      "srcFileName": "test.cfg",
+      "destFileName": "dest.cfg"
+    },
+    "file_invalid_dest_type": {
+      "srcOperType": "file",
+      "destOperType": "invalid_destination",
+      "fileType": "config",
+      "srcFileName": "test.cfg",
+      "destFileName": "dest.cfg"
+    },
+    "file_copy_missing_params": {
+      "srcOperType": "file",
+      "destOperType": "tftp"
+    },
+    "file_invalid_server_ip": {
+      "srcOperType": "file",
+      "destOperType": "tftp",
+      "fileType": "config",
+      "serverIp": "invalid.ip.address",
+      "srcFileName": "test.cfg",
+      "destFileName": "dest.cfg"
+    },
+    "file_invalid_unit_id": {
+      "srcOperType": "file",
+      "destOperType": "unit",
+      "fileType": "config",
+      "srcFileName": "test.cfg",
+      "unitId": 99,
+      "destFileName": "dest.cfg"
+    },
+    "file_invalid_file_type": {
+      "srcOperType": "file",
+      "destOperType": "file",
+      "fileType": "invalid_type",
+      "srcFileName": "test.cfg",
+      "destFileName": "dest.cfg"
+    },
+    "file_nonexistent_boot_file": {
+      "fileType": "config",
+      "fileName": "nonexistent.cfg"
+    },
+    "file_invalid_upgrade_url": {
+      "opcodeStatus": true,
+      "opcodeDirUrl": "invalid://invalid.url/path/",
+      "reloadStatus": true
+    },    
+    "dos_protection_enable_all": {
+      "echoChargenStatus": true,
+      "echoChargenRate": 1000,
+      "smurfStatus": true,
+      "tcpFloodingStatus": true,
+      "tcpFloodingRate": 1000,
+      "tcpNullScanStatus": true,
+      "tcpSynFinScanStatus": true,
+      "tcpUdpPortZeroStatus": true,
+      "tcpXmasScanStatus": true,
+      "udpFloodingStatus": true,
+      "udpFloodingRate": 1000,
+      "winNukeStatus": true,
+      "winNukeRate": 1000
+    },
+    "dos_protection_disable_all": {
+      "echoChargenStatus": false,
+      "smurfStatus": false,
+      "tcpFloodingStatus": false,
+      "tcpNullScanStatus": false,
+      "tcpSynFinScanStatus": false,
+      "tcpUdpPortZeroStatus": false,
+      "tcpXmasScanStatus": false,
+      "udpFloodingStatus": false,
+      "winNukeStatus": false
+    },
+    "dos_protection_basic_config": {
+      "echoChargenStatus": true,
+      "echoChargenRate": 500,
+      "smurfStatus": true,
+      "tcpFloodingStatus": true,
+      "tcpFloodingRate": 800,
+      "udpFloodingStatus": true,
+      "udpFloodingRate": 600
+    },
+    "dos_protection_echo_chargen": {
+      "echoChargenStatus": true,
+      "echoChargenRate": 1500
+    },
+    "dos_protection_smurf": {
+      "smurfStatus": true
+    },
+    "dos_protection_winnuke": {
+      "winNukeStatus": true,
+      "winNukeRate": 800
+    },
+    "dos_protection_disable_specific": {
+      "echoChargenStatus": false,
+      "winNukeStatus": false
+    },
+    "dos_protection_minimum_rates": {
+      "echoChargenStatus": true,
+      "echoChargenRate": 64,
+      "tcpFloodingStatus": true,
+      "tcpFloodingRate": 64,
+      "udpFloodingStatus": true,
+      "udpFloodingRate": 64,
+      "winNukeStatus": true,
+      "winNukeRate": 64
+    },
+    "dos_protection_maximum_rates": {
+      "echoChargenStatus": true,
+      "echoChargenRate": 2000,
+      "tcpFloodingStatus": true,
+      "tcpFloodingRate": 2000,
+      "udpFloodingStatus": true,
+      "udpFloodingRate": 2000,
+      "winNukeStatus": true,
+      "winNukeRate": 2000
+    },
+    "dos_protection_medium_rates": {
+      "echoChargenStatus": true,
+      "echoChargenRate": 1000,
+      "tcpFloodingStatus": true,
+      "tcpFloodingRate": 1200,
+      "udpFloodingStatus": true,
+      "udpFloodingRate": 800,
+      "winNukeStatus": true,
+      "winNukeRate": 600
+    },
+    "dos_protection_custom_rates": {
+      "echoChargenStatus": true,
+      "echoChargenRate": 256,
+      "tcpFloodingStatus": true,
+      "tcpFloodingRate": 512,
+      "udpFloodingStatus": true,
+      "udpFloodingRate": 768,
+      "winNukeStatus": true,
+      "winNukeRate": 1024
+    },
+    "dos_protection_all_scan_protections": {
+      "tcpNullScanStatus": true,
+      "tcpSynFinScanStatus": true,
+      "tcpUdpPortZeroStatus": true,
+      "tcpXmasScanStatus": true
+    },
+    "dos_protection_tcp_null_scan": {
+      "tcpNullScanStatus": true
+    },
+    "dos_protection_tcp_syn_fin_scan": {
+      "tcpSynFinScanStatus": true
+    },
+    "dos_protection_tcp_udp_port_zero": {
+      "tcpUdpPortZeroStatus": true
+    },
+    "dos_protection_tcp_xmas_scan": {
+      "tcpXmasScanStatus": true
+    },
+    "dos_protection_disable_all_scan": {
+      "tcpNullScanStatus": false,
+      "tcpSynFinScanStatus": false,
+      "tcpUdpPortZeroStatus": false,
+      "tcpXmasScanStatus": false
+    },
+    "dos_protection_tcp_flooding": {
+      "tcpFloodingStatus": true,
+      "tcpFloodingRate": 1500
+    },
+    "dos_protection_udp_flooding": {
+      "udpFloodingStatus": true,
+      "udpFloodingRate": 1200
+    },
+    "dos_protection_high_intensity_flooding": {
+      "tcpFloodingStatus": true,
+      "tcpFloodingRate": 2000,
+      "udpFloodingStatus": true,
+      "udpFloodingRate": 2000
+    },
+    "dos_protection_low_intensity_flooding": {
+      "tcpFloodingStatus": true,
+      "tcpFloodingRate": 64,
+      "udpFloodingStatus": true,
+      "udpFloodingRate": 64
+    },
+    "dos_protection_disable_flooding": {
+      "tcpFloodingStatus": false,
+      "udpFloodingStatus": false
+    },
+    "dos_protection_enterprise_policy": {
+      "echoChargenStatus": true,
+      "echoChargenRate": 500,
+      "smurfStatus": true,
+      "tcpFloodingStatus": true,
+      "tcpFloodingRate": 1000,
+      "tcpNullScanStatus": true,
+      "tcpSynFinScanStatus": true,
+      "tcpUdpPortZeroStatus": true,
+      "tcpXmasScanStatus": true,
+      "udpFloodingStatus": true,
+      "udpFloodingRate": 800,
+      "winNukeStatus": true,
+      "winNukeRate": 600
+    },
+    "dos_protection_high_security_policy": {
+      "echoChargenStatus": true,
+      "echoChargenRate": 128,
+      "smurfStatus": true,
+      "tcpFloodingStatus": true,
+      "tcpFloodingRate": 256,
+      "tcpNullScanStatus": true,
+      "tcpSynFinScanStatus": true,
+      "tcpUdpPortZeroStatus": true,
+      "tcpXmasScanStatus": true,
+      "udpFloodingStatus": true,
+      "udpFloodingRate": 192,
+      "winNukeStatus": true,
+      "winNukeRate": 128
+    },
+    "dos_protection_balanced_policy": {
+      "echoChargenStatus": true,
+      "echoChargenRate": 1000,
+      "smurfStatus": true,
+      "tcpFloodingStatus": true,
+      "tcpFloodingRate": 1000,
+      "tcpNullScanStatus": true,
+      "tcpSynFinScanStatus": true,
+      "tcpUdpPortZeroStatus": false,
+      "tcpXmasScanStatus": true,
+      "udpFloodingStatus": true,
+      "udpFloodingRate": 1000,
+      "winNukeStatus": false,
+      "winNukeRate": 1000
+    },
+    "dos_protection_dynamic_parameters": {
+      "echoChargenRate": 750,
+      "tcpFloodingRate": 1250,
+      "udpFloodingRate": 900,
+      "winNukeRate": 700
+    },
+    "dos_protection_policy_switching": {
+      "echoChargenStatus": false,
+      "smurfStatus": true,
+      "tcpFloodingStatus": false,
+      "tcpNullScanStatus": false,
+      "tcpSynFinScanStatus": true,
+      "tcpUdpPortZeroStatus": true,
+      "tcpXmasScanStatus": false,
+      "udpFloodingStatus": false,
+      "winNukeStatus": true,
+      "winNukeRate": 1500
+    },
+    "dos_protection_rate_below_minimum": {
+      "echoChargenStatus": true,
+      "echoChargenRate": 32
+    },
+    "dos_protection_rate_above_maximum": {
+      "tcpFloodingStatus": true,
+      "tcpFloodingRate": 3000
+    },
+    "dos_protection_invalid_boolean": {
+      "smurfStatus": "invalid_boolean"
+    },
+    "dos_protection_invalid_parameter_names": {
+      "invalidParameter": true,
+      "anotherInvalidParam": 1000
+    },
+    "dos_protection_negative_rate": {
+      "udpFloodingStatus": true,
+      "udpFloodingRate": -100
+    },
+    "dos_protection_zero_rate": {
+      "winNukeStatus": true,
+      "winNukeRate": 0
+    },
+    "dos_protection_string_rate": {
+      "echoChargenStatus": true,
+      "echoChargenRate": "invalid_rate"
+    },
+    "dos_protection_restore_normal_config": {
+      "echoChargenStatus": false,
+      "echoChargenRate": 1000,
+      "smurfStatus": true,
+      "tcpFloodingStatus": false,
+      "tcpFloodingRate": 1000,
+      "tcpNullScanStatus": true,
+      "tcpSynFinScanStatus": true,
+      "tcpUdpPortZeroStatus": true,
+      "tcpXmasScanStatus": true,
+      "udpFloodingStatus": false,
+      "udpFloodingRate": 1000,
+      "winNukeStatus": false,
+      "winNukeRate": 1000
+    },    
+    "dns_enable_domain_lookup": {
+      "domainLookup": true,
+      "domainName": "company.com",
+      "domainLists": [
+        {"listName": "company.com.local"},
+        {"listName": "company.com.internal"}
+      ],
+      "nameServerInets": [
+        {"ip": "8.8.8.8"},
+        {"ip": "8.8.4.4"}
+      ]
+    },
+    "dns_disable_domain_lookup": {
+      "domainLookup": false
+    },
+    "dns_re_enable_domain_lookup": {
+      "domainLookup": true,
+      "domainName": "example.org"
+    },
+    "dns_primary_domain": {
+      "domainLookup": true,
+      "domainName": "primary.example.com",
+      "domainLists": [
+        {"listName": "primary.example.com"}
+      ]
+    },
+    "dns_multiple_domains": {
+      "domainLookup": true,
+      "domainName": "multi.example.com",
+      "domainLists": [
+        {"listName": "dev.example.com"},
+        {"listName": "test.example.com"},
+        {"listName": "prod.example.com"},
+        {"listName": "staging.example.com"}
+      ]
+    },
+    "dns_enterprise_domain": {
+      "domainLookup": true,
+      "domainName": "enterprise.local",
+      "domainLists": [
+        {"listName": "hr.enterprise.local"},
+        {"listName": "it.enterprise.local"},
+        {"listName": "finance.enterprise.local"}
+      ]
+    },
+    "dns_international_domains": {
+      "domainLookup": true,
+      "domainName": "global.company.com",
+      "domainLists": [
+        {"listName": "us.company.com"},
+        {"listName": "eu.company.com"},
+        {"listName": "asia.company.com"}
+      ]
+    },
+    "dns_public_nameservers": {
+      "domainLookup": true,
+      "nameServerInets": [
+        {"ip": "8.8.8.8"},
+        {"ip": "8.8.4.4"},
+        {"ip": "1.1.1.1"},
+        {"ip": "1.0.0.1"}
+      ]
+    },
+    "dns_internal_nameservers": {
+      "domainLookup": true,
+      "nameServerInets": [
+        {"ip": "192.168.1.10"},
+        {"ip": "192.168.1.11"},
+        {"ip": "10.0.0.53"}
+      ]
+    },
+    "dns_hybrid_nameservers": {
+      "domainLookup": true,
+      "nameServerInets": [
+        {"ip": "192.168.96.6"},
+        {"ip": "192.168.112.5"},
+        {"ip": "8.8.8.8"}
+      ]
+    },
+    "dns_ipv6_nameservers": {
+      "domainLookup": true,
+      "nameServerInets": [
+        {"ip": "2001:4860:4860::8888"},
+        {"ip": "2001:4860:4860::8844"},
+        {"ip": "192.168.1.53"}
+      ]
+    },
+    "dns_single_nameserver": {
+      "domainLookup": true,
+      "nameServerInets": [
+        {"ip": "10.1.0.20"}
+      ]
+    },
+    "dns_static_host_records": {
+      "domainLookup": true,
+      "hosts": [
+        {
+          "hostIp": "192.168.1.55",
+          "hostName": "server1.local"
+        },
+        {
+          "hostIp": "192.168.1.56",
+          "hostName": "server2.local"
+        }
+      ]
+    },
+    "dns_web_server_records": {
+      "domainLookup": true,
+      "hosts": [
+        {
+          "hostIp": "192.168.115.16",
+          "hostName": "www.company.com"
+        },
+        {
+          "hostIp": "192.168.115.17",
+          "hostName": "mail.company.com"
+        },
+        {
+          "hostIp": "192.168.115.18",
+          "hostName": "ftp.company.com"
+        }
+      ]
+    },
+    "dns_database_server_records": {
+      "domainLookup": true,
+      "hosts": [
+        {
+          "hostIp": "10.0.1.100",
+          "hostName": "db-primary.internal"
+        },
+        {
+          "hostIp": "10.0.1.101",
+          "hostName": "db-secondary.internal"
+        }
+      ]
+    },
+    "dns_application_server_records": {
+      "domainLookup": true,
+      "hosts": [
+        {
+          "hostIp": "172.16.1.50",
+          "hostName": "app1.enterprise.local"
+        },
+        {
+          "hostIp": "172.16.1.51",
+          "hostName": "app2.enterprise.local"
+        },
+        {
+          "hostIp": "172.16.1.52",
+          "hostName": "api.enterprise.local"
+        }
+      ]
+    },
+    "dns_reconfigure_for_cache": {
+      "domainLookup": true,
+      "domainName": "cache-test.com",
+      "nameServerInets": [
+        {"ip": "8.8.8.8"}
+      ]
+    },
+    "dns_complete_environment": {
+      "domainLookup": true,
+      "domainName": "complete.example.com",
+      "domainLists": [
+        {"listName": "dev.complete.example.com"},
+        {"listName": "test.complete.example.com"},
+        {"listName": "prod.complete.example.com"}
+      ],
+      "nameServerInets": [
+        {"ip": "192.168.96.6"},
+        {"ip": "192.168.112.5"},
+        {"ip": "8.8.8.8"},
+        {"ip": "1.1.1.1"}
+      ],
+      "hosts": [
+        {"hostIp": "192.168.1.10", "hostName": "web.complete.example.com"},
+        {"hostIp": "192.168.1.11", "hostName": "db.complete.example.com"},
+        {"hostIp": "192.168.1.12", "hostName": "api.complete.example.com"}
+      ]
+    },
+    "dns_batch_host_records": {
+      "domainLookup": true,
+      "hosts": [
+        {"hostIp": "10.0.1.10", "hostName": "node1.cluster.local"},
+        {"hostIp": "10.0.1.11", "hostName": "node2.cluster.local"},
+        {"hostIp": "10.0.1.12", "hostName": "node3.cluster.local"},
+        {"hostIp": "10.0.1.13", "hostName": "node4.cluster.local"},
+        {"hostIp": "10.0.1.14", "hostName": "node5.cluster.local"}
+      ]
+    },
+    "dns_dynamic_configuration": {
+      "domainLookup": true,
+      "domainName": "dynamic.local",
+      "nameServerInets": [
+        {"ip": "192.168.1.53"},
+        {"ip": "192.168.1.54"}
+      ]
+    },
+    "dns_configuration_switching": {
+      "domainLookup": true,
+      "domainName": "switched.example.org",
+      "domainLists": [
+        {"listName": "new.switched.example.org"}
+      ],
+      "nameServerInets": [
+        {"ip": "9.9.9.9"},
+        {"ip": "149.112.112.112"}
+      ]
+    },
+    "dns_invalid_ip_format": {
+      "domainLookup": true,
+      "nameServerInets": [
+        {"ip": "invalid.ip.address"}
+      ]
+    },
+    "dns_invalid_domain_format": {
+      "domainLookup": true,
+      "domainName": "invalid..domain..name"
+    },
+    "dns_oversized_domain_name": {
+      "domainLookup": true,
+      "domainName": "verylongdomainnamethatexceedsthemaximumlengthof127charactersallowedbytheapiandshouldcauseanerrorwhensubmittedtothednsapi.com"
+    },
+    "dns_oversized_hostname": {
+      "domainLookup": true,
+      "hosts": [
+        {
+          "hostIp": "192.168.1.100",
+          "hostName": "verylonghostnamethatexceedsthemaximumlengthof100charactersallowedbytheapiandshouldcause.local"
+        }
+      ]
+    },
+    "dns_exceed_nameserver_limit": {
+      "domainLookup": true,
+      "nameServerInets": [
+        {"ip": "8.8.8.8"},
+        {"ip": "8.8.4.4"},
+        {"ip": "1.1.1.1"},
+        {"ip": "1.0.0.1"},
+        {"ip": "9.9.9.9"},
+        {"ip": "149.112.112.112"},
+        {"ip": "208.67.222.222"}
+      ]
+    },
+    "dns_missing_required_params": {
+      "domainLookup": true,
+      "domainLists": [
+        {}
+      ]
+    },
+    "dns_empty_hostname": {
+      "domainLookup": true,
+      "hosts": [
+        {
+          "hostIp": "192.168.1.100",
+          "hostName": ""
+        }
+      ]
+    },
+    "dns_restore_normal_config": {
+      "domainLookup": true,
+      "domainName": "example.com",
+      "nameServerInets": [
+        {"ip": "8.8.8.8"}
+      ]
+    },    
+    "device_expected_attributes": {
+      "type": "string",
+      "manufacturer": "string", 
+      "hwVersion": "string",
+      "swVersion": "string",
+      "serialNumber": "string",
+      "chassisId": "string"
+    },
+    "device_type_validation": {
+      "max_length": 255,
+      "required": true,
+      "type": "string"
+    },
+    "device_manufacturer_validation": {
+      "required": true,
+      "type": "string",
+      "expected_values": [
+        "Alibaba Group",
+        "Huawei Technologies",
+        "Cisco Systems",
+        "Juniper Networks",
+        "Arista Networks"
+      ]
+    },
+    "device_version_validation": {
+      "hw_version_pattern": "^R\\d+$",
+      "sw_version_pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
+    },
+    "device_serial_number_validation": {
+      "required": true,
+      "type": "string",
+      "min_length": 1
+    },
+    "device_chassis_id_validation": {
+      "required": true,
+      "type": "string",
+      "description": "Device CPU MAC address"
+    },
+    "device_performance_thresholds": {
+      "max_response_time_ms": 1000,
+      "min_response_time_ms": 10,
+      "acceptable_response_time_ms": 500
+    },
+    "device_network_checks": {
+      "connectivity_required": true,
+      "api_availability_required": true,
+      "service_status_required": "active"
+    },
+    "device_compatibility_matrix": {
+      "supported_hw_versions": ["R01", "R02", "R03"],
+      "supported_sw_versions": ["1.0.0.6", "1.0.0.7", "1.1.0.0"],
+      "minimum_sw_version": "1.0.0.0"
+    },
+    "device_type_categories": {
+      "layer2_switches": [
+        "L2 24 1G managed switch",
+        "L2 48 1G managed switch"
+      ],
+      "layer3_switches": [
+        "L3 24 1G PoE managed switch",
+        "L3 48 1G PoE + 4 SFP+ managed switch"
+      ],
+      "routers": [
+        "Enterprise Router",
+        "Core Router"
+      ]
+    },
+    "device_feature_matrix": {
+      "poe_support": true,
+      "sfp_ports": 4,
+      "ethernet_ports": 48,
+      "management_capabilities": [
+        "SNMP",
+        "SSH",
+        "Telnet",
+        "Web UI",
+        "REST API"
+      ]
+    },    
+    "cos_queue_wrr_mode": {
+      "queueMode": "wrr",
+      "queues": [
+        {"property": 0, "weight": 1},
+        {"property": 0, "weight": 2},
+        {"property": 0, "weight": 3},
+        {"property": 0, "weight": 4},
+        {"property": 0, "weight": 5},
+        {"property": 0, "weight": 6},
+        {"property": 0, "weight": 7},
+        {"property": 0, "weight": 8}
+      ]
+    },
+    "cos_queue_strict_mode": {
+      "queueMode": "strict",
+      "queues": [
+        {"property": 1, "weight": 1},
+        {"property": 1, "weight": 1},
+        {"property": 1, "weight": 1},
+        {"property": 1, "weight": 1},
+        {"property": 1, "weight": 1},
+        {"property": 1, "weight": 1},
+        {"property": 1, "weight": 1},
+        {"property": 1, "weight": 1}
+      ]
+    },
+    "cos_queue_strict_wrr_mode": {
+      "queueMode": "strict-wrr",
+      "queues": [
+        {"property": 0, "weight": 10},
+        {"property": 0, "weight": 20},
+        {"property": 0, "weight": 30},
+        {"property": 0, "weight": 40},
+        {"property": 0, "weight": 50},
+        {"property": 0, "weight": 60},
+        {"property": 1, "weight": 1},
+        {"property": 1, "weight": 1}
+      ]
+    },
+    "cos_equal_weight_wrr": {
+      "queueMode": "wrr",
+      "queues": [
+        {"property": 0, "weight": 10},
+        {"property": 0, "weight": 10},
+        {"property": 0, "weight": 10},
+        {"property": 0, "weight": 10},
+        {"property": 0, "weight": 10},
+        {"property": 0, "weight": 10},
+        {"property": 0, "weight": 10},
+        {"property": 0, "weight": 10}
+      ]
+    },
+    "cos_incremental_weight_wrr": {
+      "queueMode": "wrr",
+      "queues": [
+        {"property": 0, "weight": 5},
+        {"property": 0, "weight": 10},
+        {"property": 0, "weight": 15},
+        {"property": 0, "weight": 20},
+        {"property": 0, "weight": 25},
+        {"property": 0, "weight": 30},
+        {"property": 0, "weight": 35},
+        {"property": 0, "weight": 40}
+      ]
+    },
+    "cos_high_priority_strict": {
+      "queueMode": "strict-wrr",
+      "queues": [
+        {"property": 0, "weight": 5},
+        {"property": 0, "weight": 10},
+        {"property": 0, "weight": 15},
+        {"property": 0, "weight": 20},
+        {"property": 0, "weight": 25},
+        {"property": 0, "weight": 30},
+        {"property": 1, "weight": 1},
+        {"property": 1, "weight": 1}
+      ]
+    },
+    "cos_max_weight_values": {
+      "queueMode": "wrr",
+      "queues": [
+        {"property": 0, "weight": 255},
+        {"property": 0, "weight": 255},
+        {"property": 0, "weight": 255},
+        {"property": 0, "weight": 255},
+        {"property": 0, "weight": 255},
+        {"property": 0, "weight": 255},
+        {"property": 0, "weight": 255},
+        {"property": 0, "weight": 255}
+      ]
+    },
+    "cos_min_weight_values": {
+      "queueMode": "wrr",
+      "queues": [
+        {"property": 0, "weight": 1},
+        {"property": 0, "weight": 1},
+        {"property": 0, "weight": 1},
+        {"property": 0, "weight": 1},
+        {"property": 0, "weight": 1},
+        {"property": 0, "weight": 1},
+        {"property": 0, "weight": 1},
+        {"property": 0, "weight": 1}
+      ]
+    },
+    "cos_interface_priority_0": {
+      "priority": 0
+    },
+    "cos_interface_priority_3": {
+      "priority": 3
+    },
+    "cos_interface_priority_5": {
+      "priority": 5
+    },
+    "cos_interface_priority_7": {
+      "priority": 7
+    },
+    "cos_trunk_priority_4": {
+      "priority": 4
+    },
+    "cos_qos_mapping_cos_trust": {
+      "cosToDscp": [
+        {"cos": 7, "cfi": 1, "phb": 0, "dropPrecedence": 0},
+        {"cos": 7, "cfi": 0, "phb": 1, "dropPrecedence": 3}
+      ],
+      "dscpToDscp": [
+        {"dscp": 0, "phb": 0, "dropPrecedence": 0},
+        {"dscp": 1, "phb": 0, "dropPrecedence": 1}
+      ],
+      "dscpToQueue": [
+        {"phb": 0, "queue": 2},
+        {"phb": 1, "queue": 0}
+      ],
+      "classificationMode": "cos"
+    },
+    "cos_qos_mapping_dscp_trust": {
+      "cosToDscp": [
+        {"cos": 0, "cfi": 0, "phb": 0, "dropPrecedence": 0},
+        {"cos": 1, "cfi": 0, "phb": 1, "dropPrecedence": 0}
+      ],
+      "dscpToDscp": [
+        {"dscp": 46, "phb": 7, "dropPrecedence": 0},
+        {"dscp": 34, "phb": 6, "dropPrecedence": 0}
+      ],
+      "dscpToQueue": [
+        {"phb": 7, "queue": 7},
+        {"phb": 6, "queue": 6}
+      ],
+      "classificationMode": "dscp"
+    },
+    "cos_qos_mapping_ip_prec_trust": {
+      "cosToDscp": [
+        {"cos": 5, "cfi": 0, "phb": 5, "dropPrecedence": 0},
+        {"cos": 6, "cfi": 0, "phb": 6, "dropPrecedence": 0}
+      ],
+      "dscpToDscp": [
+        {"dscp": 40, "phb": 5, "dropPrecedence": 0},
+        {"dscp": 48, "phb": 6, "dropPrecedence": 0}
+      ],
+      "dscpToQueue": [
+        {"phb": 5, "queue": 5},
+        {"phb": 6, "queue": 6}
+      ],
+      "classificationMode": "ip-prec"
+    },
+    "cos_voice_traffic_qos": {
+      "cosToDscp": [
+        {"cos": 5, "cfi": 0, "phb": 7, "dropPrecedence": 0}
+      ],
+      "dscpToDscp": [
+        {"dscp": 46, "phb": 7, "dropPrecedence": 0}
+      ],
+      "dscpToQueue": [
+        {"phb": 7, "queue": 7}
+      ],
+      "classificationMode": "dscp"
+    },
+    "cos_video_traffic_qos": {
+      "cosToDscp": [
+        {"cos": 4, "cfi": 0, "phb": 6, "dropPrecedence": 0}
+      ],
+      "dscpToDscp": [
+        {"dscp": 34, "phb": 6, "dropPrecedence": 0}
+      ],
+      "dscpToQueue": [
+        {"phb": 6, "queue": 6}
+      ],
+      "classificationMode": "dscp"
+    },
+    "cos_data_traffic_qos": {
+      "cosToDscp": [
+        {"cos": 0, "cfi": 0, "phb": 0, "dropPrecedence": 0},
+        {"cos": 1, "cfi": 0, "phb": 1, "dropPrecedence": 0}
+      ],
+      "dscpToDscp": [
+        {"dscp": 0, "phb": 0, "dropPrecedence": 0},
+        {"dscp": 8, "phb": 1, "dropPrecedence": 0}
+      ],
+      "dscpToQueue": [
+        {"phb": 0, "queue": 0},
+        {"phb": 1, "queue": 1}
+      ],
+      "classificationMode": "dscp"
+    },
+    "cos_management_traffic_qos": {
+      "cosToDscp": [
+        {"cos": 6, "cfi": 0, "phb": 6, "dropPrecedence": 0}
+      ],
+      "dscpToDscp": [
+        {"dscp": 48, "phb": 6, "dropPrecedence": 0}
+      ],
+      "dscpToQueue": [
+        {"phb": 6, "queue": 6}
+      ],
+      "classificationMode": "dscp"
+    },
+    "cos_trunk_qos": {
+      "cosToDscp": [
+        {"cos": 0, "cfi": 0, "phb": 0, "dropPrecedence": 0},
+        {"cos": 1, "cfi": 0, "phb": 1, "dropPrecedence": 0},
+        {"cos": 2, "cfi": 0, "phb": 2, "dropPrecedence": 0},
+        {"cos": 3, "cfi": 0, "phb": 3, "dropPrecedence": 0},
+        {"cos": 4, "cfi": 0, "phb": 4, "dropPrecedence": 0},
+        {"cos": 5, "cfi": 0, "phb": 5, "dropPrecedence": 0},
+        {"cos": 6, "cfi": 0, "phb": 6, "dropPrecedence": 0},
+        {"cos": 7, "cfi": 0, "phb": 7, "dropPrecedence": 0}
+      ],
+      "classificationMode": "cos"
+    },
+    "cos_batch_priority_1": {
+      "priority": 2
+    },
+    "cos_batch_priority_2": {
+      "priority": 3
+    },
+    "cos_batch_priority_3": {
+      "priority": 4
+    },
+    "cos_dynamic_queue_weights": {
+      "queueMode": "wrr",
+      "queues": [
+        {"property": 0, "weight": 1},
+        {"property": 0, "weight": 4},
+        {"property": 0, "weight": 8},
+        {"property": 0, "weight": 16},
+        {"property": 0, "weight": 32},
+        {"property": 0, "weight": 64},
+        {"property": 0, "weight": 128},
+        {"property": 0, "weight": 255}
+      ]
+    },
+    "cos_complex_qos_mapping": {
+      "cosToDscp": [
+        {"cos": 0, "cfi": 0, "phb": 0, "dropPrecedence": 0},
+        {"cos": 1, "cfi": 0, "phb": 1, "dropPrecedence": 1},
+        {"cos": 2, "cfi": 0, "phb": 2, "dropPrecedence": 0},
+        {"cos": 3, "cfi": 0, "phb": 3, "dropPrecedence": 1},
+        {"cos": 4, "cfi": 0, "phb": 4, "dropPrecedence": 0},
+        {"cos": 5, "cfi": 0, "phb": 5, "dropPrecedence": 0},
+        {"cos": 6, "cfi": 0, "phb": 6, "dropPrecedence": 0},
+        {"cos": 7, "cfi": 0, "phb": 7, "dropPrecedence": 0}
+      ],
+      "dscpToDscp": [
+        {"dscp": 0, "phb": 0, "dropPrecedence": 0},
+        {"dscp": 8, "phb": 1, "dropPrecedence": 1},
+        {"dscp": 16, "phb": 2, "dropPrecedence": 0},
+        {"dscp": 24, "phb": 3, "dropPrecedence": 1},
+        {"dscp": 32, "phb": 4, "dropPrecedence": 0},
+        {"dscp": 40, "phb": 5, "dropPrecedence": 0},
+        {"dscp": 48, "phb": 6, "dropPrecedence": 0},
+        {"dscp": 56, "phb": 7, "dropPrecedence": 0}
+      ],
+      "dscpToQueue": [
+        {"phb": 0, "queue": 0},
+        {"phb": 1, "queue": 1},
+        {"phb": 2, "queue": 2},
+        {"phb": 3, "queue": 3},
+        {"phb": 4, "queue": 4},
+        {"phb": 5, "queue": 5},
+        {"phb": 6, "queue": 6},
+        {"phb": 7, "queue": 7}
+      ],
+      "classificationMode": "dscp"
+    },
+    "cos_invalid_priority": {
+      "priority": 8
+    },
+    "cos_invalid_queue_weight": {
+      "queueMode": "wrr",
+      "queues": [
+        {"property": 0, "weight": 256}
+      ]
+    },    
+    "cluster_enable_basic": {
+      "clusterEnable": true,
+      "commanderEnable": false,
+      "ipPool": "10.254.254.1"
+    },
+    "cluster_enable_commander": {
+      "clusterEnable": true,
+      "commanderEnable": true,
+      "ipPool": "10.254.254.1"
+    },
+    "cluster_ip_pool_subnet1": {
+      "clusterEnable": true,
+      "commanderEnable": true,
+      "ipPool": "10.100.100.1"
+    },
+    "cluster_ip_pool_subnet2": {
+      "clusterEnable": true,
+      "commanderEnable": true,
+      "ipPool": "10.200.200.1"
+    },
+    "cluster_disable_commander": {
+      "clusterEnable": true,
+      "commanderEnable": false,
+      "ipPool": "10.254.254.2"
+    },
+    "cluster_disable_completely": {
+      "clusterEnable": false
+    },
+    "cluster_re_enable": {
+      "clusterEnable": true,
+      "commanderEnable": true,
+      "ipPool": "10.254.254.1"
+    },
+    "cluster_member_1": {
+      "macAddress": "00-e0-0c-00-00-01",
+      "memberId": 1
+    },
+    "cluster_member_2": {
+      "macAddress": "00-e0-0c-00-00-02",
+      "memberId": 2
+    },
+    "cluster_member_3": {
+      "macAddress": "00-e0-0c-00-00-03",
+      "memberId": 3
+    },
+    "cluster_member_max_id": {
+      "macAddress": "00-e0-0c-00-00-24",
+      "memberId": 36
+    },
+    "cluster_member_different_mac": {
+      "macAddress": "aa-bb-cc-dd-ee-ff",
+      "memberId": 4
+    },
+    "cluster_member_for_candidates_1": {
+      "macAddress": "00-e0-0c-00-00-10",
+      "memberId": 10
+    },
+    "cluster_member_for_candidates_2": {
+      "macAddress": "00-e0-0c-00-00-11",
+      "memberId": 11
+    },
+    "cluster_batch_member_1": {
+      "macAddress": "00-e0-0c-00-01-01",
+      "memberId": 20
+    },
+    "cluster_batch_member_2": {
+      "macAddress": "00-e0-0c-00-01-02",
+      "memberId": 21
+    },
+    "cluster_batch_member_3": {
+      "macAddress": "00-e0-0c-00-01-03",
+      "memberId": 22
+    },
+    "cluster_dynamic_ip_pool": {
+      "clusterEnable": true,
+      "commanderEnable": false,
+      "ipPool": "10.254.254.100"
+    },
+    "cluster_toggle_commander": {
+      "clusterEnable": true,
+      "commanderEnable": true,
+      "ipPool": "10.254.254.1"
+    },
+    "cluster_invalid_member_id": {
+      "macAddress": "00-e0-0c-00-00-ff",
+      "memberId": 37
+    },
+    "cluster_duplicate_member_id": {
+      "macAddress": "00-e0-0c-00-00-aa",
+      "memberId": 1
+    },
+    "cluster_invalid_mac_format": {
+      "macAddress": "invalid-mac-address",
+      "memberId": 30
+    },
+    "cluster_invalid_ip_pool": {
+      "clusterEnable": true,
+      "commanderEnable": true,
+      "ipPool": "invalid.ip.format"
+    },
+    "cluster_commander_when_disabled": {
+      "clusterEnable": false,
+      "commanderEnable": true
+    },
+    "cluster_ip_pool_when_disabled": {
+      "clusterEnable": false,
+      "ipPool": "10.254.254.1"
+    },
+    "cluster_restore_normal": {
+      "clusterEnable": true,
+      "commanderEnable": true,
+      "ipPool": "10.254.254.1"
+    },
+    "cluster_production_config": {
+      "clusterEnable": true,
+      "commanderEnable": true,
+      "ipPool": "10.1.1.1"
+    },
+    "cluster_lab_config": {
+      "clusterEnable": true,
+      "commanderEnable": false,
+      "ipPool": "192.168.100.1"
+    },
+    "cluster_datacenter_config": {
+      "clusterEnable": true,
+      "commanderEnable": true,
+      "ipPool": "172.16.1.1"
+    },
+    "cluster_backup_config": {
+      "clusterEnable": true,
+      "commanderEnable": false,
+      "ipPool": "10.254.254.254"
+    },
+    "cluster_member_server_1": {
+      "macAddress": "00-50-56-12-34-56",
+      "memberId": 5
+    },
+    "cluster_member_server_2": {
+      "macAddress": "00-50-56-78-90-ab",
+      "memberId": 6
+    },
+    "cluster_member_switch_1": {
+      "macAddress": "00-1a-2b-3c-4d-5e",
+      "memberId": 7
+    },
+    "cluster_member_switch_2": {
+      "macAddress": "00-1a-2b-3c-4d-5f",
+      "memberId": 8
+    },
+    "cluster_member_router_1": {
+      "macAddress": "00-aa-bb-cc-dd-ee",
+      "memberId": 9
+    },    
+    "bfd_vlan_basic_config": {
+      "vlanId": 1,
+      "interval": 500,
+      "minrx": 500,
+      "multiplier": 6
+    },
+    "bfd_vlan_min_interval": {
+      "vlanId": 2,
+      "interval": 200,
+      "minrx": 200,
+      "multiplier": 2
+    },
+    "bfd_vlan_max_interval": {
+      "vlanId": 3,
+      "interval": 30000,
+      "minrx": 30000,
+      "multiplier": 20
+    },
+    "bfd_vlan_default_config": {
+      "vlanId": 4,
+      "interval": 750,
+      "minrx": 500,
+      "multiplier": 3
+    },
+    "bfd_vlan_high_id": {
+      "vlanId": 4094,
+      "interval": 1000,
+      "minrx": 800,
+      "multiplier": 5
+    },
+    "bfd_vlan_invalid_id": {
+      "vlanId": 4095,
+      "interval": 500
+    },
+    "bfd_vlan_invalid_interval_min": {
+      "vlanId": 5,
+      "interval": 100
+    },
+    "bfd_vlan_invalid_interval_max": {
+      "vlanId": 6,
+      "interval": 35000
+    },
+    "bfd_vlan_invalid_multiplier": {
+      "vlanId": 7,
+      "multiplier": 25
+    },
+    "bfd_vlan_interval_only": {
+      "vlanId": 1,
+      "interval": 800
+    },
+    "bfd_vlan_minrx_only": {
+      "vlanId": 2,
+      "minrx": 600
+    },
+    "bfd_vlan_multiplier_only": {
+      "vlanId": 3,
+      "multiplier": 8
+    },
+    "bfd_vlan_enable_passive": {
+      "vlanId": 4,
+      "passive": true
+    },
+    "bfd_vlan_disable_passive": {
+      "vlanId": 4,
+      "passive": false
+    },
+    "bfd_production_vlan_config": {
+      "vlanId": 100,
+      "interval": 1000,
+      "minrx": 1000,
+      "multiplier": 3,
+      "passive": false
+    },
+    "bfd_lab_vlan_config": {
+      "vlanId": 200,
+      "interval": 300,
+      "minrx": 300,
+      "multiplier": 5,
+      "passive": false
+    },
+    "bfd_datacenter_vlan_config": {
+      "vlanId": 300,
+      "interval": 500,
+      "minrx": 400,
+      "multiplier": 4,
+      "passive": false
+    },
+    "bfd_high_availability_vlan_config": {
+      "vlanId": 400,
+      "interval": 200,
+      "minrx": 200,
+      "multiplier": 2,
+      "passive": false
+    },
+    "bfd_passive_mode_vlan_config": {
+      "vlanId": 500,
+      "interval": 1500,
+      "minrx": 1000,
+      "multiplier": 6,
+      "passive": true
+    },
+    "bfd_low_frequency_vlan_config": {
+      "vlanId": 600,
+      "interval": 10000,
+      "minrx": 8000,
+      "multiplier": 10,
+      "passive": false
+    },
+    "bfd_custom_vlan_config": {
+      "vlanId": 700,
+      "interval": 2500,
+      "minrx": 2000,
+      "multiplier": 7,
+      "passive": false
+    },
+    "bfd_additional_vlan_1": {
+      "vlanId": 10,
+      "interval": 1000,
+      "minrx": 1000,
+      "multiplier": 3,
+      "passive": false
+    },
+    "bfd_additional_vlan_2": {
+      "vlanId": 20,
+      "interval": 800,
+      "minrx": 800,
+      "multiplier": 4,
+      "passive": false
+    },
+    "bfd_additional_vlan_3": {
+      "vlanId": 30,
+      "interval": 600,
+      "minrx": 600,
+      "multiplier": 5,
+      "passive": false
+    },
+    "bfd_batch_vlan_1": {
+      "vlanId": 1001,
+      "interval": 1200,
+      "minrx": 1000,
+      "multiplier": 3
+    },
+    "bfd_batch_vlan_2": {
+      "vlanId": 1002,
+      "interval": 1500,
+      "minrx": 1200,
+      "multiplier": 4
+    },
+    "bfd_batch_vlan_3": {
+      "vlanId": 1003,
+      "interval": 800,
+      "minrx": 600,
+      "multiplier": 5
+    },
+    "bfd_dynamic_increase_frequency": {
+      "vlanId": 100,
+      "interval": 500,
+      "minrx": 400,
+      "multiplier": 2
+    },
+    "bfd_dynamic_decrease_frequency": {
+      "vlanId": 200,
+      "interval": 2000,
+      "minrx": 1800,
+      "multiplier": 8
+    },
+    "bfd_toggle_passive_enable": {
+      "vlanId": 300,
+      "passive": true
+    },
+    "bfd_toggle_passive_disable": {
+      "vlanId": 300,
+      "passive": false
+    },
+    "bfd_wan_link_config": {
+      "vlanId": 800,
+      "interval": 1000,
+      "minrx": 1000,
+      "multiplier": 3,
+      "passive": false
+    },
+    "bfd_lan_link_config": {
+      "vlanId": 900,
+      "interval": 500,
+      "minrx": 500,
+      "multiplier": 3,
+      "passive": false
+    },
+    "bfd_backup_link_config": {
+      "vlanId": 950,
+      "interval": 2000,
+      "minrx": 2000,
+      "multiplier": 5,
+      "passive": true
+    },
+    "bfd_critical_link_config": {
+      "vlanId": 999,
+      "interval": 200,
+      "minrx": 200,
+      "multiplier": 2,
+      "passive": false
+    },    
+    "arp_static_entry_basic": {
+      "ipAddress": "192.168.1.100",
+      "macAddress": "00-11-22-33-44-55"
+    },
+    "arp_static_entry_different_subnet": {
+      "ipAddress": "10.0.0.50",
+      "macAddress": "aa-bb-cc-dd-ee-ff"
+    },
+    "arp_static_entry_private_subnet": {
+      "ipAddress": "172.16.1.10",
+      "macAddress": "11-22-33-44-55-66"
+    },
+    "arp_static_entry_broadcast_mac": {
+      "ipAddress": "192.168.2.1",
+      "macAddress": "ff-ff-ff-ff-ff-ff"
+    },
+    "arp_duplicate_ip": {
+      "ipAddress": "192.168.1.100",
+      "macAddress": "77-88-99-aa-bb-cc"
+    },
+    "arp_invalid_ip_format": {
+      "ipAddress": "999.999.999.999",
+      "macAddress": "00-11-22-33-44-55"
+    },
+    "arp_invalid_mac_format": {
+      "ipAddress": "192.168.1.200",
+      "macAddress": "invalid-mac-address"
+    },
+    "arp_static_entry_server1": {
+      "ipAddress": "192.168.1.10",
+      "macAddress": "00-50-56-12-34-56"
+    },
+    "arp_static_entry_server2": {
+      "ipAddress": "192.168.1.20",
+      "macAddress": "00-50-56-78-90-ab"
+    },
+    "arp_static_entry_gateway": {
+      "ipAddress": "192.168.1.1",
+      "macAddress": "00-1a-2b-3c-4d-5e"
+    },
+    "arp_static_entry_dns": {
+      "ipAddress": "8.8.8.8",
+      "macAddress": "00-aa-bb-cc-dd-ee"
+    },
+    "arp_cache_timeout_default": {
+      "cacheTimeout": 1200
+    },
+    "arp_cache_timeout_min": {
+      "cacheTimeout": 300
+    },
+    "arp_cache_timeout_max": {
+      "cacheTimeout": 86400
+    },
+    "arp_cache_timeout_custom": {
+      "cacheTimeout": 3600
+    },
+    "arp_cache_timeout_below_min": {
+      "cacheTimeout": 200
+    },
+    "arp_cache_timeout_above_max": {
+      "cacheTimeout": 100000
+    },
+    "arp_cache_timeout_restore_default": {
+      "cacheTimeout": 1200
+    },
+    "arp_proxy_enable_vlan1": {
+      "status": true
+    },
+    "arp_proxy_enable_vlan100": {
+      "status": true
+    },
+    "arp_proxy_enable_vlan200": {
+      "status": true
+    },
+    "arp_proxy_disable_vlan1": {
+      "status": false
+    },
+    "arp_proxy_disable_vlan100": {
+      "status": false
+    },
+    "arp_proxy_nonexistent_vlan": {
+      "status": true
+    },
+    "arp_local_proxy_enable_vlan1": {
+      "status": true
+    },
+    "arp_local_proxy_enable_vlan50": {
+      "status": true
+    },
+    "arp_local_proxy_enable_vlan300": {
+      "status": true
+    },
+    "arp_local_proxy_disable_vlan1": {
+      "status": false
+    },
+    "arp_local_proxy_disable_vlan50": {
+      "status": false
+    },
+    "arp_local_proxy_nonexistent_vlan": {
+      "status": true
+    },
+    "arp_batch_entry_1": {
+      "ipAddress": "192.168.10.1",
+      "macAddress": "00-01-02-03-04-05"
+    },
+    "arp_batch_entry_2": {
+      "ipAddress": "192.168.10.2",
+      "macAddress": "00-01-02-03-04-06"
+    },
+    "arp_batch_entry_3": {
+      "ipAddress": "192.168.10.3",
+      "macAddress": "00-01-02-03-04-07"
+    },
+    "arp_multi_vlan_proxy_500": {
+      "status": true
+    },
+    "arp_multi_vlan_proxy_600": {
+      "status": true
+    },
+    "arp_multi_vlan_local_proxy_500": {
+      "status": true
+    },
+    "arp_critical_entry_gateway": {
+      "ipAddress": "192.168.1.1",
+      "macAddress": "00-1a-2b-3c-4d-5e"
+    },
+    "arp_production_gateway": {
+      "ipAddress": "10.0.1.1",
+      "macAddress": "00-50-56-aa-bb-cc"
+    },
+    "arp_production_server": {
+      "ipAddress": "10.0.1.100",
+      "macAddress": "00-50-56-dd-ee-ff"
+    },
+    "arp_lab_device_1": {
+      "ipAddress": "192.168.100.10",
+      "macAddress": "00-25-90-12-34-56"
+    },
+    "arp_lab_device_2": {
+      "ipAddress": "192.168.100.20",
+      "macAddress": "00-25-90-78-90-ab"
+    },
+    "arp_datacenter_server_1": {
+      "ipAddress": "172.16.10.100",
+      "macAddress": "00-0c-29-aa-bb-cc"
+    },
+    "arp_datacenter_server_2": {
+      "ipAddress": "172.16.10.200",
+      "macAddress": "00-0c-29-dd-ee-ff"
+    },
+    "arp_management_interface": {
+      "ipAddress": "192.168.0.100",
+      "macAddress": "00-15-5d-12-34-56"
+    },
+    "arp_backup_gateway": {
+      "ipAddress": "192.168.1.2",
+      "macAddress": "00-1a-2b-3c-4d-5f"
+    },
+    "arp_test_timeout_short": {
+      "cacheTimeout": 600
+    },
+    "arp_test_timeout_long": {
+      "cacheTimeout": 7200
+    },    
+    "excluded_vlan_session_1": {
+      "sessionId": 1,
+      "excludedVlans": ["100"],
+      "uplinks": [
+        {"ifId": "eth1/1"}
+      ],
+      "downlinks": [
+        {"ifId": "eth1/2"},
+        {"ifId": "eth1/3"}
+      ]
+    },
+    "excluded_vlan_session_2_multi_vlan": {
+      "sessionId": 2,
+      "excludedVlans": ["200", "201", "202"],
+      "uplinks": [
+        {"ifId": "eth1/4"},
+        {"ifId": "eth1/5"}
+      ],
+      "downlinks": [
+        {"ifId": "eth1/6"},
+        {"ifId": "eth1/7"},
+        {"ifId": "eth1/8"}
+      ]
+    },
+    "excluded_vlan_session_3_port_channel": {
+      "sessionId": 3,
+      "excludedVlans": ["300"],
+      "uplinks": [
+        {"ifId": "trunk1"}
+      ],
+      "downlinks": [
+        {"ifId": "eth1/10"},
+        {"ifId": "trunk2"}
+      ]
+    },
+    "excluded_vlan_session_4_max": {
+      "sessionId": 4,
+      "excludedVlans": ["400", "401", "402", "403", "404", "405", "406", "407"],
+      "uplinks": [
+        {"ifId": "eth1/11"},
+        {"ifId": "eth1/12"}
+      ],
+      "downlinks": [
+        {"ifId": "eth1/13"},
+        {"ifId": "eth1/14"},
+        {"ifId": "eth1/15"},
+        {"ifId": "eth1/16"}
+      ]
+    },
+    "excluded_vlan_session_empty_interfaces": {
+      "sessionId": 1,
+      "excludedVlans": ["500"],
+      "uplinks": [],
+      "downlinks": []
+    },
+    "excluded_vlan_invalid_session_id": {
+      "sessionId": 5,
+      "excludedVlans": ["100"]
+    },
+    "excluded_vlan_duplicate_session": {
+      "sessionId": 1,
+      "excludedVlans": ["600"]
+    },
+    "excluded_vlan_update_add_uplinks": {
+      "status": true,
+      "uplinks": [
+        {"ifId": "eth1/20"}
+      ]
+    },
+    "excluded_vlan_update_add_downlinks": {
+      "status": true,
+      "downlinks": [
+        {"ifId": "eth1/21"},
+        {"ifId": "eth1/22"}
+      ]
+    },
+    "excluded_vlan_update_remove_interfaces": {
+      "status": false,
+      "uplinks": [
+        {"ifId": "eth1/1"}
+      ]
+    },
+    "excluded_vlan_update_modify_vlans": {
+      "status": true,
+      "excludedVlans": ["350", "351"]
+    },
+    "excluded_vlan_update_complex": {
+      "status": true,
+      "excludedVlans": ["250"],
+      "uplinks": [
+        {"ifId": "trunk3"}
+      ],
+      "downlinks": [
+        {"ifId": "eth1/25"}
+      ]
+    },
+    "excluded_vlan_single_uplink": {
+      "sessionId": 1,
+      "excludedVlans": ["700"],
+      "uplinks": [
+        {"ifId": "eth1/30"}
+      ]
+    },
+    "excluded_vlan_multi_uplinks": {
+      "status": true,
+      "uplinks": [
+        {"ifId": "eth1/31"},
+        {"ifId": "eth1/32"},
+        {"ifId": "eth1/33"}
+      ]
+    },
+    "excluded_vlan_single_downlink": {
+      "status": true,
+      "downlinks": [
+        {"ifId": "eth1/40"}
+      ]
+    },
+    "excluded_vlan_multi_downlinks": {
+      "status": true,
+      "downlinks": [
+        {"ifId": "eth1/41"},
+        {"ifId": "eth1/42"},
+        {"ifId": "eth1/43"},
+        {"ifId": "eth1/44"}
+      ]
+    },
+    "excluded_vlan_mixed_interfaces": {
+      "status": true,
+      "uplinks": [
+        {"ifId": "eth1/50"},
+        {"ifId": "trunk10"}
+      ],
+      "downlinks": [
+        {"ifId": "eth1/51"},
+        {"ifId": "eth1/52"},
+        {"ifId": "trunk11"}
+      ]
+    },
+    "excluded_vlan_invalid_interface": {
+      "status": true,
+      "uplinks": [
+        {"ifId": "invalid-interface"}
+      ]
+    },
+    "excluded_vlan_port_channel_range": {
+      "status": true,
+      "uplinks": [
+        {"ifId": "trunk26"},
+        {"ifId": "trunk1"}
+      ]
+    },
+    "excluded_vlan_single_vlan": {
+      "sessionId": 2,
+      "excludedVlans": ["800"],
+      "uplinks": [
+        {"ifId": "eth2/1"}
+      ],
+      "downlinks": [
+        {"ifId": "eth2/2"}
+      ]
+    },
+    "excluded_vlan_multiple_vlans": {
+      "status": true,
+      "excludedVlans": ["801", "802", "803", "804"]
+    },
+    "excluded_vlan_max_vlans": {
+      "status": true,
+      "excludedVlans": ["810", "811", "812", "813", "814", "815", "816", "817"]
+    },
+    "excluded_vlan_low_range": {
+      "status": true,
+      "excludedVlans": ["1", "2", "10", "50"]
+    },
+    "excluded_vlan_high_range": {
+      "status": true,
+      "excludedVlans": ["4000", "4050", "4090", "4094"]
+    },
+    "excluded_vlan_with_mask": {
+      "status": true,
+      "excludedVlans": ["100/4095", "200/4095"]
+    },
+    "excluded_vlan_exceed_max": {
+      "status": true,
+      "excludedVlans": ["900", "901", "902", "903", "904", "905", "906", "907", "908"]
+    },
+    "excluded_vlan_invalid_vlan": {
+      "status": true,
+      "excludedVlans": ["4095"]
+    },
+    "excluded_vlan_complete_session": {
+      "sessionId": 3,
+      "excludedVlans": ["1000", "1001", "1002"],
+      "uplinks": [
+        {"ifId": "eth3/1"},
+        {"ifId": "trunk20"}
+      ],
+      "downlinks": [
+        {"ifId": "eth3/2"},
+        {"ifId": "eth3/3"},
+        {"ifId": "eth3/4"},
+        {"ifId": "trunk21"}
+      ]
+    },
+    "excluded_vlan_batch_update": {
+      "status": true,
+      "excludedVlans": ["1100", "1101"],
+      "uplinks": [
+        {"ifId": "eth3/10"}
+      ],
+      "downlinks": [
+        {"ifId": "eth3/11"},
+        {"ifId": "eth3/12"}
+      ]
+    },
+    "excluded_vlan_clear_interfaces": {
+      "status": false,
+      "uplinks": [
+        {"ifId": "eth3/1"},
+        {"ifId": "trunk20"},
+        {"ifId": "eth3/10"}
+      ],
+      "downlinks": [
+        {"ifId": "eth3/2"},
+        {"ifId": "eth3/3"},
+        {"ifId": "eth3/4"},
+        {"ifId": "trunk21"},
+        {"ifId": "eth3/11"},
+        {"ifId": "eth3/12"}
+      ]
+    },
+    "excluded_vlan_reconfigure": {
+      "status": true,
+      "excludedVlans": ["1200"],
+      "uplinks": [
+        {"ifId": "eth3/20"}
+      ],
+      "downlinks": [
+        {"ifId": "eth3/21"}
+      ]
+    },
+    "excluded_vlan_recreate_session": {
+      "sessionId": 1,
+      "excludedVlans": ["2000"],
+      "uplinks": [
+        {"ifId": "eth4/1"}
+      ],
+      "downlinks": [
+        {"ifId": "eth4/2"}
+      ]
+    },
+    "excluded_vlan_production_config": {
+      "sessionId": 1,
+      "excludedVlans": ["100", "200"],
+      "uplinks": [
+        {"ifId": "trunk1"},
+        {"ifId": "trunk2"}
+      ],
+      "downlinks": [
+        {"ifId": "eth1/1"},
+        {"ifId": "eth1/2"},
+        {"ifId": "eth1/3"},
+        {"ifId": "eth1/4"}
+      ]
+    },
+    "excluded_vlan_lab_config": {
+      "sessionId": 2,
+      "excludedVlans": ["300", "301", "302"],
+      "uplinks": [
+        {"ifId": "eth2/1"}
+      ],
+      "downlinks": [
+        {"ifId": "eth2/2"},
+        {"ifId": "eth2/3"}
+      ]
+    },
+    "excluded_vlan_datacenter_config": {
+      "sessionId": 3,
+      "excludedVlans": ["1000", "1001", "1002", "1003"],
+      "uplinks": [
+        {"ifId": "trunk10"},
+        {"ifId": "trunk11"}
+      ],
+      "downlinks": [
+        {"ifId": "eth3/1"},
+        {"ifId": "eth3/2"},
+        {"ifId": "eth3/3"},
+        {"ifId": "eth3/4"},
+        {"ifId": "eth3/5"},
+        {"ifId": "eth3/6"}
+      ]
+    },    
+    "ddm_current_threshold_basic": {
+      "high-alarm": 2500,
+      "high-warning": 2000,
+      "low-alarm": 100,
+      "low-warning": 200
+    },
+    "ddm_current_threshold_min": {
+      "high-alarm": 100,
+      "high-warning": 100,
+      "low-alarm": 100,
+      "low-warning": 100
+    },
+    "ddm_current_threshold_max": {
+      "high-alarm": 25500,
+      "high-warning": 25000,
+      "low-alarm": 500,
+      "low-warning": 1000
+    },
+    "ddm_current_threshold_high_alarm_only": {
+      "high-alarm": 3000
+    },
+    "ddm_current_threshold_low_alarm_only": {
+      "low-alarm": 150
+    },
+    "ddm_current_threshold_warnings": {
+      "high-warning": 2200,
+      "low-warning": 180
+    },
+    "ddm_current_threshold_custom": {
+      "high-alarm": 5000,
+      "high-warning": 4500,
+      "low-alarm": 300,
+      "low-warning": 500
+    },
+    "ddm_current_threshold_invalid_range": {
+      "high-alarm": 30000
+    },
+    "ddm_current_threshold_below_min": {
+      "low-alarm": 50
+    },
+    "ddm_rx_power_threshold_basic": {
+      "high-alarm": 500,
+      "high-warning": 300,
+      "low-alarm": -2000,
+      "low-warning": -1500
+    },
+    "ddm_rx_power_threshold_max": {
+      "high-alarm": 9999,
+      "high-warning": 9000,
+      "low-alarm": -9000,
+      "low-warning": -8000
+    },
+    "ddm_rx_power_threshold_min": {
+      "high-alarm": -9999,
+      "high-warning": -9999,
+      "low-alarm": -9999,
+      "low-warning": -9999
+    },
+    "ddm_rx_power_threshold_positive": {
+      "high-alarm": 1000,
+      "high-warning": 800,
+      "low-alarm": 200,
+      "low-warning": 400
+    },
+    "ddm_rx_power_threshold_negative": {
+      "high-alarm": -500,
+      "high-warning": -800,
+      "low-alarm": -3000,
+      "low-warning": -2500
+    },
+    "ddm_rx_power_threshold_zero": {
+      "high-alarm": 0,
+      "high-warning": -100,
+      "low-alarm": -1000,
+      "low-warning": -500
+    },
+    "ddm_rx_power_threshold_invalid_range": {
+      "high-alarm": 15000
+    },
+    "ddm_temperature_threshold_basic": {
+      "high-alarm": 8500,
+      "high-warning": 8000,
+      "low-alarm": -1000,
+      "low-warning": -500
+    },
+    "ddm_temperature_threshold_max": {
+      "high-alarm": 20000,
+      "high-warning": 19000,
+      "low-alarm": 18000,
+      "low-warning": 18500
+    },
+    "ddm_temperature_threshold_min": {
+      "high-alarm": -19000,
+      "high-warning": -19500,
+      "low-alarm": -20000,
+      "low-warning": -19800
+    },
+    "ddm_temperature_threshold_room_temp": {
+      "high-alarm": 7000,
+      "high-warning": 6500,
+      "low-alarm": 0,
+      "low-warning": 500
+    },
+    "ddm_temperature_threshold_industrial": {
+      "high-alarm": 10000,
+      "high-warning": 9500,
+      "low-alarm": -4000,
+      "low-warning": -3500
+    },
+    "ddm_temperature_threshold_zero": {
+      "high-alarm": 0,
+      "high-warning": -100,
+      "low-alarm": -500,
+      "low-warning": -300
+    },
+    "ddm_temperature_threshold_invalid_range": {
+      "high-alarm": 25000
+    },
+    "ddm_tx_power_threshold_basic": {
+      "high-alarm": 1000,
+      "high-warning": 800,
+      "low-alarm": -1000,
+      "low-warning": -500
+    },
+    "ddm_tx_power_threshold_high_power": {
+      "high-alarm": 9999,
+      "high-warning": 9500,
+      "low-alarm": 8000,
+      "low-warning": 8500
+    },
+    "ddm_tx_power_threshold_low_power": {
+      "high-alarm": -1000,
+      "high-warning": -1500,
+      "low-alarm": -9999,
+      "low-warning": -9000
+    },
+    "ddm_tx_power_threshold_standard_sfp": {
+      "high-alarm": 300,
+      "high-warning": 200,
+      "low-alarm": -800,
+      "low-warning": -600
+    },
+    "ddm_tx_power_threshold_zero": {
+      "high-alarm": 0,
+      "high-warning": -50,
+      "low-alarm": -200,
+      "low-warning": -100
+    },
+    "ddm_tx_power_threshold_invalid_range": {
+      "low-alarm": -15000
+    },
+    "ddm_voltage_threshold_basic": {
+      "high-alarm": 3500,
+      "high-warning": 3400,
+      "low-alarm": 3000,
+      "low-warning": 3100
+    },
+    "ddm_voltage_threshold_5v_system": {
+      "high-alarm": 5500,
+      "high-warning": 5300,
+      "low-alarm": 4700,
+      "low-warning": 4800
+    },
+    "ddm_voltage_threshold_1v8_system": {
+      "high-alarm": 2000,
+      "high-warning": 1950,
+      "low-alarm": 1650,
+      "low-warning": 1700
+    },
+    "ddm_voltage_threshold_max": {
+      "high-alarm": 9999,
+      "high-warning": 9500,
+      "low-alarm": 8000,
+      "low-warning": 8500
+    },
+    "ddm_voltage_threshold_min": {
+      "high-alarm": -9000,
+      "high-warning": -9200,
+      "low-alarm": -9999,
+      "low-warning": -9800
+    },
+    "ddm_voltage_threshold_zero": {
+      "high-alarm": 100,
+      "high-warning": 50,
+      "low-alarm": -100,
+      "low-warning": -50
+    },
+    "ddm_voltage_threshold_invalid_range": {
+      "high-alarm": 15000
+    },
+    "ddm_reconfigure_current_threshold": {
+      "high-alarm": 2000,
+      "high-warning": 1800,
+      "low-alarm": 200,
+      "low-warning": 300
+    },
+    "ddm_reconfigure_temperature_threshold": {
+      "high-alarm": 7500,
+      "high-warning": 7000,
+      "low-alarm": -500,
+      "low-warning": 0
+    },
+    "ddm_batch_current_config": {
+      "high-alarm": 2500,
+      "high-warning": 2200,
+      "low-alarm": 150,
+      "low-warning": 200
+    },
+    "ddm_verify_voltage_config": {
+      "high-alarm": 3600,
+      "high-warning": 3500,
+      "low-alarm": 2900,
+      "low-warning": 3000
+    },
+    "ddm_production_current_config": {
+      "high-alarm": 2200,
+      "high-warning": 2000,
+      "low-alarm": 180,
+      "low-warning": 200
+    },
+    "ddm_production_temperature_config": {
+      "high-alarm": 7000,
+      "high-warning": 6500,
+      "low-alarm": 0,
+      "low-warning": 500
+    },
+    "ddm_production_voltage_config": {
+      "high-alarm": 3400,
+      "high-warning": 3350,
+      "low-alarm": 3200,
+      "low-warning": 3250
+    },
+    "ddm_lab_current_config": {
+      "high-alarm": 3000,
+      "high-warning": 2800,
+      "low-alarm": 100,
+      "low-warning": 150
+    },
+    "ddm_lab_temperature_config": {
+      "high-alarm": 8000,
+      "high-warning": 7500,
+      "low-alarm": -1000,
+      "low-warning": -500
+    },
+    "ddm_datacenter_rx_power_config": {
+      "high-alarm": 200,
+      "high-warning": 100,
+      "low-alarm": -2500,
+      "low-warning": -2000
+    },
+    "ddm_datacenter_tx_power_config": {
+      "high-alarm": 500,
+      "high-warning": 300,
+      "low-alarm": -1500,
+      "low-warning": -1000
+    },    
+    "aaa_periodic_updates_default": {
+      "update": 1
+    },
+    "aaa_periodic_updates_custom": {
+      "update": 5
+    },
+    "aaa_periodic_updates_max": {
+      "update": 2147483647
+    },
+    "aaa_periodic_updates_disable": {
+      "update": 0
+    },
+    "aaa_periodic_updates_re_enable": {
+      "update": 10
+    },
+    "aaa_dot1x_radius_method": {
+      "clientType": "dot1x",
+      "name": "default",
+      "groupName": "radius"
+    },
+    "aaa_dot1x_custom_method": {
+      "clientType": "dot1x",
+      "name": "default",
+      "groupName": "tps"
+    },
+    "aaa_exec_tacacs_method": {
+      "clientType": "exec",
+      "name": "default",
+      "groupName": "tacacs+"
+    },
+    "aaa_commands_level1_method": {
+      "clientType": "commands",
+      "name": "default",
+      "groupName": "tacacs+",
+      "privilegeLevel": 1
+    },
+    "aaa_commands_level15_method": {
+      "clientType": "commands",
+      "name": "default",
+      "groupName": "radius",
+      "privilegeLevel": 15
+    },
+    "aaa_commands_disable_privilege": {
+      "privilegeLevel": 1
+    },
+    "aaa_invalid_client_type": {
+      "clientType": "invalid",
+      "name": "default",
+      "groupName": "radius"
+    },
+    "aaa_radius_server_group": {
+      "serverGroupType": "radius",
+      "groupName": "tps",
+      "servers": [
+        {
+          "authServerIndex": 1
+        }
+      ]
+    },
+    "aaa_tacacs_server_group": {
+      "serverGroupType": "tacacs+",
+      "groupName": "tacacs_group",
+      "servers": [
+        {
+          "authServerIndex": 1
+        }
+      ]
+    },
+    "aaa_empty_server_group": {
+      "serverGroupType": "radius",
+      "groupName": "empty_group",
+      "servers": []
+    },
+    "aaa_multi_radius_server_group": {
+      "serverGroupType": "radius",
+      "groupName": "multi_radius",
+      "servers": [
+        {"authServerIndex": 1},
+        {"authServerIndex": 2},
+        {"authServerIndex": 3}
+      ]
+    },
+    "aaa_modify_server_group": {
+      "servers": [
+        {"authServerIndex": 2}
+      ]
+    },
+    "aaa_clear_server_group": {
+      "servers": []
+    },
+    "aaa_invalid_server_group_type": {
+      "serverGroupType": "invalid",
+      "groupName": "test_group"
+    },
+    "aaa_invalid_server_index": {
+      "serverGroupType": "radius",
+      "groupName": "test_group",
+      "servers": [
+        {"authServerIndex": 10}
+      ]
+    },
+    "aaa_authorization_exec_default": {
+      "methodName": "default",
+      "groupName": "radius"
+    },
+    "aaa_authorization_exec_custom": {
+      "methodName": "tps",
+      "groupName": "tacacs+"
+    },
+    "aaa_authorization_exec_server_group": {
+      "methodName": "custom_method",
+      "groupName": "custom_group"
+    },
+    "aaa_authorization_invalid_method": {
+      "methodName": "",
+      "groupName": "radius"
+    },
+    "aaa_accounting_dot1x_interface": {
+      "ifId": "eth1/1",
+      "methodName": "default"
+    },
+    "aaa_accounting_dot1x_interface2": {
+      "ifId": "eth1/2",
+      "methodName": "default"
+    },
+    "aaa_accounting_dot1x_invalid_interface": {
+      "ifId": "invalid-interface",
+      "methodName": "default"
+    },
+    "aaa_accounting_commands_vty_level0": {
+      "level": 0,
+      "ifId": "vty",
+      "methodName": "default"
+    },
+    "aaa_accounting_commands_console_level15": {
+      "level": 15,
+      "ifId": "console",
+      "methodName": "default"
+    },
+    "aaa_accounting_commands_medium_level": {
+      "level": 7,
+      "ifId": "vty",
+      "methodName": "default"
+    },
+    "aaa_accounting_commands_invalid_level": {
+      "level": 20,
+      "ifId": "vty",
+      "methodName": "default"
+    },
+    "aaa_accounting_commands_invalid_line": {
+      "level": 0,
+      "ifId": "invalid-line",
+      "methodName": "default"
+    },
+    "aaa_exec_accounting_vty": {
+      "ifId": "vty",
+      "methodName": "default"
+    },
+    "aaa_exec_accounting_console": {
+      "ifId": "console",
+      "methodName": "default"
+    },
+    "aaa_exec_authorization_vty": {
+      "ifId": "vty",
+      "methodName": "tps"
+    },
+    "aaa_comprehensive_config": {
+      "clientType": "dot1x",
+      "name": "comprehensive",
+      "groupName": "radius"
+    },
+    "aaa_production_server_group": {
+      "serverGroupType": "radius",
+      "groupName": "production",
+      "servers": [
+        {"authServerIndex": 1},
+        {"authServerIndex": 2}
+      ]
+    },
+    "aaa_backup_server_group": {
+      "serverGroupType": "tacacs+",
+      "groupName": "backup",
+      "servers": [
+        {"authServerIndex": 1}
+      ]
+    },
+    "aaa_test_authorization_method": {
+      "methodName": "test_method",
+      "groupName": "test_group"
+    },
+    "aaa_security_policy_config": {
+      "clientType": "commands",
+      "name": "security_policy",
+      "groupName": "tacacs+",
+      "privilegeLevel": 15
+    },
+    "aaa_monitoring_config": {
+      "update": 30
+    },
+    "aaa_high_security_config": {
+      "clientType": "exec",
+      "name": "high_security",
+      "groupName": "tacacs+"
+    },    
+    "dot1x_enable_global": {
+      "systemAuthControlStatus": true
+    },
+    "dot1x_disable_global": {
+      "systemAuthControlStatus": false
+    },
+    "dot1x_re_enable_global": {
+      "systemAuthControlStatus": true
+    },
+    "dot1x_interface_basic": {
+      "intrusionAction": "guest-vlan",
+      "maxReauthReq": 3,
+      "maxReq": 3,
+      "operationMode": "multi-host",
+      "maxMacCount": 10,
+      "portControl": "auto",
+      "quietPeriod": 65,
+      "reauthStatus": true,
+      "reauthPeriod": 100,
+      "suppTimeout": 100,
+      "txPeriod": 1000
+    },
+    "dot1x_single_host_mode": {
+      "operationMode": "single-host",
+      "portControl": "auto",
+      "intrusionAction": "block-traffic"
+    },
+    "dot1x_multi_host_mode": {
+      "operationMode": "multi-host",
+      "maxMacCount": 5,
+      "portControl": "auto",
+      "intrusionAction": "guest-vlan"
+    },
+    "dot1x_mac_based_auth_mode": {
+      "operationMode": "mac-based-auth",
+      "portControl": "auto",
+      "intrusionAction": "block-traffic"
+    },
+    "dot1x_port_control_auto": {
+      "portControl": "auto"
+    },
+    "dot1x_port_control_force_authorized": {
+      "portControl": "force-authorized"
+    },
+    "dot1x_port_control_force_unauthorized": {
+      "portControl": "force-unauthorized"
+    },
+    "dot1x_intrusion_block_traffic": {
+      "intrusionAction": "block-traffic"
+    },
+    "dot1x_intrusion_guest_vlan": {
+      "intrusionAction": "guest-vlan"
+    },
+    "dot1x_reauth_enable": {
+      "reauthStatus": true,
+      "reauthPeriod": 3600
+    },
+    "dot1x_reauth_disable": {
+      "reauthStatus": false
+    },
+    "dot1x_min_timeouts": {
+      "quietPeriod": 1,
+      "suppTimeout": 1,
+      "txPeriod": 1,
+      "reauthPeriod": 1
+    },
+    "dot1x_max_timeouts": {
+      "quietPeriod": 65535,
+      "suppTimeout": 65535,
+      "txPeriod": 65535,
+      "reauthPeriod": 65535
+    },
+    "dot1x_min_max_requests": {
+      "maxReq": 1,
+      "maxReauthReq": 1
+    },
+    "dot1x_max_max_requests": {
+      "maxReq": 10,
+      "maxReauthReq": 10
+    },
+    "dot1x_max_mac_count": {
+      "operationMode": "multi-host",
+      "maxMacCount": 1024
+    },
+    "dot1x_invalid_operation_mode": {
+      "operationMode": "invalid-mode"
+    },
+    "dot1x_invalid_port_control": {
+      "portControl": "invalid-control"
+    },
+    "dot1x_invalid_intrusion_action": {
+      "intrusionAction": "invalid-action"
+    },
+    "dot1x_eapol_enable": {
+      "status": true
+    },
+    "dot1x_eapol_disable": {
+      "status": false
+    },
+    "dot1x_eapol_re_enable": {
+      "status": true
+    },
+    "dot1x_supplicant_credentials": {
+      "username": "steve",
+      "password": "excess"
+    },
+    "dot1x_supplicant_username_only": {
+      "username": "admin"
+    },
+    "dot1x_supplicant_password_only": {
+      "password": "newpass"
+    },
+    "dot1x_supplicant_interface_basic": {
+      "maxStart": 10,
+      "paeSupplicant": true,
+      "authPeriod": 60,
+      "heldPeriod": 120,
+      "startPeriod": 60
+    },
+    "dot1x_supplicant_enable": {
+      "paeSupplicant": true
+    },
+    "dot1x_supplicant_disable": {
+      "paeSupplicant": false
+    },
+    "dot1x_supplicant_min_timeouts": {
+      "authPeriod": 1,
+      "heldPeriod": 1,
+      "startPeriod": 1
+    },
+    "dot1x_supplicant_max_timeouts": {
+      "authPeriod": 65535,
+      "heldPeriod": 65535,
+      "startPeriod": 65535
+    },
+    "dot1x_supplicant_min_max_start": {
+      "maxStart": 1
+    },
+    "dot1x_supplicant_max_max_start": {
+      "maxStart": 65535
+    },
+    "dot1x_supplicant_invalid_username": {
+      "username": "verylongusernamethatexceedslimit"
+    },
+    "dot1x_supplicant_invalid_password": {
+      "password": "verylongpasswordthatexceedslimit"
+    },
+    "dot1x_supplicant_invalid_params": {
+      "maxStart": 70000,
+      "authPeriod": 70000
+    },
+    "dot1x_conservative_config": {
+      "operationMode": "single-host",
+      "portControl": "auto",
+      "intrusionAction": "block-traffic",
+      "reauthStatus": true,
+      "reauthPeriod": 7200,
+      "quietPeriod": 120
+    },
+    "dot1x_aggressive_config": {
+      "operationMode": "mac-based-auth",
+      "portControl": "auto",
+      "intrusionAction": "block-traffic",
+      "reauthStatus": true,
+      "reauthPeriod": 1800,
+      "quietPeriod": 30
+    },
+    "dot1x_guest_access_config": {
+      "operationMode": "multi-host",
+      "maxMacCount": 10,
+      "portControl": "auto",
+      "intrusionAction": "guest-vlan",
+      "reauthStatus": false
+    },
+    "dot1x_production_config": {
+      "operationMode": "single-host",
+      "portControl": "auto",
+      "intrusionAction": "block-traffic",
+      "reauthStatus": true,
+      "reauthPeriod": 3600,
+      "quietPeriod": 60,
+      "maxReq": 2,
+      "maxReauthReq": 2
+    },
+    "dot1x_lab_config": {
+      "operationMode": "multi-host",
+      "maxMacCount": 20,
+      "portControl": "force-authorized",
+      "intrusionAction": "guest-vlan",
+      "reauthStatus": false
+    },
+    "dot1x_secure_config": {
+      "operationMode": "single-host",
+      "portControl": "auto",
+      "intrusionAction": "block-traffic",
+      "reauthStatus": true,
+      "reauthPeriod": 1800,
+      "quietPeriod": 180,
+      "maxReq": 1,
+      "maxReauthReq": 1
+    },    
     "mac_aging_basic": {
       "agingStatus": true,
       "agingTime": 300,

@@ -18,6 +18,48 @@ from enum import Enum
 import logging
 from urllib.parse import quote
 
+from modules.aaa_tests import AAATests
+from modules.dot1x_tests import DOT1XTests
+from modules.loopback_detection_tests import LOOPBACK_DETECTIONTests
+from modules.mac_tests import MACTests
+from modules.ssh_tests import SSHTests
+from modules.acl_tests import ACLTests
+from modules.dhcp_tests import DHCPTests
+from modules.lldp_tests import LLDPTests
+from modules.link_aggregation_tests import LINK_AGGREGATIONTests
+from modules.ntp_tests import NTPTests
+from modules.poe_tests import POETests
+from modules.snmp_tests import SNMPTests
+from modules.static_route_tests import STATIC_ROUTETests
+from modules.storm_control_tests import STORM_CONTROLTests
+from modules.telnet_tests import TELNETTests
+from modules.vlan_tests import VLANTests
+from modules.ddm_tests import DDMTests
+from modules.excluded_vlan_tests import EXCLUDED_VLANTests
+from modules.arp_tests import ARPTests
+from modules.bfd_tests import BFDTests
+from modules.cluster_tests import CLUSTERTests
+from modules.cos_tests import COSTests
+from modules.device_tests import DEVICETests
+from modules.dns_tests import DNSTests
+from modules.dos_protection_tests import DOS_PROTECTIONTests
+from modules.file_tests import FILETests
+from modules.igmpsnoop_tests import IGMPSNOOPTests
+from modules.interface_tests import INTERFACETests
+from modules.ip_arp_inspection_tests import IP_ARP_INSPECTIONTests
+from modules.ip_interface_tests import IP_INTERFACETests
+from modules.ip_source_guard_tests import IP_SOURCE_GUARDTests
+from modules.ipv6_interface_tests import IPV6_INTERFACETests
+from modules.mgmt_ip_filter_tests import MGMT_IP_FILTERTests
+from modules.nd_snoop_tests import ND_SNOOPTests
+from modules.ipv6_nd_tests import IPV6_NDTests
+from modules.network_access_tests import NETWORK_ACCESSTests
+from modules.port_security_tests import PORT_SECURITYTests
+
+
+
+
+
 class TestResult(Enum):
     PASS = "PASS"
     FAIL = "FAIL"
@@ -113,10 +155,51 @@ class NetworkAPITester:
             "modules": ["dhcp", "vlan", "storm_control"]
         }
 
+    # 在 get_test_modules 函數中添加
+    def get_test_modules(self):
+        """獲取所有測試模組"""
+        return {
+            'dhcp': DHCPTests,
+            'vlan': VLANTests,
+            'storm_control': STORM_CONTROLTests,
+            'acl': ACLTests,
+            'lldp': LLDPTests,
+            'link_aggregation': LINK_AGGREGATIONTests,
+            'ntp': NTPTests,
+            'poe': POETests,
+            'snmp': SNMPTests,
+            'ssh': SSHTests,
+            'static_route': STATIC_ROUTETests,
+            'loopback_detection': LOOPBACK_DETECTIONTests,
+            'mac': MACTests,
+            'telnet': TELNETTests,
+            'dot1x': DOT1XTests,
+            'aaa': AAATests,
+            'ddm': DDMTests,
+            'excluded_vlan': EXCLUDED_VLANTests,
+            'arp': ARPTests,
+            'bfd': BFDTests,
+            'cluster': CLUSTERTests,
+            'cos': COSTests,
+            'device': DEVICETests,
+            'dns': DNSTests,
+            'dos_protection': DOS_PROTECTIONTests,
+            'file': FILETests,
+            'igmpsnoop': IGMPSNOOPTests,
+            'interface': INTERFACETests,
+            'ip_arp_inspection': IP_ARP_INSPECTIONTests,
+            'ip_interface': IP_INTERFACETests,
+            'ip_source_guard': IP_SOURCE_GUARDTests,
+            'ipv6_interface': IPV6_INTERFACETests,
+            'mgmt_ip_filter': MGMT_IP_FILTERTests,
+            'nd_snoop': ND_SNOOPTests,
+            'ipv6_nd': IPV6_NDTests,
+        }
+
     def load_modules(self):
         """動態載入測試模組"""
-        module_names = self.config.get('modules', ['dhcp', 'vlan', 'storm_control'])
-        
+        #module_names = self.config.get('modules', ['dhcp', 'vlan', 'storm_control'])
+        module_names = list(self.get_test_modules().keys())
         for module_name in module_names:
             try:
                 module_file = f"modules/{module_name}_tests.py"
@@ -389,6 +472,7 @@ def main():
     # 列出模組
     if args.list_modules:
         modules = tester.get_available_modules()
+        print("可用的模組數量:" + str(len(modules)))
         print("可用的模組:")
         for module in modules:
             all_tests = tester.get_all_test_cases()
