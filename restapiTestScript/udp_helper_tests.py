@@ -47,7 +47,7 @@ class UDPHelperAPITester:
     def make_request(self, method: str, endpoint: str, data: Optional[Dict] = None, 
                     params: Optional[Dict] = None) -> requests.Response:
         """發送HTTP請求"""
-        url = f"{self.base_url},{endpoint}"
+        url = f"{self.base_url}/{endpoint}"
         try:
             response = self.session.request(
                 method=method,
@@ -118,8 +118,8 @@ class UDPHelperAPITester:
             
             if response.status_code == 200:
                 data = response.json()
-                if 'result' in data and 'entires' in data['result']:
-                    entries = data['result']['entires']
+                if 'result' in data and 'entries' in data['result']:
+                    entries = data['result']['entries']
                     self.log_test_result(
                         "獲取轉發協議條目", 
                         True, 
@@ -438,6 +438,7 @@ def main():
         tester = UDPHelperAPITester(base_url=args.url, timeout=args.timeout)
         tester.run_comprehensive_test()
     except KeyboardInterrupt:
+
         print("\n測試被用戶中斷")
         sys.exit(1)
     except Exception as e:
