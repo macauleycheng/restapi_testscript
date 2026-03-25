@@ -53,9 +53,6 @@ from modules.ipv6_interface_tests import IPV6_INTERFACETests
 from modules.mgmt_ip_filter_tests import MGMT_IP_FILTERTests
 from modules.nd_snoop_tests import ND_SNOOPTests
 from modules.ipv6_nd_tests import IPV6_NDTests
-from modules.network_access_tests import NETWORK_ACCESSTests
-from modules.port_security_tests import PORT_SECURITYTests
-
 
 
 
