@@ -86,6 +86,8 @@ class TestReport:
     response_data: Any = None
     category: str = "general"
     module: str = "general"
+    url: str = ""
+    body: Dict[str, Any] = None
 
 class NetworkAPITester:
     def __init__(self, config_file: str = "network_config.json"):
@@ -234,7 +236,7 @@ class NetworkAPITester:
             return url
         
         for key, value in params.items():
-            placeholder = f"{{{{{key}}}}}"
+            placeholder = f"{{{key}}}"
             if placeholder in url:
                 # URL編碼特殊字符，特別處理MAC地址和接口ID
                 if any(keyword in key.lower() for keyword in ['mac', 'ifid', 'interface']):
@@ -292,7 +294,9 @@ class NetworkAPITester:
                 error_message=error_message,
                 response_data=response_data,
                 category=test_case.category,
-                module=test_case.module
+                module=test_case.module,
+                url=full_url,
+                body=test_case.body
             )
             
         except requests.exceptions.RequestException as e:
@@ -434,6 +438,8 @@ class NetworkAPITester:
                     "test_name": r.test_name,
                     "module": r.module,
                     "category": r.category,
+                    "test_url": r.url,
+                    "test_body": r.body,
                     "result": r.result.value,
                     "status_code": r.status_code,
                     "response_time": r.response_time,
