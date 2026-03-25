@@ -4,14 +4,6 @@
 Network Access REST API 測試腳本
 基於 Network_Access_API_Reference_v0.1.docx 文件生成
 包含 MAC Authentication 和 Secure MAC 功能測試
-# 基本使用
-python network_access_test.py http://192.168.1.1
-
-# 帶認證
-python network_access_test.py http://192.168.1.1 admin admin123
-
-# 啟用MAC地址刪除測試
-ENABLE_DELETE_TESTS=true python network_access_test.py http://192.168.1.1 admin admin123
 """
 
 import requests
@@ -75,10 +67,8 @@ class NetworkAccessAPITester:
         """驗證MAC地址格式"""
         # 支持多種MAC地址格式
         patterns = [
-            r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})
-這個 Network Access API 測試腳本包含以下功能：,  # AA:BB:CC:DD:EE:FF 或 AA-BB-CC-DD-EE-FF
-            r'^([0-9A-Fa-f]{4}\.){2}([0-9A-Fa-f]{4})
-這個 Network Access API 測試腳本包含以下功能：      # AABB.CCDD.EEFF
+            r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$',
+            r'^([0-9A-Fa-f]{4}\.){2}([0-9A-Fa-f]{4})$'
         ]
         return any(re.match(pattern, mac_address) for pattern in patterns)
     
