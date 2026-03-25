@@ -20,7 +20,7 @@
   "log_level": "INFO",
   "request_delay": 0.1,
   "test_parameters": {
-    "interface_id": "eth1%2f1",
+    "interface_id": "eth1/1",
     "frame_type": "ethernet",
     "protocol_type": "ip",
     "group_id": 1,
@@ -76,7 +76,7 @@
     "cluster_member_id": 1,
     "cluster_ip_pool": "10.254.254.1",
     "cluster_mac_address": "00-e0-0c-00-00-01",
-    "cos_interface_id": "eth1%2f5",
+    "cos_interface_id": "eth1/5",
     "cos_priority": 3,
     "cos_queue_mode": "wrr",
     "device_type_expected": "L3 48 1G PoE + 4 SFP+ managed switch",
@@ -6478,8 +6478,7 @@
       "mode": "auto"
     },
     "dot1q_base_config": {
-      "status": true,
-      "managementVlanId": 1
+      "gvrpStatus": true
     },
     "dot1q_vlan_interface": {
       "pvid": 1,
@@ -6492,9 +6491,7 @@
       "leaveAllTime": 10000
     },
     "vlan_l3_interface_create": {
-      "vlanId": 100,
-      "ipAddress": "192.168.100.1",
-      "subnetMask": "255.255.255.0"
+      "vlanId": 100
     },
     "vlan_l3_interface_update": {
       "ipAddress": "192.168.100.2",
