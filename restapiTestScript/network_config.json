@@ -20,9 +20,7 @@
   "log_level": "INFO",
   "request_delay": 0.1,
   "test_parameters": {
-    "vlan_id": 100,
     "interface_id": "eth1%2f1",
-    "session_id": 1,
     "frame_type": "ethernet",
     "protocol_type": "ip",
     "group_id": 1,
@@ -99,15 +97,15 @@
     "igmpsnoop_test_vlan_100": 100,
     "igmpsnoop_test_vlan_1024": 1024,
     "igmpsnoop_test_interface": "eth1/1",
-        "interface_test_ethernet": "eth1/1",
+    "interface_test_ethernet": "eth1/1",
     "interface_test_trunk": "trunk1",
     "interface_test_vlan": 100,
     "interface_test_sfp_port": "eth1/49",
-        "ip_arp_inspection_test_vlan": 100,
+    "ip_arp_inspection_test_vlan": 100,
     "ip_arp_inspection_test_interface": "eth1/1",
     "ip_arp_inspection_log_buffer_size": 256,
     "ip_arp_inspection_default_rate_limit": 15,
-        "ip_interface_default_gateway": "192.168.1.1",
+    "ip_interface_default_gateway": "192.168.1.1",
     "ip_interface_test_vlan": 100,
     "ip_interface_loopback_ip": "127.0.0.1",
     "ip_interface_enterprise_subnet": "10.0.0.0/8",
@@ -126,7 +124,7 @@
     "mgmt_ip_filter_snmp_address": "192.168.1.9",
     "mgmt_ip_filter_telnet_start": "192.168.66.1",
     "mgmt_ip_filter_telnet_end": "192.168.66.10",
-        "nd_snoop_prefix_timeout_min": 3,
+    "nd_snoop_prefix_timeout_min": 3,
     "nd_snoop_prefix_timeout_max": 1800,
     "nd_snoop_retransmit_count_min": 1,
     "nd_snoop_retransmit_count_max": 5,
@@ -166,7 +164,6 @@
     "network_access_max_users_max": 32      
   },
   "test_data": {
-    // Network Access MAC認證配置
     "network_access_mac_auth_basic": {
       "status": true,
       "action": "pass",
@@ -192,8 +189,6 @@
       "action": "deny",
       "maxMacCount": 1
     },
-    
-    // Network Access 802.1X配置
     "network_access_dot1x_single_user": {
       "status": true,
       "portControl": "auto",
@@ -215,8 +210,6 @@
       "reauthentication": false,
       "reauthPeriod": 3600
     },
-    
-    // Network Access策略配置
     "network_access_policy_strict": {
       "defaultAction": "deny",
       "macAuthPriority": 1,
@@ -233,8 +226,6 @@
       "authFailVlan": 998,
       "quarantineVlan": 997
     },
-    
-    // VLAN分配策略
     "network_access_vlan_assignment": {
       "dynamicVlanAssignment": true,
       "radiusVlanAttribute": 64,
@@ -242,16 +233,12 @@
       "voiceVlan": 500,
       "dataVlan": 100
     },
-    
-    // 訪問控制列表策略
     "network_access_acl_policy": {
       "preAuthAcl": "pre-auth-acl",
       "postAuthAcl": "post-auth-acl",
       "guestAcl": "guest-acl",
       "quarantineAcl": "quarantine-acl"
     },
-    
-    // RADIUS服務器配置
     "network_access_radius_servers": {
       "primaryServer": {
         "ipAddress": "192.168.1.100",
@@ -275,22 +262,16 @@
         "retries": 2
       }
     },
-    
-    // RADIUS連接測試
     "network_access_radius_test": {
       "serverIp": "192.168.1.100",
       "username": "test_user",
       "password": "test_password",
       "nasIdentifier": "switch01"
     },
-    
-    // 重新認證請求
     "network_access_reauthenticate": {
       "macAddress": "30-65-14-01-11-8A",
       "reason": "manual_trigger"
     },
-    
-    // 批量MAC認證配置
     "network_access_batch_mac_auth": {
       "interfaces": [
         {
@@ -313,8 +294,6 @@
         }
       ]
     },
-    
-    // 批量802.1X配置
     "network_access_batch_dot1x": {
       "interfaces": [
         {
@@ -335,8 +314,6 @@
         }
       ]
     },
-    
-    // 配置導入數據
     "network_access_import_config": {
       "macAuthConfig": {
         "globalSettings": {
@@ -367,8 +344,6 @@
         ]
       }
     },
-    
-    // 錯誤處理測試數據
     "network_access_invalid_max_mac_below": {
       "status": true,
       "action": "pass",
@@ -408,7 +383,6 @@
       "reauthentication": true,
       "reauthPeriod": 100
     },    
-    // IPv6 ND Global Configuration
     "ipv6_nd_hop_limit_default": {
       "hopLimit": 64
     },
@@ -424,8 +398,6 @@
     "ipv6_nd_hop_limit_restore_default": {
       "hopLimit": 64
     },
-    
-    // IPv6 ND VLAN Management
     "ipv6_nd_vlan_1_basic_config": {
       "dadAttemptsCount": 5,
       "managedConfigFlagStatus": true,
@@ -486,8 +458,6 @@
       "raPreferenceLevel": "high",
       "raSuppressStatus": false
     },
-    
-    // IPv6 ND Interface Management
     "ipv6_nd_interface_eth1_1_raguard_enable": {
       "raguardStatus": true
     },
@@ -503,8 +473,6 @@
     "ipv6_nd_interface_eth1_20_batch": {
       "raguardStatus": false
     },
-    
-    // IPv6 ND Neighbor Management
     "ipv6_nd_static_neighbor_basic": {
       "type": "static",
       "vlanId": 1,
@@ -523,8 +491,6 @@
       "ipv6Address": "2001:db8:1::100",
       "linkLayerAddress": "11-22-33-44-55-66"
     },
-    
-    // IPv6 ND Prefix Management
     "ipv6_nd_prefix_basic": {
       "vlanId": 1,
       "ipv6Prefix": "2011:1dbf::",
@@ -556,8 +522,6 @@
       "preferredLifetime": 0,
       "configureType": "no-autoconfig"
     },
-    
-    // IPv6 ND Advanced Operations
     "ipv6_nd_enterprise_environment": {
       "hopLimit": 128
     },
@@ -616,8 +580,6 @@
       "preferredLifetime": 3600,
       "configureType": "off-link"
     },
-    
-    // IPv6 ND Error Handling
     "ipv6_nd_invalid_hop_limit_below_min": {
       "hopLimit": 0
     },
