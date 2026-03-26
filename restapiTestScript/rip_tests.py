@@ -217,10 +217,7 @@ class RIPAPITester:
         try:
             url = f"{self.base_url}/api/v1/rip/instability-preventing/vlans/{vlan_id}"
             payload = {
-                "suppressTime": 5000,
-                "reuseTime": 3000,
-                "maxSuppressTime": 20000,
-                "halfLifeTime": 15000
+                "splitHorizonStatus": "enable"
             }
             
             response = self.session.put(url, json=payload)

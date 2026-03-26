@@ -1232,7 +1232,7 @@ class SystemAPITester:
             ({"risingThreshold": 101, "fallingThreshold": 50}, "上升閾值>100", False),
             ({"risingThreshold": 50, "fallingThreshold": 101}, "下降閾值>100", False)
         ]
-        
+
         for payload, description, should_succeed in threshold_test_cases:
             try:
                 url = f"{self.base_url}/api/v1/system/memory"
@@ -1379,10 +1379,10 @@ class SystemAPITester:
             ("/api/v1/time", "時間配置"),
             ("/api/v1/time/clock-summer-time", "夏令時配置")
         ]
-        
+
         for endpoint, description in invalid_json_endpoints:
             try:
-                url = f"{self.base_url},{endpoint}"
+                url = f"{self.base_url}/{endpoint}"
                 response = self.session.put(url, data="invalid json format")
                 success = response.status_code == 400
                 self.log_test(f"無效JSON格式測試 - {description}", success, response)

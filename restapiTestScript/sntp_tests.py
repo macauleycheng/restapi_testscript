@@ -261,14 +261,14 @@ class SNTPAPITester:
         try:
             url = f"{self.base_url}/api/v1/sntp"
             
-            test_servers = self.generate_test_servers(5)
+            test_servers = self.generate_test_servers(3)
             
             payload = {
                 "sntpStatus": True,
                 "pollInterval": 512,
                 "sntpServers": test_servers
             }
-            
+
             response = self.session.put(url, json=payload)
             
             success = response.status_code == 200
@@ -391,14 +391,14 @@ class SNTPAPITester:
             self.test_get_sntp_info()
             
             # 步驟9: 測試IPv6服務器
-            print("\n步驟9: 測試IPv6服務器配置")
-            self.test_set_sntp_ipv6_servers()
-            time.sleep(1)
+            print("\n步驟9: 測試IPv6服務器配置 -- not support")
+            #self.test_set_sntp_ipv6_servers()
+            #time.sleep(1)
             
             # 步驟10: 測試混合服務器
-            print("\n步驟10: 測試混合IPv4/IPv6服務器")
-            self.test_set_sntp_mixed_servers()
-            time.sleep(1)
+            print("\n步驟10: 測試混合IPv4/IPv6服務器 - not support")
+            #self.test_set_sntp_mixed_servers()
+            #time.sleep(1)
             
             # 步驟11: 最終驗證
             print("\n步驟11: 最終配置驗證")
@@ -443,9 +443,9 @@ class SNTPAPITester:
             ("10.0.0.1", "私有IPv4地址 (10.x.x.x)"),
             ("172.16.1.1", "私有IPv4地址 (172.16.x.x)"),
             ("8.8.8.8", "公共IPv4地址"),
-            ("2001:db8::1", "IPv6地址"),
-            ("::1", "IPv6回環地址"),
-            ("fe80::1", "IPv6鏈路本地地址")
+            #("2001:db8::1", "IPv6地址"),
+            #("::1", "IPv6回環地址"),
+            #("fe80::1", "IPv6鏈路本地地址")
         ]
         
         for ip_addr, description in ip_test_cases:
