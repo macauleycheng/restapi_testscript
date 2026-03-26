@@ -381,7 +381,7 @@ class NetworkAPITester:
                     self.test_results.append(result)
                     
                     # 輸出測試結果
-                    status_icon = "✓" if result.result == TestResult.PASS else "✗"
+                    status_icon = "V" if result.result == TestResult.PASS else "X"
                     self.logger.info(
                         f"{status_icon} {result.test_name}: {result.result.value} "
                         f"({result.status_code}, {result.response_time:.2f}s)"

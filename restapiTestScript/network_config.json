@@ -4,13 +4,13 @@
               "mac"],
   "switch": {
     "protocol": "http",
-    "host": "192.168.40.200",
+    "host": "192.168.42.237",
     "port": 80
   },
   "authentication": {
     "type": "basic",
     "username": "admin",
-    "password": "admin"
+    "password": "21232f297a57a5a743894a0e4a801fc3"
   },
   "default_headers": {
     "Content-Type": "application/json",
