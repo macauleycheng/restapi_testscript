@@ -176,7 +176,7 @@ class LoggingAPITester:
     def test_clear_log(self, log_type: str):
         """測試1.3: 清除日誌"""
         try:
-            response = self.make_request('PUT', f'/api/v1/syslog/log-clear/{log_type}')
+            response = self.make_request('PUT', f'/api/v1/syslog/log-clear/{log_type}', data={})
             
             if response.status_code == 200:
                 self.log_test_result(
@@ -315,7 +315,7 @@ class LoggingAPITester:
         
         # 測試無效的清除類型
         try:
-            response = self.make_request('PUT', '/api/v1/syslog/log-clear/invalid')
+            response = self.make_request('PUT', '/api/v1/syslog/log-clear/invalid', data={})
             if response.status_code != 200:
                 self.log_test_result("無效清除類型測試", True, f"正確返回錯誤: {response.status_code}")
             else:
@@ -511,7 +511,7 @@ def main():
     
     username = args.username
     password = args.password
-    password = hashlib.md5(password.encode('utf-8')).hexdigest()
+    # password = hashlib.md5(password.encode('utf-8')).hexdigest()
     
     # 如果沒有提供認證資訊且不跳過認證，則提示輸入
     if not args.no_auth and (not username or not password):
