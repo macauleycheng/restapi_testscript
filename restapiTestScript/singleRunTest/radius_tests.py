@@ -6,6 +6,8 @@ RADIUS REST API 測試腳本
 包含 RADIUS 配置和加密密鑰生成功能測試
 """
 
+import hashlib
+
 import requests
 import json
 import sys
@@ -700,6 +702,7 @@ def main():
     base_url = sys.argv[1]
     username = sys.argv[2] if len(sys.argv) > 2 else None
     password = sys.argv[3] if len(sys.argv) > 3 else None
+    password = hashlib.md5(password.encode('utf-8')).hexdigest()
     
     # 創建測試器並運行測試
     tester = RADIUSAPITester(base_url, username, password)

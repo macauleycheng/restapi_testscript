@@ -10,18 +10,24 @@ import requests
 import json
 import sys
 import time
+import getpass
 from typing import Dict, Any, Optional, List
+import hashlib
 
 class RIPAPITester:
-    def __init__(self, base_url: str = "http://localhost"):
+    def __init__(self, base_url: str = "http://localhost", username: str = None, password: str = None):
         """
         初始化測試器
         
         Args:
             base_url: API 基礎 URL
+            username: 用戶帳號
+            password: 用戶密碼
         """
         self.base_url = base_url.rstrip('/')
         self.session = requests.Session()
+        self.username = username
+        self.password = password
         self.test_results = []
         self.created_resources = {
             'network_vlans': [],
@@ -30,6 +36,77 @@ class RIPAPITester:
             'neighbors': [],
             'instability_preventing_vlans': []
         }
+        
+        # 設置認證
+        self._setup_authentication()
+        
+    def _setup_authentication(self):
+        """設置認證方式"""
+        if self.username and self.password:
+            # 基本認證
+            self.session.auth = (self.username, self.password)
+            
+            # 或者如果需要 Bearer Token 認證，可以先登入獲取 token
+            # self._login_and_get_token()
+            
+    def _login_and_get_token(self):
+        """登入並獲取認證 token（如果 API 使用 JWT 或類似認證）"""
+        try:
+            login_url = f"{self.base_url}/api/v1/auth/login"
+            login_payload = {
+                "username": self.username,
+                "password": self.password
+            }
+            
+            response = self.session.post(login_url, json=login_payload)
+            
+            if response.status_code == 200:
+                data = response.json()
+                token = data.get('token') or data.get('access_token')
+                
+                if token:
+                    # 設置 Authorization header
+                    self.session.headers.update({
+                        'Authorization': f'Bearer {token}'
+                    })
+                    print("✅ 認證成功")
+                    return True
+                else:
+                    print("❌ 無法獲取認證 token")
+                    return False
+            else:
+                print(f"❌ 登入失敗，狀態碼: {response.status_code}")
+                if response.text:
+                    print(f"    錯誤訊息: {response.text}")
+                return False
+                
+        except Exception as e:
+            print(f"❌ 登入過程發生錯誤: {str(e)}")
+            return False
+    
+    def test_authentication(self):
+        """測試認證是否有效"""
+        try:
+            # 嘗試訪問一個需要認證的端點
+            url = f"{self.base_url}/api/v1/rip"
+            response = self.session.get(url)
+            
+            if response.status_code == 401:
+                print("❌ 認證失敗 - 請檢查用戶名和密碼")
+                return False
+            elif response.status_code == 403:
+                print("❌ 權限不足 - 用戶沒有訪問此 API 的權限")
+                return False
+            elif response.status_code == 200:
+                print("✅ 認證成功")
+                return True
+            else:
+                print(f"⚠️ 認證狀態未知，狀態碼: {response.status_code}")
+                return True  # 繼續執行測試
+                
+        except Exception as e:
+            print(f"❌ 認證測試失敗: {str(e)}")
+            return False
         
     def log_test(self, test_name: str, success: bool, response: requests.Response = None, error: str = None):
         """記錄測試結果"""
@@ -212,23 +289,20 @@ class RIPAPITester:
             self.log_test(f"獲取不穩定防護 VLAN (ID: {vlan_id})", False, error=str(e))
             return None
 
-    def test_update_instability_preventing_vlan(self, vlan_id: int = 100):
+    def test_update_instability_preventing_vlan(self, vlan_id: int = 1):
         """測試 3.3: 更新不穩定防護 VLAN"""
         try:
             url = f"{self.base_url}/api/v1/rip/instability-preventing/vlans/{vlan_id}"
             payload = {
-                "suppressTime": 5000,
-                "reuseTime": 3000,
-                "maxSuppressTime": 20000,
-                "halfLifeTime": 15000
+                "splitHorizonStatus" : "enabled"
             }
-            
+
             response = self.session.put(url, json=payload)
             success = response.status_code == 200
-            
+            print(response.status_code)
             if success:
                 self.created_resources['instability_preventing_vlans'].append(vlan_id)
-                
+
             self.log_test(f"更新不穩定防護 VLAN (ID: {vlan_id})", success, response)
             return success
             
@@ -838,6 +912,18 @@ class RIPAPITester:
         print("=" * 60)
         print(f"API 基礎 URL: {self.base_url}")
         print()
+        if self.username:
+            print(f"用戶帳號: {self.username}")
+        print()
+        
+        # 首先測試認證
+        if self.username and self.password:
+            print("🔐 認證測試")
+            print("-" * 30)
+            if not self.test_authentication():
+                print("❌ 認證失敗，停止測試")
+                return
+            print()
         
         # 1. 基本配置測試
         print("📋 基本配置測試")
@@ -855,19 +941,19 @@ class RIPAPITester:
         print("\n🛡️ 不穩定防護 VLAN 測試")
         print("-" * 30)
         self.test_get_instability_preventing_vlans()
-        self.test_get_instability_preventing_vlan(100)
-        self.test_update_instability_preventing_vlan(100)
+        self.test_get_instability_preventing_vlan(1)
+        self.test_update_instability_preventing_vlan(1)
         
         # 4. 網路 VLAN 管理測試
         print("\n🌐 網路 VLAN 管理測試")
         print("-" * 30)
         self.test_get_network_vlans()
-        self.test_create_network_vlan(200)
-        self.test_get_network_vlan(200)
+        self.test_create_network_vlan(1)
+        self.test_get_network_vlan(1)
         
         # 5. 網路 IP 地址管理測試
-        print("\n🔢 網路 IP 地址管理測試")
-        print("-" * 30)
+        #print("\n🔢 網路 IP 地址管理測試")
+        #print("-" * 30)
         self.test_get_network_ip_addresses()
         self.test_create_network_ip_address("192.168.100.0", 24)
         self.test_get_network_ip_address("192.168.100.0", 24)
@@ -876,9 +962,9 @@ class RIPAPITester:
         print("\n🔇 被動介面 VLAN 管理測試")
         print("-" * 30)
         self.test_get_passive_interface_vlans()
-        self.test_create_passive_interface_vlan(300)
-        self.test_get_passive_interface_vlan(300)
-        self.test_update_passive_interface_vlan(300)
+        self.test_create_passive_interface_vlan(1)
+        self.test_get_passive_interface_vlan(1)
+        self.test_update_passive_interface_vlan(1)
         
         # 7. 鄰居管理測試
         print("\n👥 鄰居管理測試")
@@ -897,7 +983,7 @@ class RIPAPITester:
         print("\n🔌 介面配置測試")
         print("-" * 30)
         self.test_get_rip_interfaces()
-        self.test_update_rip_interface("vlan200")
+        self.test_update_rip_interface("vlan1")
         
         # 10. 重分發配置測試
         print("\n🔄 重分發配置測試")
@@ -952,6 +1038,21 @@ class RIPAPITester:
                     elif result['status_code']:
                         print(f"    狀態碼: {result['status_code']}")
 
+def get_user_credentials():
+    """獲取用戶認證信息"""
+    print("請輸入認證信息:")
+    username = input("用戶帳號: ").strip()
+    
+    if username:
+        password = getpass.getpass("密碼: ")
+        m = hashlib.md5(password.encode('utf-8'))
+        # Get the hash in a hexadecimal format
+        password = m.hexdigest()
+
+        return username, password
+    else:
+        return None, None
+
 def main():
     """主函數"""
     print("RIP v1/v2 API 測試工具")
@@ -967,13 +1068,11 @@ def main():
     
     print(f"\n使用 API URL: {base_url}")
     
-    confirm = input("確認開始測試? (y/N): ").strip().lower()
-    if confirm != 'y':
-        print("測試已取消")
-        return
-    
+    # 詢問是否需要認證
+    username, password = get_user_credentials()
+
     # 創建測試器並執行測試
-    tester = RIPAPITester(base_url)
+    tester = RIPAPITester(base_url, username, password)
     tester.run_all_tests()
 
 if __name__ == "__main__":

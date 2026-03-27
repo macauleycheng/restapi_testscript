@@ -14,22 +14,46 @@ import requests
 import json
 import sys
 import time
+import getpass
+import base64
 from typing import Dict, Any, Optional
+import hashlib
 
 class UDPHelperAPITester:
-    def __init__(self, base_url: str = "http://localhost:8080", timeout: int = 30):
+    def __init__(self, base_url: str = "http://localhost:8080", timeout: int = 30, 
+                 username: str = None, password: str = None):
         """
         初始化UDP Helper API測試器
         
         Args:
             base_url: API基礎URL
             timeout: 請求超時時間(秒)
+            username: 登入帳號
+            password: 登入密碼
         """
         self.base_url = base_url.rstrip('/')
         self.timeout = timeout
         self.session = requests.Session()
         self.test_results = []
         
+        # 設置認證
+        if username and password:
+            self.setup_authentication(username, password)
+        
+    def setup_authentication(self, username: str, password: str):
+        """設置認證方式"""
+        # 方法1: Basic Authentication
+        auth_string = f"{username}:{password}"
+        encoded_auth = base64.b64encode(auth_string.encode()).decode()
+        self.session.headers.update({
+            'Authorization': f'Basic {encoded_auth}'
+        })
+        
+        # 方法2: 如果API使用其他認證方式，可以在這裡添加
+        # 例如: Bearer Token, API Key等
+        
+        print(f"已設置認證 - 使用者: {username}")
+ 
     def log_test_result(self, test_name: str, success: bool, details: str = ""):
         """記錄測試結果"""
         result = {
@@ -47,7 +71,7 @@ class UDPHelperAPITester:
     def make_request(self, method: str, endpoint: str, data: Optional[Dict] = None, 
                     params: Optional[Dict] = None) -> requests.Response:
         """發送HTTP請求"""
-        url = f"{self.base_url}/{endpoint}"
+        url = f"{self.base_url}/{endpoint.lstrip('/')}"
         try:
             response = self.session.request(
                 method=method,
@@ -61,6 +85,24 @@ class UDPHelperAPITester:
             print(f"請求錯誤: {e}")
             raise
     
+    def test_authentication(self):
+        """測試認證功能"""
+        print("=== 測試認證功能 ===")
+        
+        # 測試未認證的請求
+        temp_session = requests.Session()
+        try:
+            response = temp_session.get(f"{self.base_url}/api/v1/udp-helper", timeout=self.timeout)
+            if response.status_code == 401:
+                self.log_test_result("未認證請求測試", True, "正確返回401未授權")
+            elif response.status_code == 200:
+                self.log_test_result("未認證請求測試", False, "API可能不需要認證")
+            else:
+                self.log_test_result("未認證請求測試", False, f"意外狀態碼: {response.status_code}")
+        except Exception as e:
+            self.log_test_result("未認證請求測試", False, str(e))
+    
+    # 保留原有的所有測試方法...
     def test_get_udp_helper_status(self):
         """測試1.1: 獲取UDP helper狀態"""
         try:
@@ -77,6 +119,8 @@ class UDPHelperAPITester:
                     return data['result']['helperStatus']
                 else:
                     self.log_test_result("獲取UDP helper狀態", False, "回應格式錯誤")
+            elif response.status_code == 401:
+                self.log_test_result("獲取UDP helper狀態", False, "認證失敗 - 請檢查帳號密碼")
             else:
                 self.log_test_result(
                     "獲取UDP helper狀態", 
@@ -431,13 +475,28 @@ def main():
                        help='API基礎URL (預設: http://localhost:8080)')
     parser.add_argument('--timeout', type=int, default=30, 
                        help='請求超時時間(秒) (預設: 30)')
+    parser.add_argument('--username', '-u', 
+                       help='登入帳號')
+    parser.add_argument('--password', '-p', 
+                       help='登入密碼')
+    parser.add_argument('--no-auth', action='store_true',
+                       help='跳過認證（用於不需要認證的API）')
     
     args = parser.parse_args()
     
+    username = args.username
+    password = args.password
+    password = hashlib.md5(password.encode('utf-8')).hexdigest()
+
     try:
-        tester = UDPHelperAPITester(base_url=args.url, timeout=args.timeout)
+        tester = UDPHelperAPITester(
+            base_url=args.url, 
+            timeout=args.timeout,
+            username=username,
+            password=password
+        )
+        
         tester.run_comprehensive_test()
-    except KeyboardInterrupt:
 
         print("\n測試被用戶中斷")
         sys.exit(1)

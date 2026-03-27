@@ -5,13 +5,16 @@ User Privilege REST API 測試腳本
 測試所有用戶權限相關的 API 端點
 """
 
+import getpass
+import hashlib
+
 import requests
 import json
 import sys
 from typing import Dict, Any
 
 class UserPrivilegeAPITester:
-    def __init__(self, base_url: str = "http://localhost"):
+    def __init__(self, base_url: str = "http://localhost", username: str = None, password: str = None):
         """
         初始化測試器
         
@@ -19,9 +22,26 @@ class UserPrivilegeAPITester:
             base_url: API 基礎 URL
         """
         self.base_url = base_url.rstrip('/')
+        self.username = username
+        self.password = password        
         self.session = requests.Session()
         self.test_results = []
+        # 設定認證
+        self._setup_authentication()
         
+    def _setup_authentication(self):
+        """設定認證方式"""
+        if self.username and self.password:
+            # 使用 HTTP Basic Authentication
+            self.session.auth = (self.username, self.password)
+            print(f"✅ 已設定 HTTP Basic 認證 (使用者: {self.username})")
+            
+            # 也可以設定 headers 方式的認證
+            # import base64
+            # credentials = base64.b64encode(f"{self.username}:{self.password}".encode()).decode()
+            # self.session.headers.update({'Authorization': f'Basic {credentials}'})
+            
+
     def log_test(self, test_name: str, success: bool, response: requests.Response = None, error: str = None):
         """記錄測試結果"""
         result = {
@@ -342,6 +362,24 @@ class UserPrivilegeAPITester:
                     if result['error']:
                         print(f"    錯誤: {result['error']}")
 
+
+def get_credentials():
+    """取得使用者認證資訊"""
+    print("\n🔐 認證設定")
+    print("-" * 20)
+    
+    username = input("使用者名稱: ").strip()
+    if username:
+        password = getpass.getpass("密碼: ")
+        m = hashlib.md5(password.encode('utf-8'))
+        # Get the hash in a hexadecimal format
+        password = m.hexdigest()
+        return username, password
+    else:
+        print("未輸入使用者名稱，將使用無認證模式")
+        return None, None
+           
+
 def main():
     """主函數"""
     if len(sys.argv) > 1:
@@ -352,9 +390,11 @@ def main():
             base_url = "http://localhost"
     
     print(f"使用 API 基礎 URL: {base_url}")
-    
+    # 獲取認證資訊
+    username, password = get_credentials()
+
     # 創建測試器並執行測試
-    tester = UserPrivilegeAPITester(base_url)
+    tester = UserPrivilegeAPITester(base_url, username, password)
     tester.run_all_tests()
 
 if __name__ == "__main__":

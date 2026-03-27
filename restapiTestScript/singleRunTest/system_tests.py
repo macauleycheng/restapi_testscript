@@ -6,6 +6,8 @@ System REST API 測試腳本
 包含系統信息、內存、CPU、風扇、溫度、PSU、版本、時間管理等功能測試
 """
 
+import hashlib
+
 import requests
 import json
 import sys
@@ -1232,7 +1234,7 @@ class SystemAPITester:
             ({"risingThreshold": 101, "fallingThreshold": 50}, "上升閾值>100", False),
             ({"risingThreshold": 50, "fallingThreshold": 101}, "下降閾值>100", False)
         ]
-        
+
         for payload, description, should_succeed in threshold_test_cases:
             try:
                 url = f"{self.base_url}/api/v1/system/memory"
@@ -1379,10 +1381,10 @@ class SystemAPITester:
             ("/api/v1/time", "時間配置"),
             ("/api/v1/time/clock-summer-time", "夏令時配置")
         ]
-        
+
         for endpoint, description in invalid_json_endpoints:
             try:
-                url = f"{self.base_url},{endpoint}"
+                url = f"{self.base_url}/{endpoint}"
                 response = self.session.put(url, data="invalid json format")
                 success = response.status_code == 400
                 self.log_test(f"無效JSON格式測試 - {description}", success, response)
@@ -2129,6 +2131,7 @@ def main():
     base_url = sys.argv[1]
     username = sys.argv[2] if len(sys.argv) > 2 else None
     password = sys.argv[3] if len(sys.argv) > 3 else None
+    password = hashlib.md5(password.encode('utf-8')).hexdigest()
     
     # 創建測試器並運行測試
     tester = SystemAPITester(base_url, username, password)

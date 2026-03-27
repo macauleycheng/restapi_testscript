@@ -6,14 +6,17 @@ OSPF REST API 測試腳本
 版本: v0.15
 """
 
+import getpass
+
 import requests
 import json
 import sys
 import time
 from typing import Dict, Any, Optional, List
+import hashlib
 
 class OSPFAPITester:
-    def __init__(self, base_url: str = "http://localhost"):
+    def __init__(self, base_url: str = "http://localhost", username: str = None, password: str = None):
         """
         初始化測試器
         
@@ -22,6 +25,8 @@ class OSPFAPITester:
         """
         self.base_url = base_url.rstrip('/')
         self.session = requests.Session()
+        self.username = username
+        self.password = password        
         self.test_results = []
         self.created_resources = {
             'ospf_processes': [],
@@ -34,7 +39,21 @@ class OSPFAPITester:
             'area_aggregates': [],
             'if_auth_md5s': []
         }
+        # 設定認證
+        self._setup_authentication()
         
+    def _setup_authentication(self):
+        """設定認證方式"""
+        if self.username and self.password:
+            # 使用 HTTP Basic Authentication
+            self.session.auth = (self.username, self.password)
+            print(f"✅ 已設定 HTTP Basic 認證 (使用者: {self.username})")
+            
+            # 也可以設定 headers 方式的認證
+            # import base64
+            # credentials = base64.b64encode(f"{self.username}:{self.password}".encode()).decode()
+            # self.session.headers.update({'Authorization': f'Basic {credentials}'})
+                        
     def log_test(self, test_name: str, success: bool, response: requests.Response = None, error: str = None):
         """記錄測試結果"""
         result = {
@@ -1126,6 +1145,21 @@ class OSPFAPITester:
                     elif result['status_code']:
                         print(f"    狀態碼: {result['status_code']}")
 
+def get_user_credentials():
+    """獲取用戶認證信息"""
+    print("請輸入認證信息:")
+    username = input("用戶帳號: ").strip()
+    
+    if username:
+        password = getpass.getpass("密碼: ")
+        m = hashlib.md5(password.encode('utf-8'))
+        # Get the hash in a hexadecimal format
+        password = m.hexdigest()
+
+        return username, password
+    else:
+        return None, None
+
 def main():
     """主函數"""
     print("OSPF API 測試工具")
@@ -1140,6 +1174,9 @@ def main():
             base_url = "http://localhost"
     
     print(f"\n使用 API URL: {base_url}")
+
+    # 獲取認證資訊
+    username, password = get_user_credentials()
     
     confirm = input("確認開始測試? (y/N): ").strip().lower()
     if confirm != 'y':
@@ -1147,7 +1184,7 @@ def main():
         return
     
     # 創建測試器並執行測試
-    tester = OSPFAPITester(base_url)
+    tester = OSPFAPITester(base_url, username, password)
     tester.run_all_tests()
 
 if __name__ == "__main__":

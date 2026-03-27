@@ -10,18 +10,24 @@ import requests
 import json
 import sys
 import time
+import getpass
 from typing import Dict, Any, Optional, List
+import hashlib
 
 class BGPAPITester:
-    def __init__(self, base_url: str = "http://localhost"):
+    def __init__(self, base_url: str = "http://localhost", username: str = None, password: str = None):
         """
         初始化測試器
         
         Args:
             base_url: API 基礎 URL
+            username: 使用者名稱
+            password: 密碼
         """
         self.base_url = base_url.rstrip('/')
         self.session = requests.Session()
+        self.username = username
+        self.password = password
         self.test_results = []
         self.created_resources = {
             'bgp_processes': [],
@@ -33,6 +39,56 @@ class BGPAPITester:
             'route_maps': [],
             'as_paths': []
         }
+        
+        # 設定認證
+        self._setup_authentication()
+        
+    def _setup_authentication(self):
+        """設定認證方式"""
+        if self.username and self.password:
+            # 使用 HTTP Basic Authentication
+            self.session.auth = (self.username, self.password)
+            print(f"✅ 已設定 HTTP Basic 認證 (使用者: {self.username})")
+            
+            # 也可以設定 headers 方式的認證
+            # import base64
+            # credentials = base64.b64encode(f"{self.username}:{self.password}".encode()).decode()
+            # self.session.headers.update({'Authorization': f'Basic {credentials}'})
+            
+    def authenticate_with_token(self, token: str):
+        """
+        使用 Token 認證 (如果 API 支援)
+        
+        Args:
+            token: API Token
+        """
+        self.session.headers.update({'Authorization': f'Bearer {token}'})
+        print(f"✅ 已設定 Token 認證")
+ 
+    
+    def test_authentication(self):
+        """測試認證是否有效"""
+        try:
+            # 嘗試存取一個需要認證的端點
+            url = f"{self.base_url}/api/v1/bgp"
+            response = self.session.get(url)
+            
+            if response.status_code == 401:
+                print("❌ 認證失敗 - 未授權存取")
+                return False
+            elif response.status_code == 403:
+                print("❌ 認證失敗 - 權限不足")
+                return False
+            elif response.status_code in [200, 404]:  # 200 成功，404 表示端點存在但無資料
+                print("✅ 認證成功")
+                return True
+            else:
+                print(f"⚠️ 認證狀態不明確 (狀態碼: {response.status_code})")
+                return True  # 假設成功，繼續測試
+                
+        except Exception as e:
+            print(f"❌ 認證測試失敗: {str(e)}")
+            return False
         
     def log_test(self, test_name: str, success: bool, response: requests.Response = None, error: str = None):
         """記錄測試結果"""
@@ -762,10 +818,19 @@ class BGPAPITester:
         print("開始執行 BGP API 測試")
         print("=" * 60)
         print(f"API 基礎 URL: {self.base_url}")
+        if self.username:
+            print(f"使用者: {self.username}")
         print()
         
+        # 0. 認證測試
+        print("🔐 認證測試")
+        print("-" * 30)
+        if not self.test_authentication():
+            print("❌ 認證失敗，停止測試")
+            return
+        
         # 1. 基本查詢測試
-        print("📋 基本查詢測試")
+        print("\n📋 基本查詢測試")
         print("-" * 30)
         self.test_get_all_bgp_processes()
         self.test_get_bgp_routes()
@@ -818,7 +883,7 @@ class BGPAPITester:
         # 7. 清理測試
         self.cleanup_resources()
         
-        # 8. 測試結果統計
+        # 測試結果統計
         self.print_test_summary()
 
     def print_test_summary(self):
@@ -853,12 +918,43 @@ class BGPAPITester:
                     elif result['status_code']:
                         print(f"    狀態碼: {result['status_code']}")
 
+def get_credentials():
+    """取得使用者認證資訊"""
+    print("\n🔐 認證設定")
+    print("-" * 20)
+    
+    auth_method = input("選擇認證方式 (1: 使用者名稱/密碼, 2: Token, 3: 無認證): ").strip()
+    
+    if auth_method == "1":
+        username = input("使用者名稱: ").strip()
+        if username:
+            password = getpass.getpass("密碼: ")
+            m = hashlib.md5(password.encode('utf-8'))
+            # Get the hash in a hexadecimal format
+            password = m.hexdigest()
+            return username, password, None
+        else:
+            print("未輸入使用者名稱，將使用無認證模式")
+            return None, None, None
+            
+    elif auth_method == "2":
+        token = getpass.getpass("API Token: ")
+        if token:
+            return None, None, token
+        else:
+            print("未輸入 Token，將使用無認證模式")
+            return None, None, None
+            
+    else:
+        print("使用無認證模式")
+        return None, None, None
+
 def main():
     """主函數"""
-    print("BGP API 測試工具")
+    print("BGP API 測試工具 v1.0")
     print("=" * 40)
     
-    # 獲取配置參數
+    # 獲取 API URL
     if len(sys.argv) > 1:
         base_url = sys.argv[1]
     else:
@@ -866,15 +962,30 @@ def main():
         if not base_url:
             base_url = "http://localhost"
     
-    print(f"\n使用 API URL: {base_url}")
+    # 獲取認證資訊
+    username, password, token = get_credentials()
     
-    confirm = input("確認開始測試? (y/N): ").strip().lower()
+    print(f"\n使用 API URL: {base_url}")
+    if username:
+        print(f"使用者: {username}")
+    elif token:
+        print("使用 Token 認證")
+    else:
+        print("無認證模式")
+    
+    confirm = input("\n確認開始測試? (y/N): ").strip().lower()
     if confirm != 'y':
         print("測試已取消")
         return
     
-    # 創建測試器並執行測試
-    tester = BGPAPITester(base_url)
+    # 創建測試器
+    tester = BGPAPITester(base_url, username, password)
+    
+    # 如果有 Token，設定 Token 認證
+    if token:
+        tester.authenticate_with_token(token)
+
+    # 執行測試
     tester.run_all_tests()
 
 if __name__ == "__main__":

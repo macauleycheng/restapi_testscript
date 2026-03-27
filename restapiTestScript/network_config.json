@@ -4,7 +4,7 @@
               "mac"],
   "switch": {
     "protocol": "http",
-    "host": "192.168.40.200",
+    "host": "192.168.42.237",
     "port": 80
   },
   "authentication": {
