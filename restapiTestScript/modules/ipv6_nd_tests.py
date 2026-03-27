@@ -480,6 +480,7 @@ class IPV6_NDTests(BaseTests):
                 url="/api/v1/ipv6/nd/neighbors/dynamic:clear",
                 category="ipv6_nd_neighbor_management",
                 module="ipv6_nd",
+                body={},
                 description="清除所有動態IPv6鄰居條目"
             ),
             
@@ -837,6 +838,7 @@ class IPV6_NDTests(BaseTests):
                 url="/api/v1/ipv6/nd/neighbors/dynamic:clear",
                 category="ipv6_nd_advanced_operations",
                 module="ipv6_nd",
+                body={},
                 description="執行綜合清理操作 - 動態鄰居"
             ),
             

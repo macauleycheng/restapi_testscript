@@ -517,6 +517,7 @@ class ND_SNOOPTests(BaseTests):
                 url="/api/v1/nd-snoop/bindings:clear",
                 category="nd_snoop_binding_table_management",
                 module="nd_snoop",
+                body={},
                 description="清除所有動態用戶地址綁定表條目"
             ),
             
@@ -537,6 +538,7 @@ class ND_SNOOPTests(BaseTests):
                 url="/api/v1/nd-snoop/bindings:clear",
                 category="nd_snoop_binding_table_management",
                 module="nd_snoop",
+                body={},
                 description="再次清除綁定表（確保操作冪等性）"
             ),
             
@@ -601,6 +603,7 @@ class ND_SNOOPTests(BaseTests):
                 url="/api/v1/nd-snoop/prefixes:clear",
                 category="nd_snoop_prefix_table_management",
                 module="nd_snoop",
+                body={},
                 description="清除地址前綴表條目"
             ),
             
@@ -621,6 +624,7 @@ class ND_SNOOPTests(BaseTests):
                 url="/api/v1/nd-snoop/prefixes:clear",
                 category="nd_snoop_prefix_table_management",
                 module="nd_snoop",
+                body={},
                 description="再次清除前綴表（確保操作冪等性）"
             ),
             
@@ -777,6 +781,7 @@ class ND_SNOOPTests(BaseTests):
                 url="/api/v1/nd-snoop/bindings:clear",
                 category="nd_snoop_advanced_operations",
                 module="nd_snoop",
+                body={},
                 description="執行綜合清理操作 - 綁定表"
             ),
             
@@ -787,6 +792,7 @@ class ND_SNOOPTests(BaseTests):
                 url="/api/v1/nd-snoop/prefixes:clear",
                 category="nd_snoop_advanced_operations",
                 module="nd_snoop",
+                body={},
                 description="執行綜合清理操作 - 前綴表"
             ),
             

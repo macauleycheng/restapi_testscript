@@ -402,6 +402,7 @@ class ARPTests(BaseTests):
                 url="/api/v1/layer3/arps/cache:clear",
                 category="arp_cache_management",
                 module="arp",
+                body={},
                 description="清除ARP緩存"
             ),
             
@@ -819,6 +820,7 @@ class ARPTests(BaseTests):
                 url="/api/v1/layer3/arps/cache:clear",
                 category="arp_advanced_operations",
                 module="arp",
+                body={},
                 description="清除ARP緩存並準備重新添加"
             ),
             

@@ -96,6 +96,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x:default",
                 category="dot1x_global",
                 module="dot1x",
+                body={},
                 description="設置802.1X全局和接口設置為默認值"
             ),
             
@@ -120,7 +121,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 description="獲取特定接口802.1X配置"
             ),
             
@@ -131,7 +132,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
+                params={"ifId": self.params.get('interface_id', 'eth1/1')},
                 description=f"獲取接口 {self.params.get('interface_id', 'eth1/1')} 802.1X配置"
             ),
             
@@ -142,7 +143,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 body=self.test_data.get('dot1x_interface_basic', {
                     "intrusionAction": "guest-vlan",
                     "maxReauthReq": 3,
@@ -166,7 +167,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_single_host_mode', {
                     "operationMode": "single-host",
                     "portControl": "auto",
@@ -182,7 +183,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 body=self.test_data.get('dot1x_multi_host_mode', {
                     "operationMode": "multi-host",
                     "maxMacCount": 5,
@@ -199,7 +200,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f3"},
+                params={"ifId": "eth1/3"},
                 body=self.test_data.get('dot1x_mac_based_auth_mode', {
                     "operationMode": "mac-based-auth",
                     "portControl": "auto",
@@ -215,7 +216,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_port_control_auto', {
                     "portControl": "auto"
                 }),
@@ -229,7 +230,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 body=self.test_data.get('dot1x_port_control_force_authorized', {
                     "portControl": "force-authorized"
                 }),
@@ -243,7 +244,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f3"},
+                params={"ifId": "eth1/3"},
                 body=self.test_data.get('dot1x_port_control_force_unauthorized', {
                     "portControl": "force-unauthorized"
                 }),
@@ -257,7 +258,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_intrusion_block_traffic', {
                     "intrusionAction": "block-traffic"
                 }),
@@ -271,7 +272,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 body=self.test_data.get('dot1x_intrusion_guest_vlan', {
                     "intrusionAction": "guest-vlan"
                 }),
@@ -285,7 +286,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_reauth_enable', {
                     "reauthStatus": True,
                     "reauthPeriod": 3600
@@ -300,7 +301,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 body=self.test_data.get('dot1x_reauth_disable', {
                     "reauthStatus": False
                 }),
@@ -314,7 +315,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_min_timeouts', {
                     "quietPeriod": 1,
                     "suppTimeout": 1,
@@ -331,7 +332,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 body=self.test_data.get('dot1x_max_timeouts', {
                     "quietPeriod": 65535,
                     "suppTimeout": 65535,
@@ -348,7 +349,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_min_max_requests', {
                     "maxReq": 1,
                     "maxReauthReq": 1
@@ -363,7 +364,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 body=self.test_data.get('dot1x_max_max_requests', {
                     "maxReq": 10,
                     "maxReauthReq": 10
@@ -378,7 +379,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_max_mac_count', {
                     "operationMode": "multi-host",
                     "maxMacCount": 1024
@@ -405,7 +406,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_invalid_operation_mode', {
                     "operationMode": "invalid-mode"
                 }),
@@ -420,7 +421,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_invalid_port_control', {
                     "portControl": "invalid-control"
                 }),
@@ -435,7 +436,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_invalid_intrusion_action', {
                     "intrusionAction": "invalid-action"
                 }),
@@ -450,7 +451,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_interface",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 description="驗證接口802.1X配置更新"
             )
         ]
@@ -465,7 +466,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/statistics/interfaces/{ifId}",
                 category="dot1x_statistics",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 description="獲取接口802.1X統計信息"
             ),
             
@@ -476,7 +477,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/statistics/interfaces/{ifId}",
                 category="dot1x_statistics",
                 module="dot1x",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
+                params={"ifId": self.params.get('interface_id', 'eth1/1')},
                 description=f"獲取接口 {self.params.get('interface_id', 'eth1/1')} 802.1X統計信息"
             ),
             
@@ -487,7 +488,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/statistics/interfaces/{ifId}",
                 category="dot1x_statistics",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 description="獲取多個接口802.1X統計信息"
             ),
             
@@ -510,7 +511,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/statistics/interfaces/{ifId}",
                 category="dot1x_statistics",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 description="監控802.1X統計信息變化"
             )
         ]
@@ -525,7 +526,8 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/reauthenticate/interfaces/{ifId}",
                 category="dot1x_reauthentication",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
+                body={},
                 description="強制重新認證特定接口"
             ),
             
@@ -536,7 +538,8 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/reauthenticate/interfaces/{ifId}",
                 category="dot1x_reauthentication",
                 module="dot1x",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
+                params={"ifId": self.params.get('interface_id', 'eth1/1')},
+                body={},
                 description=f"強制重新認證接口 {self.params.get('interface_id', 'eth1/1')}"
             ),
             
@@ -547,7 +550,8 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/reauthenticate/interfaces/{ifId}",
                 category="dot1x_reauthentication",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
+                body={},
                 description="強制重新認證多個接口"
             ),
             
@@ -559,6 +563,7 @@ class DOT1XTests(BaseTests):
                 category="dot1x_reauthentication",
                 module="dot1x",
                 params={"ifId": "invalid-interface"},
+                body={},
                 expected_status=400,
                 description="測試無效接口重新認證"
             ),
@@ -570,7 +575,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/interfaces/{ifId}",
                 category="dot1x_reauthentication",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 description="驗證重新認證後接口狀態"
             )
         ]
@@ -698,7 +703,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/supplicant/interfaces/{ifId}",
                 category="dot1x_supplicant",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 description="獲取接口Supplicant屬性"
             ),
             
@@ -709,7 +714,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/supplicant/interfaces/{ifId}",
                 category="dot1x_supplicant",
                 module="dot1x",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
+                params={"ifId": self.params.get('interface_id', 'eth1/1')},
                 description=f"獲取接口 {self.params.get('interface_id', 'eth1/1')} Supplicant屬性"
             ),
             
@@ -720,7 +725,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/supplicant/interfaces/{ifId}",
                 category="dot1x_supplicant",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 body=self.test_data.get('dot1x_supplicant_interface_basic', {
                     "maxStart": 10,
                     "paeSupplicant": True,
@@ -738,7 +743,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/supplicant/interfaces/{ifId}",
                 category="dot1x_supplicant",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_supplicant_enable', {
                     "paeSupplicant": True
                 }),
@@ -752,7 +757,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/supplicant/interfaces/{ifId}",
                 category="dot1x_supplicant",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 body=self.test_data.get('dot1x_supplicant_disable', {
                     "paeSupplicant": False
                 }),
@@ -766,7 +771,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/supplicant/interfaces/{ifId}",
                 category="dot1x_supplicant",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_supplicant_min_timeouts', {
                     "authPeriod": 1,
                     "heldPeriod": 1,
@@ -782,7 +787,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/supplicant/interfaces/{ifId}",
                 category="dot1x_supplicant",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 body=self.test_data.get('dot1x_supplicant_max_timeouts', {
                     "authPeriod": 65535,
                     "heldPeriod": 65535,
@@ -798,7 +803,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/supplicant/interfaces/{ifId}",
                 category="dot1x_supplicant",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_supplicant_min_max_start', {
                     "maxStart": 1
                 }),
@@ -812,7 +817,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/supplicant/interfaces/{ifId}",
                 category="dot1x_supplicant",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 body=self.test_data.get('dot1x_supplicant_max_max_start', {
                     "maxStart": 65535
                 }),
@@ -826,7 +831,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/supplicant/statistics/interfaces/{ifId}",
                 category="dot1x_supplicant",
                 module="dot1x",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 description="獲取接口Supplicant統計信息"
             ),
             
@@ -837,7 +842,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/supplicant/statistics/interfaces/{ifId}",
                 category="dot1x_supplicant",
                 module="dot1x",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
+                params={"ifId": self.params.get('interface_id', 'eth1/1')},
                 description=f"獲取接口 {self.params.get('interface_id', 'eth1/1')} Supplicant統計信息"
             ),
             
@@ -876,7 +881,7 @@ class DOT1XTests(BaseTests):
                 url="/api/v1/dot1x/supplicant/interfaces/{ifId}",
                 category="dot1x_supplicant",
                 module="dot1x",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('dot1x_supplicant_invalid_params', {
                     "maxStart": 70000,  # 超出範圍 1-65535
                     "authPeriod": 70000  # 超出範圍 1-65535

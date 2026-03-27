@@ -10,7 +10,7 @@
   "authentication": {
     "type": "basic",
     "username": "admin",
-    "password": "admin"
+    "password": "21232f297a57a5a743894a0e4a801fc3"
   },
   "default_headers": {
     "Content-Type": "application/json",
@@ -6156,6 +6156,8 @@
           "access": "deny",
           "sourceIpAddr": "192.168.2.0",
           "sourceIpAddrBitmask": "255.255.255.0",
+          "destIpAddr": "10.10.0.0",
+          "destIpAddrBitmask": "255.255.0.0",
           "protocol": 17,
           "destPort": 53,
           "destPortBitmask": 65535
@@ -6295,6 +6297,8 @@
           "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
           "sourceIpAddr": "192.168.5.11",
           "sourceIpAddrBitmask": "255.255.255.0",
+          "destIpAddr": "192.168.5.2",
+          "destIpAddrBitmask": "255.255.255.255",
           "logStatus": false
         }
       ]

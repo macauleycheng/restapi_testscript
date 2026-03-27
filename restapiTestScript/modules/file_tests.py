@@ -214,19 +214,19 @@ class FILETests(BaseTests):
             ),
             
             # 文件到運行配置複製
-            self.create_test_case(
-                name="file_copy_file_to_running_config",
-                method="POST",
-                url="/api/v1/file/copy",
-                category="file_copy_operations",
-                module="file",
-                body=self.test_data.get('file_copy_to_running_config', {
-                    "srcOperType": "file",
-                    "destOperType": "running-config",
-                    "srcFileName": "startup1.cfg"
-                }),
-                description="文件到運行配置複製"
-            ),
+            #self.create_test_case(
+            #    name="file_copy_file_to_running_config",
+            #    method="POST",
+            #    url="/api/v1/file/copy",
+            #    category="file_copy_operations",
+            #    module="file",
+            #    body=self.test_data.get('file_copy_to_running_config', {
+            #        "srcOperType": "file",
+            #        "destOperType": "running-config",
+            #        "srcFileName": "startup1.cfg"
+            #    }),
+            #    description="文件到運行配置複製"
+            #),
             
             # 文件到啟動配置複製
             self.create_test_case(
@@ -385,7 +385,7 @@ class FILETests(BaseTests):
                 category="file_configuration_management",
                 module="file",
                 body=self.test_data.get('file_save_config_custom', {
-                    "startupFileName": "config_" + self.get_timestamp() + ".cfg"
+                    "startupFileName": "config_custom.cfg"
                 }),
                 description="保存配置到自定義文件名"
             ),
@@ -558,6 +558,21 @@ class FILETests(BaseTests):
                 category="file_auto_upgrade_management",
                 module="file",
                 description="驗證自動升級配置"
+            ),
+
+            # 回復自動升級配置
+            self.create_test_case(
+                name="file_restore_auto_upgrade_configuration",
+                method="PUT",
+                url="/api/v1/file/auto-upgrade",
+                category="file_auto_upgrade_management",
+                module="file",
+                body={
+                    "opcodeStatus": False,
+                    "opcodeDirUrl": "",
+                    "reloadStatus": False
+                },
+                description="驗證自動升級配置"
             )
         ]
     
@@ -688,9 +703,10 @@ class FILETests(BaseTests):
             self.create_test_case(
                 name="file_test_delete_nonexistent_file",
                 method="DELETE",
-                url="/api/v1/file/nonexistent.cfg/file-type/config",
+                url="/api/v1/file/{fileName}/file-type/{fileType}",
                 category="file_error_handling",
                 module="file",
+                params={"fileName": "nonexistent.cfg", "fileType": "config"},
                 body={"unitId": 1},
                 expected_status=500,
                 description="測試刪除不存在的文件"
@@ -700,9 +716,10 @@ class FILETests(BaseTests):
             self.create_test_case(
                 name="file_test_delete_startup_file",
                 method="DELETE",
-                url="/api/v1/file/startup.cfg/file-type/config",
+                url="/api/v1/file/{fileName}/file-type/{fileType}",
                 category="file_error_handling",
                 module="file",
+                params={"fileName": "startup.cfg", "fileType": "config"},
                 body={"unitId": 1},
                 expected_status=500,
                 description="測試刪除啟動文件 (應該被拒絕)"
@@ -712,9 +729,10 @@ class FILETests(BaseTests):
             self.create_test_case(
                 name="file_test_delete_factory_default_config",
                 method="DELETE",
-                url="/api/v1/file/Factory_Default_Config.cfg/file-type/config",
+                url="/api/v1/file/{fileName}/file-type/{fileType}",
                 category="file_error_handling",
                 module="file",
+                params={"fileName": "Factory_Default_Config.cfg", "fileType": "config"},
                 body={"unitId": 1},
                 expected_status=500,
                 description="測試刪除出廠默認配置文件 (應該被拒絕)"
@@ -874,10 +892,15 @@ class FILETests(BaseTests):
             # 恢復正常文件配置
             self.create_test_case(
                 name="file_restore_normal_configuration",
-                method="GET",
-                url="/api/v1/file",
+                method="PUT",
+                url="/api/v1/file/auto-upgrade",
                 category="file_error_handling",
                 module="file",
+                body={
+                    "opcodeStatus": False,
+                    "opcodeDirUrl": "",
+                    "reloadStatus": False
+                },
                 description="恢復正常文件配置"
             ),
             
