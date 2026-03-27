@@ -359,6 +359,7 @@ class IP_SOURCE_GUARDTests(BaseTests):
                 url="/api/v1/ip-source-guard/bindings:clear-blocked",
                 category="ip_source_guard_blocked_entry_management",
                 module="ip_source_guard",
+                body={},
                 description="清除IP源保護阻塞條目"
             ),
             
@@ -379,6 +380,7 @@ class IP_SOURCE_GUARDTests(BaseTests):
                 url="/api/v1/ip-source-guard/bindings:clear-blocked",
                 category="ip_source_guard_blocked_entry_management",
                 module="ip_source_guard",
+                body={},
                 description="再次清除阻塞條目（確保操作冪等性）"
             )
         ]

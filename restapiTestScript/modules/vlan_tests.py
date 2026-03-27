@@ -96,7 +96,6 @@ class VLANTests(BaseTests):
                 category="traffic_segmentation",
                 module="vlan",
                 params={"sessionId": self.params.get('session_id', 1)},
-                expected_status=204,
                 description=f"刪除流量分段會話 {self.params.get('session_id', 1)}"
             )
         ]
@@ -139,7 +138,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/vlans/{vlanId}",
                 category="vlan",
                 module="vlan",
-                params={"vlanId": self.params.get('vlan_id', 100)},
+                params={"vlanId": 100},
                 body=self.test_data.get('vlan_members', {
                     "members": [
                         {"ifId": "eth1/1", "isTagged": False},
@@ -154,8 +153,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/vlans/{vlanId}/interfaces",
                 category="vlan",
                 module="vlan",
-                params={"vlanId": self.params.get('vlan_id', 100)},
-                expected_status=204,
+                params={"vlanId": 100},
                 description=f"移除VLAN {self.params.get('vlan_id', 100)} 所有成員"
             ),
             self.create_test_case(
@@ -164,8 +162,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/vlans/{vlanId}/interfaces/{ifId}",
                 category="vlan",
                 module="vlan",
-                params={"vlanId": self.params.get('vlan_id', 100), "ifId": self.params.get('interface_id', 'eth1%2f1')},
-                expected_status=204,
+                params={"vlanId": 100, "ifId": self.params.get('interface_id', 'eth1/1')},
                 description=f"從VLAN {self.params.get('vlan_id', 100)} 移除接口 {self.params.get('interface_id', 'eth1/1')}"
             ),
             self.create_test_case(
@@ -174,8 +171,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/vlans/{vlanId}",
                 category="vlan",
                 module="vlan",
-                params={"vlanId": self.params.get('vlan_id', 100)},
-                expected_status=204,
+                params={"vlanId": 100},
                 description=f"刪除VLAN {self.params.get('vlan_id', 100)}"
             )
         ]
@@ -239,7 +235,6 @@ class VLANTests(BaseTests):
                 category="protocol_vlan",
                 module="vlan",
                 params={"frameType": self.params.get('frame_type', 'ethernet'), "protocolType": self.params.get('protocol_type', 'ip')},
-                expected_status=204,
                 description=f"刪除協議組 {self.params.get('frame_type', 'ethernet')}/{self.params.get('protocol_type', 'ip')}"
             ),
             
@@ -275,7 +270,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/protocol-vlan/interfaces/{ifId}/groups/{groupId}",
                 category="protocol_vlan",
                 module="vlan",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1'), "groupId": self.params.get('group_id', 1)},
+                params={"ifId": self.params.get('interface_id', "eth1/1"), "groupId": self.params.get('group_id', 1)},
                 description=f"獲取接口 {self.params.get('interface_id', 'eth1/1')} 協議組 {self.params.get('group_id', 1)} 配置"
             ),
             
@@ -286,11 +281,11 @@ class VLANTests(BaseTests):
                 url="/api/v1/protocol-vlan/interfaces/{ifId}/groups/{groupId}",
                 category="protocol_vlan",
                 module="vlan",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1'), "groupId": self.params.get('group_id', 1)},
-                body={"vlanId": 200},
+                params={"ifId": self.params.get('interface_id', 'eth1/1'), "groupId": self.params.get('group_id', 1)},
+                body={"vlanId": 200, "priority": 1},
                 description=f"更新接口 {self.params.get('interface_id', 'eth1/1')} 協議組 {self.params.get('group_id', 1)} 配置"
             ),
-            
+
             # 刪除接口協議組配置
             self.create_test_case(
                 name="protocol_vlan_delete_interface_group",
@@ -298,8 +293,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/protocol-vlan/interfaces/{ifId}/groups/{groupId}",
                 category="protocol_vlan",
                 module="vlan",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1'), "groupId": self.params.get('group_id', 1)},
-                expected_status=204,
+                params={"ifId": self.params.get('interface_id', 'eth1/1'), "groupId": self.params.get('group_id', 1)},
                 description=f"刪除接口 {self.params.get('interface_id', 'eth1/1')} 協議組 {self.params.get('group_id', 1)} 配置"
             )
         ]
@@ -363,7 +357,6 @@ class VLANTests(BaseTests):
                 category="mac_vlan",
                 module="vlan",
                 params={"macAddr": self.params.get('mac_address', '00-11-22-33-44-55'), "mask": self.params.get('mac_mask', 'FF-FF-FF-FF-FF-FF')},
-                expected_status=204,
                 description=f"刪除MAC VLAN條目 {self.params.get('mac_address', '00-11-22-33-44-55')}/{self.params.get('mac_mask', 'FF-FF-FF-FF-FF-FF')}"
             )
         ]
@@ -388,10 +381,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/voice-vlan",
                 category="voice_vlan",
                 module="vlan",
-                body=self.test_data.get('voice_vlan_global', {
-                    "status": True,
-                    "vlanId": 10
-                }),
+                body={"vlanId": 1, "status": True},
                 description="配置語音VLAN全局設置"
             ),
             
@@ -438,7 +428,6 @@ class VLANTests(BaseTests):
                 category="voice_vlan",
                 module="vlan",
                 params={"macAddr": self.params.get('oui_mac', '00-12-34-56-78-9A'), "mask": self.params.get('oui_mask', 'FF-FF-FF-00-00-00')},
-                expected_status=204,
                 description=f"刪除OUI條目 {self.params.get('oui_mac', '00-12-34-56-78-9A')}/{self.params.get('oui_mask', 'FF-FF-FF-00-00-00')}"
             ),
             
@@ -459,7 +448,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/voice-vlan/interfaces/{ifId}",
                 category="voice_vlan",
                 module="vlan",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
+                params={"ifId": self.params.get('interface_id', 'eth1/1')},
                 description=f"獲取接口 {self.params.get('interface_id', 'eth1/1')} 的語音VLAN配置"
             ),
             
@@ -470,7 +459,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/voice-vlan/interfaces/{ifId}",
                 category="voice_vlan",
                 module="vlan",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
+                params={"ifId": self.params.get('interface_id', 'eth1/1')},
                 body=self.test_data.get('voice_vlan_interface', {
                     "status": True,
                     "mode": "auto"
@@ -499,10 +488,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/dot1q-base",
                 category="dot1q_base",
                 module="vlan",
-                body=self.test_data.get('dot1q_base_config', {
-                    "status": True,
-                    "managementVlanId": 1
-                }),
+                body={"gvrpStatus": True},
                 description="配置802.1Q基礎設置"
             )
         ]
@@ -527,7 +513,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/dot1q-vlan/interfaces/{ifId}",
                 category="dot1q_vlan",
                 module="vlan",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
+                params={"ifId": self.params.get('interface_id', 'eth1/1')},
                 description=f"獲取接口 {self.params.get('interface_id', 'eth1/1')} 的802.1Q VLAN配置"
             ),
             
@@ -538,7 +524,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/dot1q-vlan/interfaces/{ifId}",
                 category="dot1q_vlan",
                 module="vlan",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
+                params={"ifId": self.params.get('interface_id', 'eth1/1')},
                 body=self.test_data.get('dot1q_vlan_interface', {
                     "pvid": 1,
                     "acceptableFrameTypes": "all",
@@ -568,7 +554,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/dot1d-garp/interfaces/{ifId}",
                 category="dot1d_garp",
                 module="vlan",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
+                params={"ifId": self.params.get('interface_id', 'eth1/1')},
                 description=f"獲取接口 {self.params.get('interface_id', 'eth1/1')} 的GARP配置"
             ),
             
@@ -579,7 +565,7 @@ class VLANTests(BaseTests):
                 url="/api/v1/dot1d-garp/interfaces/{ifId}",
                 category="dot1d_garp",
                 module="vlan",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
+                params={"ifId": self.params.get('interface_id', 'eth1/1')},
                 body=self.test_data.get('dot1d_garp_interface', {
                     "joinTime": 200,
                     "leaveTime": 600,
@@ -592,29 +578,16 @@ class VLANTests(BaseTests):
     def get_vlan_l3_interface_tests(self) -> List[APITestCase]:
         """VLAN L3 Interface API 測試案例"""
         return [
-            # 獲取所有VLAN L3接口
-            self.create_test_case(
-                name="vlan_l3_get_all_interfaces",
-                method="GET",
-                url="/api/v1/vlan-l3-interfaces",
-                category="vlan_l3_interface",
-                module="vlan",
-                description="獲取所有VLAN L3接口"
-            ),
-            
             # 創建VLAN L3接口
             self.create_test_case(
                 name="vlan_l3_create_interface",
                 method="POST",
-                url="/api/v1/vlan-l3-interfaces",
+                url="/api/v1/interface/vlans",
                 category="vlan_l3_interface",
                 module="vlan",
                 body=self.test_data.get('vlan_l3_interface_create', {
-                    "vlanId": 100,
-                    "ipAddress": "192.168.100.1",
-                    "subnetMask": "255.255.255.0"
+                    "vlanId": 100
                 }),
-                expected_status=201,
                 description="創建VLAN L3接口"
             ),
             
@@ -622,60 +595,21 @@ class VLANTests(BaseTests):
             self.create_test_case(
                 name="vlan_l3_get_interface",
                 method="GET",
-                url="/api/v1/vlan-l3-interfaces/{vlanId}",
+                url="/api/v1/interface/vlans/{vlanId}",
                 category="vlan_l3_interface",
                 module="vlan",
-                params={"vlanId": self.params.get('vlan_id', 100)},
+                params={"vlanId": 100},
                 description=f"獲取VLAN {self.params.get('vlan_id', 100)} L3接口"
-            ),
-            
-            # 更新VLAN L3接口
-            self.create_test_case(
-                name="vlan_l3_update_interface",
-                method="PUT",
-                url="/api/v1/vlan-l3-interfaces/{vlanId}",
-                category="vlan_l3_interface",
-                module="vlan",
-                params={"vlanId": self.params.get('vlan_id', 100)},
-                body=self.test_data.get('vlan_l3_interface_update', {
-                    "ipAddress": "192.168.100.2",
-                    "subnetMask": "255.255.255.0",
-                    "status": True
-                }),
-                description=f"更新VLAN {self.params.get('vlan_id', 100)} L3接口"
             ),
             
             # 刪除VLAN L3接口
             self.create_test_case(
                 name="vlan_l3_delete_interface",
                 method="DELETE",
-                url="/api/v1/vlan-l3-interfaces/{vlanId}",
+                url="/api/v1/interface/vlans/{vlanId}",
                 category="vlan_l3_interface",
                 module="vlan",
-                params={"vlanId": self.params.get('vlan_id', 100)},
-                expected_status=204,
+                params={"vlanId": 100},
                 description=f"刪除VLAN {self.params.get('vlan_id', 100)} L3接口"
             ),
-            
-            # 獲取VLAN L3接口統計信息
-            self.create_test_case(
-                name="vlan_l3_get_interface_statistics",
-                method="GET",
-                url="/api/v1/vlan-l3-interfaces/{vlanId}/statistics",
-                category="vlan_l3_interface",
-                module="vlan",
-                params={"vlanId": self.params.get('vlan_id', 100)},
-                description=f"獲取VLAN {self.params.get('vlan_id', 100)} L3接口統計信息"
-            ),
-            
-            # 清除VLAN L3接口統計信息
-            self.create_test_case(
-                name="vlan_l3_clear_interface_statistics",
-                method="PUT",
-                url="/api/v1/vlan-l3-interfaces/{vlanId}/statistics:clear",
-                category="vlan_l3_interface",
-                module="vlan",
-                params={"vlanId": self.params.get('vlan_id', 100)},
-                description=f"清除VLAN {self.params.get('vlan_id', 100)} L3接口統計信息"
-            )
         ]

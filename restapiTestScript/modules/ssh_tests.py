@@ -493,6 +493,7 @@ class SSHTests(BaseTests):
                 url="/api/v1/ssh/host-keys:save",
                 category="ssh_host_keys",
                 module="ssh",
+                body={},
                 description="保存SSH主機密鑰到配置"
             ),
             
@@ -575,6 +576,7 @@ class SSHTests(BaseTests):
                 url="/api/v1/ssh/host-keys:save",
                 category="ssh_host_keys",
                 module="ssh",
+                body={},
                 description="再次保存SSH主機密鑰"
             )
         ]

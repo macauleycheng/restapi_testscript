@@ -15,6 +15,7 @@ import json
 import sys
 import time
 from urllib.parse import quote
+import hashlib
 
 class PortSecurityAPITester:
     def __init__(self, base_url, username=None, password=None):
@@ -299,7 +300,8 @@ def main():
     base_url = sys.argv[1]
     username = sys.argv[2] if len(sys.argv) > 2 else None
     password = sys.argv[3] if len(sys.argv) > 3 else None
-    
+    password = hashlib.md5(password.encode('utf-8')).hexdigest()
+
     # 創建測試器並運行測試
     tester = PortSecurityAPITester(base_url, username, password)
     

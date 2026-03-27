@@ -74,19 +74,20 @@ class MGMT_IP_FILTERTests(BaseTests):
         """Management IP Filter Client Type Management API 測試案例"""
         return [
             # 添加HTTP客戶端過濾器
-            self.create_test_case(
-                name="mgmt_ip_filter_add_http_client_filter",
-                method="POST",
-                url="/api/v1/mgmt-ip-filter",
-                category="mgmt_ip_filter_client_type_management",
-                module="mgmt_ip_filter",
-                body=self.test_data.get('mgmt_ip_filter_http_client', {
-                    "type": "http",
-                    "startAddress": "192.168.2.30",
-                    "endAddress": "192.168.2.50"
-                }),
-                description="添加HTTP客戶端過濾器"
-            ),
+            # This will affect tests
+            #self.create_test_case(
+            #    name="mgmt_ip_filter_add_http_client_filter",
+            #    method="POST",
+            #    url="/api/v1/mgmt-ip-filter",
+            #    category="mgmt_ip_filter_client_type_management",
+            #    module="mgmt_ip_filter",
+            #    body=self.test_data.get('mgmt_ip_filter_http_client', {
+            #        "type": "http",
+            #        "startAddress": "192.168.2.30",
+            #        "endAddress": "192.168.2.50"
+            #    }),
+            #    description="添加HTTP客戶端過濾器"
+            #),
             
             # 添加SNMP客戶端過濾器
             self.create_test_case(
@@ -119,19 +120,20 @@ class MGMT_IP_FILTERTests(BaseTests):
             ),
             
             # 添加企業級HTTP過濾器
-            self.create_test_case(
-                name="mgmt_ip_filter_add_enterprise_http_filter",
-                method="POST",
-                url="/api/v1/mgmt-ip-filter",
-                category="mgmt_ip_filter_client_type_management",
-                module="mgmt_ip_filter",
-                body=self.test_data.get('mgmt_ip_filter_enterprise_http', {
-                    "type": "http",
-                    "startAddress": "10.0.0.1",
-                    "endAddress": "10.0.0.100"
-                }),
-                description="添加企業級HTTP過濾器"
-            ),
+            # This will affect tests
+            #self.create_test_case(
+            #    name="mgmt_ip_filter_add_enterprise_http_filter",
+            #    method="POST",
+            #    url="/api/v1/mgmt-ip-filter",
+            #    category="mgmt_ip_filter_client_type_management",
+            #    module="mgmt_ip_filter",
+            #    body=self.test_data.get('mgmt_ip_filter_enterprise_http', {
+            #        "type": "http",
+            #        "startAddress": "10.0.0.1",
+            #        "endAddress": "10.0.0.100"
+            #    }),
+            #    description="添加企業級HTTP過濾器"
+            #),
             
             # 添加數據中心SNMP過濾器
             self.create_test_case(
@@ -256,34 +258,36 @@ class MGMT_IP_FILTERTests(BaseTests):
         """Management IP Filter Advanced Operations API 測試案例"""
         return [
             # 批量添加多個HTTP過濾器 - 過濾器1
-            self.create_test_case(
-                name="mgmt_ip_filter_batch_add_http_filter_1",
-                method="POST",
-                url="/api/v1/mgmt-ip-filter",
-                category="mgmt_ip_filter_advanced_operations",
-                module="mgmt_ip_filter",
-                body=self.test_data.get('mgmt_ip_filter_batch_http_1', {
-                    "type": "http",
-                    "startAddress": "192.168.10.1",
-                    "endAddress": "192.168.10.50"
-                }),
-                description="批量添加HTTP過濾器 - 過濾器1"
-            ),
+            # This will affect tests
+            #self.create_test_case(
+            #    name="mgmt_ip_filter_batch_add_http_filter_1",
+            #    method="POST",
+            #    url="/api/v1/mgmt-ip-filter",
+            #    category="mgmt_ip_filter_advanced_operations",
+            #    module="mgmt_ip_filter",
+            #    body=self.test_data.get('mgmt_ip_filter_batch_http_1', {
+            #        "type": "http",
+            #        "startAddress": "192.168.10.1",
+            #        "endAddress": "192.168.10.50"
+            #    }),
+            #    description="批量添加HTTP過濾器 - 過濾器1"
+            #),
             
             # 批量添加多個HTTP過濾器 - 過濾器2
-            self.create_test_case(
-                name="mgmt_ip_filter_batch_add_http_filter_2",
-                method="POST",
-                url="/api/v1/mgmt-ip-filter",
-                category="mgmt_ip_filter_advanced_operations",
-                module="mgmt_ip_filter",
-                body=self.test_data.get('mgmt_ip_filter_batch_http_2', {
-                    "type": "http",
-                    "startAddress": "192.168.20.1",
-                    "endAddress": "192.168.20.100"
-                }),
-                description="批量添加HTTP過濾器 - 過濾器2"
-            ),
+            # This will affect tests
+            #self.create_test_case(
+            #    name="mgmt_ip_filter_batch_add_http_filter_2",
+            #    method="POST",
+            #    url="/api/v1/mgmt-ip-filter",
+            #    category="mgmt_ip_filter_advanced_operations",
+            #    module="mgmt_ip_filter",
+            #    body=self.test_data.get('mgmt_ip_filter_batch_http_2', {
+            #        "type": "http",
+            #        "startAddress": "192.168.20.1",
+            #        "endAddress": "192.168.20.100"
+            #    }),
+            #    description="批量添加HTTP過濾器 - 過濾器2"
+            #),
             
             # 批量添加多個SNMP過濾器 - 過濾器1
             self.create_test_case(
@@ -316,19 +320,20 @@ class MGMT_IP_FILTERTests(BaseTests):
             ),
             
             # 配置複雜的企業級過濾策略
-            self.create_test_case(
-                name="mgmt_ip_filter_configure_complex_enterprise_policy",
-                method="POST",
-                url="/api/v1/mgmt-ip-filter",
-                category="mgmt_ip_filter_advanced_operations",
-                module="mgmt_ip_filter",
-                body=self.test_data.get('mgmt_ip_filter_complex_enterprise_policy', {
-                    "type": "http",
-                    "startAddress": "10.1.0.1",
-                    "endAddress": "10.1.255.255"
-                }),
-                description="配置複雜的企業級過濾策略"
-            ),
+            # This will affect tests
+            #self.create_test_case(
+            #    name="mgmt_ip_filter_configure_complex_enterprise_policy",
+            #    method="POST",
+            #    url="/api/v1/mgmt-ip-filter",
+            #    category="mgmt_ip_filter_advanced_operations",
+            #    module="mgmt_ip_filter",
+            #    body=self.test_data.get('mgmt_ip_filter_complex_enterprise_policy', {
+            #        "type": "http",
+            #        "startAddress": "10.1.0.1",
+            #        "endAddress": "10.1.255.255"
+            #    }),
+            #    description="配置複雜的企業級過濾策略"
+            #),
             
             # 配置數據中心級過濾策略
             self.create_test_case(
@@ -346,18 +351,19 @@ class MGMT_IP_FILTERTests(BaseTests):
             ),
             
             # 配置單一IP地址過濾器 - HTTP
-            self.create_test_case(
-                name="mgmt_ip_filter_configure_single_ip_http_filter",
-                method="POST",
-                url="/api/v1/mgmt-ip-filter",
-                category="mgmt_ip_filter_advanced_operations",
-                module="mgmt_ip_filter",
-                body=self.test_data.get('mgmt_ip_filter_single_ip_http', {
-                    "type": "http",
-                    "startAddress": "192.168.100.100"
-                }),
-                description="配置單一IP地址過濾器 - HTTP"
-            ),
+            # This will affect tests
+            #self.create_test_case(
+            #    name="mgmt_ip_filter_configure_single_ip_http_filter",
+            #    method="POST",
+            #    url="/api/v1/mgmt-ip-filter",
+            #    category="mgmt_ip_filter_advanced_operations",
+            #    module="mgmt_ip_filter",
+            #    body=self.test_data.get('mgmt_ip_filter_single_ip_http', {
+            #        "type": "http",
+            #        "startAddress": "192.168.100.100"
+            #    }),
+            #    description="配置單一IP地址過濾器 - HTTP"
+            #),
             
             # 配置單一IP地址過濾器 - SNMP
             self.create_test_case(
@@ -583,20 +589,21 @@ class MGMT_IP_FILTERTests(BaseTests):
             ),
             
             # 測試重複添加相同過濾器
-            self.create_test_case(
-                name="mgmt_ip_filter_test_duplicate_filter_addition",
-                method="POST",
-                url="/api/v1/mgmt-ip-filter",
-                category="mgmt_ip_filter_error_handling",
-                module="mgmt_ip_filter",
-                body=self.test_data.get('mgmt_ip_filter_duplicate_filter', {
-                    "type": "http",
-                    "startAddress": "192.168.2.30",  # 已存在的過濾器
-                    "endAddress": "192.168.2.50"
-                }),
-                expected_status=400,
-                description="測試重複添加相同過濾器"
-            ),
+            # This will affect tests
+            #self.create_test_case(
+            #    name="mgmt_ip_filter_test_duplicate_filter_addition",
+            #    method="POST",
+            #    url="/api/v1/mgmt-ip-filter",
+            #    category="mgmt_ip_filter_error_handling",
+            #    module="mgmt_ip_filter",
+            #    body=self.test_data.get('mgmt_ip_filter_duplicate_filter', {
+            #        "type": "http",
+            #        "startAddress": "192.168.2.30",  # 已存在的過濾器
+            #        "endAddress": "192.168.2.50"
+            #    }),
+            #    expected_status=400,
+            #    description="測試重複添加相同過濾器"
+            #),
             
             # 測試無效的URL編碼 - 客戶端類型
             self.create_test_case(

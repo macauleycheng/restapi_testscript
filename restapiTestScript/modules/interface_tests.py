@@ -297,6 +297,7 @@ class INTERFACETests(BaseTests):
                 url="/api/v1/interfaces-clear-counters/eth1%2f1",
                 category="interface_counters_management",
                 module="interface",
+                body={},
                 description="清除eth1/1接口計數器"
             ),
             
@@ -307,6 +308,7 @@ class INTERFACETests(BaseTests):
                 url="/api/v1/interfaces-clear-counters/eth1%2f2",
                 category="interface_counters_management",
                 module="interface",
+                body={},
                 description="清除eth1/2接口計數器"
             ),
             

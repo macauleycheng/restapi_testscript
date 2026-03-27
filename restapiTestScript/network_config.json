@@ -4,7 +4,7 @@
               "mac"],
   "switch": {
     "protocol": "http",
-    "host": "192.168.40.200",
+    "host": "192.168.42.237",
     "port": 80
   },
   "authentication": {
@@ -6156,6 +6156,8 @@
           "access": "deny",
           "sourceIpAddr": "192.168.2.0",
           "sourceIpAddrBitmask": "255.255.255.0",
+          "destIpAddr": "10.10.0.0",
+          "destIpAddrBitmask": "255.255.0.0",
           "protocol": 17,
           "destPort": 53,
           "destPortBitmask": 65535
@@ -6295,6 +6297,8 @@
           "sourceMacAddrBitmask": "ff-ff-ff-ff-ff-ff",
           "sourceIpAddr": "192.168.5.11",
           "sourceIpAddrBitmask": "255.255.255.0",
+          "destIpAddr": "192.168.5.2",
+          "destIpAddrBitmask": "255.255.255.255",
           "logStatus": false
         }
       ]
@@ -6478,8 +6482,7 @@
       "mode": "auto"
     },
     "dot1q_base_config": {
-      "status": true,
-      "managementVlanId": 1
+      "gvrpStatus": true
     },
     "dot1q_vlan_interface": {
       "pvid": 1,
@@ -6492,9 +6495,7 @@
       "leaveAllTime": 10000
     },
     "vlan_l3_interface_create": {
-      "vlanId": 100,
-      "ipAddress": "192.168.100.1",
-      "subnetMask": "255.255.255.0"
+      "vlanId": 100
     },
     "vlan_l3_interface_update": {
       "ipAddress": "192.168.100.2",

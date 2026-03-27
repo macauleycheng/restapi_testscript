@@ -7,6 +7,8 @@ RMON REST API 測試腳本
 包含 Alarms, Events, Histories 和 RMON1 Statistics 功能測試
 """
 
+import hashlib
+
 import requests
 import json
 import sys
@@ -1034,6 +1036,7 @@ def main():
     base_url = sys.argv[1]
     username = sys.argv[2] if len(sys.argv) > 2 else None
     password = sys.argv[3] if len(sys.argv) > 3 else None
+    password = hashlib.md5(password.encode('utf-8')).hexdigest()
     
     # 創建測試器並運行測試
     tester = RMONAPITester(base_url, username, password)

@@ -12,6 +12,7 @@ import sys
 import time
 import os
 from typing import Dict, Any, Optional
+import hashlib
 
 class AddRunningConfigAPITester:
     def __init__(self, base_url: str = "http://localhost", username: str = "admin", password: str = "admin"):
