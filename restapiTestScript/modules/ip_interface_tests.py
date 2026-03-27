@@ -358,6 +358,7 @@ class IP_INTERFACETests(BaseTests):
                 url="/api/v1/ip/loopback",
                 category="ip_interface_loopback_management",
                 module="ip_interface",
+                body=(),
                 description="創建Loopback接口"
             ),
             
@@ -372,6 +373,7 @@ class IP_INTERFACETests(BaseTests):
             ),
             
             # 設置Loopback接口IP地址 - 基本配置
+            # (The parameter ipAddress is invalid.)
             self.create_test_case(
                 name="ip_interface_set_loopback_ip_basic",
                 method="PUT",
@@ -482,6 +484,7 @@ class IP_INTERFACETests(BaseTests):
                 url="/api/v1/ip/loopback",
                 category="ip_interface_advanced_operations",
                 module="ip_interface",
+                body={},
                 description="重新創建Loopback接口用於高級操作"
             ),
             

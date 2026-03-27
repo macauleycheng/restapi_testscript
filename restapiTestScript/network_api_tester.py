@@ -239,7 +239,7 @@ class NetworkAPITester:
             placeholder = f"{{{key}}}"
             if placeholder in url:
                 # URL編碼特殊字符，特別處理MAC地址和接口ID
-                if any(keyword in key.lower() for keyword in ['mac', 'ifid', 'interface']):
+                if any(keyword in key.lower() for keyword in ['mac', 'ifid', 'id', 'interface']):
                     encoded_value = quote(str(value), safe='')
                 else:
                     encoded_value = str(value)

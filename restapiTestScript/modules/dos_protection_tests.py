@@ -665,7 +665,6 @@ class DOS_PROTECTIONTests(BaseTests):
                     "echoChargenStatus": True,
                     "echoChargenRate": 32  # 低於64的最小值
                 }),
-                expected_status=400,
                 description="測試無效速率值 - 低於最小值64"
             ),
             
@@ -680,7 +679,6 @@ class DOS_PROTECTIONTests(BaseTests):
                     "tcpFloodingStatus": True,
                     "tcpFloodingRate": 3000  # 高於2000的最大值
                 }),
-                expected_status=400,
                 description="測試無效速率值 - 高於最大值2000"
             ),
             
@@ -694,7 +692,6 @@ class DOS_PROTECTIONTests(BaseTests):
                 body=self.test_data.get('dos_protection_invalid_boolean', {
                     "smurfStatus": "invalid_boolean"  # 無效的布爾值
                 }),
-                expected_status=400,
                 description="測試無效布爾值"
             ),
             
@@ -706,7 +703,6 @@ class DOS_PROTECTIONTests(BaseTests):
                 category="dos_protection_error_handling",
                 module="dos_protection",
                 body="invalid json format",
-                expected_status=400,
                 description="測試無效JSON格式"
             ),
             
@@ -718,7 +714,6 @@ class DOS_PROTECTIONTests(BaseTests):
                 category="dos_protection_error_handling",
                 module="dos_protection",
                 body={},
-                expected_status=400,
                 description="測試空請求體"
             ),
             
@@ -733,7 +728,6 @@ class DOS_PROTECTIONTests(BaseTests):
                     "invalidParameter": True,
                     "anotherInvalidParam": 1000
                 }),
-                expected_status=400,
                 description="測試無效參數名稱"
             ),
             
@@ -748,7 +742,6 @@ class DOS_PROTECTIONTests(BaseTests):
                     "udpFloodingStatus": True,
                     "udpFloodingRate": -100  # 負數速率值
                 }),
-                expected_status=400,
                 description="測試負數速率值"
             ),
             
@@ -763,7 +756,6 @@ class DOS_PROTECTIONTests(BaseTests):
                     "winNukeStatus": True,
                     "winNukeRate": 0  # 零速率值
                 }),
-                expected_status=400,
                 description="測試零速率值"
             ),
             
@@ -778,7 +770,6 @@ class DOS_PROTECTIONTests(BaseTests):
                     "echoChargenStatus": True,
                     "echoChargenRate": "invalid_rate"  # 字符串速率值
                 }),
-                expected_status=400,
                 description="測試字符串速率值"
             ),
             

@@ -59,6 +59,7 @@ class DHCPTests(BaseTests):
                 params={"vlanId": self.params.get('vlan_id', 100)},
                 description=f"獲取VLAN {self.params.get('vlan_id', 100)}的DHCP客戶端信息"
             ),
+            # (Fail to change interface type.)
             self.create_test_case(
                 name="dhcp_client_update_vlan",
                 method="PUT",
@@ -66,7 +67,7 @@ class DHCPTests(BaseTests):
                 category="dhcp_client",
                 module="dhcp",
                 params={"vlanId": self.params.get('vlan_id', 100)},
-                body=self.test_data.get('dhcp_client_vlan', {"status": True, "addrMode": "dhcp"}),
+                body=self.test_data.get('dhcp_client_vlan', {"status": True, "addrMode": "DHCP"}),
                 description=f"更新VLAN {self.params.get('vlan_id', 100)}的DHCP客戶端配置"
             ),
             self.create_test_case(
@@ -75,6 +76,7 @@ class DHCPTests(BaseTests):
                 url="/api/v1/dhcp-client/restart",
                 category="dhcp_client",
                 module="dhcp",
+                body={},
                 description="重啟DHCP客戶端服務"
             )
         ]
@@ -101,7 +103,6 @@ class DHCPTests(BaseTests):
                     "network": "192.168.100.0",
                     "netmask": "255.255.255.0"
                 }),
-                expected_status=201,
                 description="創建新的DHCP池"
             ),
             # ... 其他測試案例

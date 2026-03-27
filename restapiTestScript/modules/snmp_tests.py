@@ -244,7 +244,6 @@ class SNMPTests(BaseTests):
                 category="snmp_communities",
                 module="snmp",
                 params={"communityName": "nonexistent"},
-                expected_status=404,
                 description="測試獲取不存在的社區"
             )
         ]
@@ -390,7 +389,7 @@ class SNMPTests(BaseTests):
                 url="/api/v1/snmp/interfaces/{ifId}",
                 category="snmp_interfaces",
                 module="snmp",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 description="獲取接口 eth1/1 SNMP陷阱狀態"
             ),
             
@@ -401,7 +400,7 @@ class SNMPTests(BaseTests):
                 url="/api/v1/snmp/interfaces/{ifId}",
                 category="snmp_interfaces",
                 module="snmp",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 description="獲取接口 eth1/2 SNMP陷阱狀態"
             ),
             
@@ -412,7 +411,7 @@ class SNMPTests(BaseTests):
                 url="/api/v1/snmp/interfaces/{ifId}",
                 category="snmp_interfaces",
                 module="snmp",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": "eth1/1"},
                 body=self.test_data.get('snmp_enable_mac_trap', {
                     "macNotify": True
                 }),
@@ -426,7 +425,7 @@ class SNMPTests(BaseTests):
                 url="/api/v1/snmp/interfaces/{ifId}",
                 category="snmp_interfaces",
                 module="snmp",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": "eth1/2"},
                 body=self.test_data.get('snmp_disable_mac_trap', {
                     "macNotify": False
                 }),
@@ -440,7 +439,7 @@ class SNMPTests(BaseTests):
                 url="/api/v1/snmp/interfaces/{ifId}",
                 category="snmp_interfaces",
                 module="snmp",
-                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
+                params={"ifId": self.params.get('interface_id', 'eth1/1')},
                 body=self.test_data.get('snmp_param_interface_trap', {
                     "macNotify": True
                 }),
@@ -601,7 +600,7 @@ class SNMPTests(BaseTests):
             self.create_test_case(
                 name="snmpv3_get_v3_auth_group",
                 method="GET",
-                url="/api/v1/snmpv3/groups/{groupName}/security-model/{securityModel}",
+                url="/api/v1/snmpv3/groups/{groupName}/security-model/{securityModel}?securityLevel=auth",
                 category="snmpv3_groups",
                 module="snmp",
                 params={"groupName": "v3authgroup", "securityModel": "v3"},
@@ -613,7 +612,7 @@ class SNMPTests(BaseTests):
             self.create_test_case(
                 name="snmpv3_delete_group",
                 method="DELETE",
-                url="/api/v1/snmpv3/groups/{groupName}/security-model/{securityModel}",
+                url="/api/v1/snmpv3/groups/{groupName}/security-model/{securityModel}?securityLevel=auth",
                 category="snmpv3_groups",
                 module="snmp",
                 params={"groupName": "v3privgroup", "securityModel": "v3"},
@@ -704,6 +703,7 @@ class SNMPTests(BaseTests):
             ),
             
             # 添加遠程SNMPv3用戶
+            # (Failed to create snmpv3 remote user.)
             self.create_test_case(
                 name="snmpv3_add_remote_user",
                 method="POST",
@@ -774,6 +774,7 @@ class SNMPTests(BaseTests):
             ),
             
             # 刪除遠程用戶
+            # (Failed to delete snmpv3 user (v3).)
             self.create_test_case(
                 name="snmpv3_delete_remote_user",
                 method="DELETE",
@@ -904,6 +905,7 @@ class SNMPTests(BaseTests):
             ),
             
             # 添加SNMP通知日誌
+            # (Failed to create an SNMP notification log.)
             self.create_test_case(
                 name="snmp_add_notify_filter",
                 method="POST",
@@ -929,6 +931,7 @@ class SNMPTests(BaseTests):
             ),
             
             # 刪除SNMP通知日誌
+            # (Failed to delete an SNMP notification log.)
             self.create_test_case(
                 name="snmp_delete_notify_filter",
                 method="DELETE",

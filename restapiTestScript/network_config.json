@@ -10,7 +10,7 @@
   "authentication": {
     "type": "basic",
     "username": "admin",
-    "password": "admin"
+    "password": "21232f297a57a5a743894a0e4a801fc3"
   },
   "default_headers": {
     "Content-Type": "application/json",
@@ -20,7 +20,7 @@
   "log_level": "INFO",
   "request_delay": 0.1,
   "test_parameters": {
-    "interface_id": "eth1%2f1",
+    "interface_id": "eth1/1",
     "frame_type": "ethernet",
     "protocol_type": "ip",
     "group_id": 1,
@@ -76,7 +76,7 @@
     "cluster_member_id": 1,
     "cluster_ip_pool": "10.254.254.1",
     "cluster_mac_address": "00-e0-0c-00-00-01",
-    "cos_interface_id": "eth1%2f5",
+    "cos_interface_id": "eth1/5",
     "cos_priority": 3,
     "cos_queue_mode": "wrr",
     "device_type_expected": "L3 48 1G PoE + 4 SFP+ managed switch",
@@ -4957,7 +4957,7 @@
     },
     "lbd_cumulative_enable": {
       "status": true,
-      "ports": [72]
+      "ports": [20]
     },
     "lbd_disable_single_port": {
       "status": false,
@@ -4969,7 +4969,7 @@
     },
     "lbd_disable_all_ports": {
       "status": false,
-      "ports": [5, 6, 7, 8, 9, 10, 72]
+      "ports": [5, 6, 7, 8, 9, 10, 20]
     },
     "lbd_empty_port_list": {
       "status": true,
@@ -5796,7 +5796,7 @@
     },
     "lldp_minimum_config": {
       "status": true,
-      "transmitInterval": 5,
+      "transmitInterval": 4,
       "delayInterval": 1
     },
     "lldp_maximum_config": {
@@ -5806,7 +5806,7 @@
     },
     "lldp_disable": {
       "status": false,
-      "transmitInterval": 20,
+      "transmitInterval": 4,
       "delayInterval": 1
     },
     "lldp_invalid_delay": {
@@ -5816,7 +5816,7 @@
     },
     "lldp_re_enable": {
       "status": true,
-      "transmitInterval": 30,
+      "transmitInterval": 20,
       "delayInterval": 2
     },
     "acl_extended_ipv4": {

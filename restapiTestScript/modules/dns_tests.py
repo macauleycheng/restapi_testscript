@@ -485,6 +485,7 @@ class DNSTests(BaseTests):
                 url="/api/v1/dns/caches:clear",
                 category="dns_cache_management",
                 module="dns",
+                body={},
                 description="清理所有DNS緩存"
             ),
             
@@ -522,6 +523,7 @@ class DNSTests(BaseTests):
                 url="/api/v1/dns/caches:clear",
                 category="dns_cache_management",
                 module="dns",
+                body={},
                 description="再次清理DNS緩存"
             ),
             
@@ -645,6 +647,7 @@ class DNSTests(BaseTests):
                 url="/api/v1/dns/caches:clear",
                 category="dns_advanced_operations",
                 module="dns",
+                body={},
                 description="清理高級配置緩存"
             )
         ]
