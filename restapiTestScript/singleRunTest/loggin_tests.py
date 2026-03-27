@@ -11,8 +11,6 @@ Logging REST API 測試腳本
 - 清除日誌記錄
 """
 
-import hashlib
-
 import requests
 import json
 import sys
