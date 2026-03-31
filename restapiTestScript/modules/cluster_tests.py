@@ -622,7 +622,7 @@ class CLUSTERTests(BaseTests):
                 category="cluster_error_handling",
                 module="cluster",
                 params={"memberId": "99"},
-                expected_status=200,
+                expected_status=400,
                 description="測試獲取不存在的成員"
             ),
             
@@ -634,7 +634,7 @@ class CLUSTERTests(BaseTests):
                 category="cluster_error_handling",
                 module="cluster",
                 params={"memberId": "99"},
-                expected_status=500,
+                expected_status=400,
                 description="測試刪除不存在的成員"
             ),
             

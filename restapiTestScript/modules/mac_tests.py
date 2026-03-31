@@ -91,6 +91,7 @@ class MACTests(BaseTests):
             ),
             
             # 配置MAC老化時間 - 最大值
+            # (Failed to set MAC agingTime.)
             self.create_test_case(
                 name="mac_configure_max_aging_time",
                 method="PUT",
@@ -119,6 +120,7 @@ class MACTests(BaseTests):
             ),
             
             # 配置MAC老化時間 - 自定義值
+            # (Failed to set MAC agingTime.)
             self.create_test_case(
                 name="mac_configure_custom_aging_time",
                 method="PUT",
@@ -614,6 +616,7 @@ class MACTests(BaseTests):
             ),
             
             # 配置接口MAC抖動 - 停止學習
+            # (Failed to set a interface setting of MAC thrashing.)
             self.create_test_case(
                 name="mac_configure_thrashing_stop_learning",
                 method="PUT",
@@ -629,6 +632,7 @@ class MACTests(BaseTests):
             ),
             
             # 配置接口MAC抖動 - 端口禁用
+            # (Failed to set a interface setting of MAC thrashing.)
             self.create_test_case(
                 name="mac_configure_thrashing_port_disable",
                 method="PUT",
@@ -644,6 +648,7 @@ class MACTests(BaseTests):
             ),
             
             # 配置接口MAC抖動 - 鏈路斷開
+            # (Failed to set a interface setting of MAC thrashing.)
             self.create_test_case(
                 name="mac_configure_thrashing_link_down",
                 method="PUT",
@@ -659,6 +664,7 @@ class MACTests(BaseTests):
             ),
             
             # 配置Port Channel接口MAC抖動
+            # (Failed to set a interface setting of MAC thrashing.)
             self.create_test_case(
                 name="mac_configure_thrashing_trunk",
                 method="PUT",
@@ -674,6 +680,7 @@ class MACTests(BaseTests):
             ),
             
             # 禁用接口MAC抖動
+            # (Failed to set a interface setting of MAC thrashing.)
             self.create_test_case(
                 name="mac_disable_thrashing",
                 method="PUT",
@@ -688,6 +695,7 @@ class MACTests(BaseTests):
             ),
             
             # 重新啟用接口MAC抖動
+            # (Failed to set a interface setting of MAC thrashing.)
             self.create_test_case(
                 name="mac_re_enable_thrashing",
                 method="PUT",
@@ -755,6 +763,7 @@ class MACTests(BaseTests):
             ),
             
             # 測試無效動作類型
+            # (Failed to set a interface setting of MAC thrashing.)
             self.create_test_case(
                 name="mac_test_invalid_thrashing_action",
                 method="PUT",
