@@ -4,7 +4,7 @@
               "mac"],
   "switch": {
     "protocol": "http",
-    "host": "192.168.42.237",
+    "host": "192.168.40.200",
     "port": 80
   },
   "authentication": {
@@ -2529,10 +2529,9 @@
       "domainLookup": true,
       "domainName": "multi.example.com",
       "domainLists": [
-        {"listName": "dev.example.com"},
-        {"listName": "test.example.com"},
-        {"listName": "prod.example.com"},
-        {"listName": "staging.example.com"}
+        {"listName": "sample.com.jp"},
+        {"listName": "sample.com.tw"},
+        {"listName": "sample.com"}
       ]
     },
     "dns_enterprise_domain": {
@@ -2557,9 +2556,7 @@
       "domainLookup": true,
       "nameServerInets": [
         {"ip": "8.8.8.8"},
-        {"ip": "8.8.4.4"},
-        {"ip": "1.1.1.1"},
-        {"ip": "1.0.0.1"}
+        {"ip": "8.8.4.4"}
       ]
     },
     "dns_internal_nameservers": {
@@ -6403,7 +6400,7 @@
     },    
     "dhcp_client_vlan": {
       "status": true,
-      "addrMode": "dhcp",
+      "addrMode": "DHCP",
       "gateway": "192.168.1.1",
       "dns": ["8.8.8.8", "8.8.4.4"]
     },

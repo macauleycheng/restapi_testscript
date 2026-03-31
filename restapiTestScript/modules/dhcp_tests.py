@@ -59,7 +59,6 @@ class DHCPTests(BaseTests):
                 params={"vlanId": self.params.get('vlan_id', 100)},
                 description=f"獲取VLAN {self.params.get('vlan_id', 100)}的DHCP客戶端信息"
             ),
-            # (Fail to change interface type.)
             self.create_test_case(
                 name="dhcp_client_update_vlan",
                 method="PUT",
