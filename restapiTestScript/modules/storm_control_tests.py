@@ -45,7 +45,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_ethernet",
                 module="storm_control",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
                 description="獲取Ethernet接口風暴控制信息"
             ),
             
@@ -67,7 +67,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_ethernet",
                 module="storm_control",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
                 body=self.test_data.get('storm_control_all_enabled', {
                     "bcastStatus": True,
                     "bcastRate": 1000,
@@ -86,7 +86,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_ethernet",
                 module="storm_control",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
                 body=self.test_data.get('storm_control_min_rate', {
                     "bcastStatus": True,
                     "bcastRate": 500,
@@ -105,7 +105,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_ethernet",
                 module="storm_control",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
                 body=self.test_data.get('storm_control_max_rate', {
                     "bcastStatus": True,
                     "bcastRate": 14881000,
@@ -124,7 +124,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_ethernet",
                 module="storm_control",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
                 body=self.test_data.get('storm_control_all_disabled', {
                     "bcastStatus": False,
                     "mcastStatus": False,
@@ -152,12 +152,12 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_ethernet",
                 module="storm_control",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
                 body=self.test_data.get('storm_control_invalid_rate_low', {
                     "bcastStatus": True,
                     "bcastRate": 100  # 低於最小值 500
                 }),
-                expected_status=500,
+                expected_status=400,
                 description="測試無效速率值 - 低於最小值"
             ),
             
@@ -168,12 +168,12 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_ethernet",
                 module="storm_control",
-                params={"ifId": "eth1%2f1"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f1')},
                 body=self.test_data.get('storm_control_invalid_rate_high', {
                     "bcastStatus": True,
                     "bcastRate": 20000000  # 超過最大值 14881000
                 }),
-                expected_status=500,
+                expected_status=400,
                 description="測試無效速率值 - 超過最大值"
             )
         ]
@@ -261,7 +261,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_broadcast",
                 module="storm_control",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f2')},
                 body=self.test_data.get('storm_control_broadcast_low', {
                     "bcastStatus": True,
                     "bcastRate": 800
@@ -276,7 +276,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_broadcast",
                 module="storm_control",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f2')},
                 body=self.test_data.get('storm_control_broadcast_medium', {
                     "bcastStatus": True,
                     "bcastRate": 5000
@@ -291,7 +291,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_broadcast",
                 module="storm_control",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f2')},
                 body=self.test_data.get('storm_control_broadcast_high', {
                     "bcastStatus": True,
                     "bcastRate": 10000000
@@ -306,7 +306,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_broadcast",
                 module="storm_control",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f2')},
                 body=self.test_data.get('storm_control_broadcast_disabled', {
                     "bcastStatus": False
                 }),
@@ -320,7 +320,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_broadcast",
                 module="storm_control",
-                params={"ifId": "eth1%2f2"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f2')},
                 description="驗證廣播風暴控制配置"
             )
         ]
@@ -335,7 +335,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_multicast",
                 module="storm_control",
-                params={"ifId": "eth1%2f3"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f3')},
                 body=self.test_data.get('storm_control_multicast_low', {
                     "mcastStatus": True,
                     "mcastRate": 600
@@ -350,7 +350,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_multicast",
                 module="storm_control",
-                params={"ifId": "eth1%2f3"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f3')},
                 body=self.test_data.get('storm_control_multicast_medium', {
                     "mcastStatus": True,
                     "mcastRate": 3000
@@ -365,7 +365,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_multicast",
                 module="storm_control",
-                params={"ifId": "eth1%2f3"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f3')},
                 body=self.test_data.get('storm_control_multicast_high', {
                     "mcastStatus": True,
                     "mcastRate": 8000000
@@ -380,7 +380,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_multicast",
                 module="storm_control",
-                params={"ifId": "eth1%2f3"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f3')},
                 body=self.test_data.get('storm_control_multicast_disabled', {
                     "mcastStatus": False
                 }),
@@ -394,7 +394,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_multicast",
                 module="storm_control",
-                params={"ifId": "eth1%2f3"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f3')},
                 description="驗證組播風暴控制配置"
             )
         ]
@@ -409,7 +409,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_unknown_unicast",
                 module="storm_control",
-                params={"ifId": "eth1%2f4"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f4')},
                 body=self.test_data.get('storm_control_unknown_unicast_low', {
                     "unknownUcastStatus": True,
                     "unknownUcastRate": 700
@@ -424,7 +424,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_unknown_unicast",
                 module="storm_control",
-                params={"ifId": "eth1%2f4"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f4')},
                 body=self.test_data.get('storm_control_unknown_unicast_medium', {
                     "unknownUcastStatus": True,
                     "unknownUcastRate": 4000
@@ -439,7 +439,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_unknown_unicast",
                 module="storm_control",
-                params={"ifId": "eth1%2f4"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f4')},
                 body=self.test_data.get('storm_control_unknown_unicast_high', {
                     "unknownUcastStatus": True,
                     "unknownUcastRate": 12000000
@@ -454,7 +454,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_unknown_unicast",
                 module="storm_control",
-                params={"ifId": "eth1%2f4"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f4')},
                 body=self.test_data.get('storm_control_unknown_unicast_disabled', {
                     "unknownUcastStatus": False
                 }),
@@ -468,7 +468,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_unknown_unicast",
                 module="storm_control",
-                params={"ifId": "eth1%2f4"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f4')},
                 description="驗證未知單播風暴控制配置"
             ),
             
@@ -479,7 +479,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_unknown_unicast",
                 module="storm_control",
-                params={"ifId": "eth1%2f5"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f5')},
                 body=self.test_data.get('storm_control_combined', {
                     "bcastStatus": True,
                     "bcastRate": 1500,
@@ -498,7 +498,7 @@ class STORM_CONTROLTests(BaseTests):
                 url="/api/v1/storm-control/interfaces/{ifId}",
                 category="storm_control_unknown_unicast",
                 module="storm_control",
-                params={"ifId": "eth1%2f5"},
+                params={"ifId": self.params.get('interface_id', 'eth1%2f5')},
                 description="驗證組合配置效果"
             )
         ]

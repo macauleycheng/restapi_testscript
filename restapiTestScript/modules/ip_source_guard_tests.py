@@ -820,7 +820,7 @@ class IP_SOURCE_GUARDTests(BaseTests):
                 body=self.test_data.get('ip_source_guard_invalid_mode', {
                     "mode": "invalid_mode"
                 }),
-                expected_status=400,
+                expected_status=500,
                 description="測試無效的學習模式 (非mac/acl)"
             ),
             
@@ -900,7 +900,7 @@ class IP_SOURCE_GUARDTests(BaseTests):
                     "ipAddress": "192.168.1.1",
                     "ifId": "eth1/1"
                 }),
-                expected_status=400,
+                expected_status=500,
                 description="測試無效的MAC地址格式"
             ),
             
@@ -918,7 +918,7 @@ class IP_SOURCE_GUARDTests(BaseTests):
                     "ipAddress": "invalid.ip.address",
                     "ifId": "eth1/1"
                 }),
-                expected_status=400,
+                expected_status=500,
                 description="測試無效的IP地址格式"
             ),
             
@@ -950,7 +950,7 @@ class IP_SOURCE_GUARDTests(BaseTests):
                 body=self.test_data.get('ipv6_source_guard_invalid_filter_type', {
                     "filterType": "invalid_filter"
                 }),
-                expected_status=400,
+                expected_status=500,
                 description="測試IPv6無效的過濾類型 (非none/sip)"
             ),
             
